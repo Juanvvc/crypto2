@@ -21,7 +21,7 @@ transition: fade
 
 Juan Vera del Campo
 
-juan.vera@campusviu.es
+<juan.vera@campusviu.es>
 
 # Hoy hablamos de...
 <!-- _class: cool-list -->
@@ -151,7 +151,7 @@ El NIST es la agencia de estandarización de EEUU, y entre las cosas que estanda
 
 Firma digital de un contrato entre dos empresas
 
-- **Confidecialidad**: el contrato tiene que ser secreto para cualquier otra parte
+- **Confidencialidad**: el contrato tiene que ser secreto para cualquier otra parte
 - **Autenticación**: las empresas tienen que estar seguras de que están hablando con quien creen
 - **Integridad**: ninguna de las dos empresas puede cambiar unilaterlamente el contrato
 - **No repudio**: ninguna de las empresas podrá decir que no lo ha firmado
