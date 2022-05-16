@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"markdown.marp.themes": [
+			"slides/themes/marp-viu.css",
+			"slides/themes/marp-upc.css",
+			"slides/themes/marp-base.css"
+		]
+	}
+}

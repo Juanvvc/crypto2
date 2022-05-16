@@ -1,0 +1,4 @@
+build
+slides/*html
+slides/*pdf
+**/.DS_store
