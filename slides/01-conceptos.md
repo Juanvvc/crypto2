@@ -32,7 +32,7 @@ Juan Vera del Campo
 1. [Protocolos criptográficos: composición de primitivas](#28)
 1. [Conclusiones: resumen y referencias](#34)
 
-Ejercicios: <https://github.com/Juanvvc/crypto/tree/master/ejercicios/01>
+Ejercicios: <https://github.com/Juanvvc/crypto2/tree/master/ejercicios/01>
 
 
 <!--
