@@ -107,4 +107,4 @@ Los ejercicios son notebook de Jupyter:
 ---
 <!-- _class: center -->
 
-Continúa en: [Conceptos básicos](01-conceptos-basicos.html)
+Continúa en: [Conceptos básicos](01-conceptos.html)

@@ -23,6 +23,10 @@ transition: fade
 
 Juan Vera del Campo
 
+
+
+Did 
+
 <juan.vera@campusviu.es>
 
 
@@ -493,24 +497,3 @@ El navegador Tor intenta no enviar nada de esto, y utiliza un User-Agent cambian
 - Tor y el Onion Routing, de tejedoresdelweb: http://tejedoresdelweb.com/w/TOR
 - How Tor works?, by Hussein Nasser: https://www.youtube.com/watch?v=gIkzx7-s2RU
 - Is Tor Trustworthy and Safe? https://restoreprivacy.com/tor/
-
-## Ejercicio 1
-
-Instala [el navegador Tor](https://www.torproject.org/download/) y visita estos sitios de la web normal, tanto con Tor browser como con tu browser habitual. Compara el tiempo que tardan en cargar con el tiempo que carga en cargar la web normal de estos sitios. Comprueba el circuito de nodos usado con cada sitio ¿ves una web diferente (idioma, por ejemplo) que cuando lo visitas desde tu navegador normal? 
-
-- Google
-- Youtube, y abre un vídeo cualquiera
-- https://whatismyipaddress.com/ ¿Qué IP tienes en Tor y qué IP en tu navegador habitual?
-- https://www.whatismybrowser.com/detect/am-i-using-tor ¿Te detecta que estás en Tor?
-
-## Ejercicio 2
-<!-- _class: with-warning smaller-font -->
-
-Instala el navegador Tor y visita estos sitios en .onion. Compara el tiempo que tardan en cargar con el tiempo que carga en cargar la web normal de estos sitios
-
-- BBC, web de noticias internacionales prohibida en algunos países: https://www.bbcnewsv2vjtpsuy.onion/
-- ProPublica, web de noticias internacionales prohibida en algunos países: https://p53lf57qovyuvwsc6xnrppyply3vtqm7l6pcobkmyqsiofyeznfu5uqd.onion/
-- ProtonMail, también en Tor: https://protonirockerxow.onion
-- Wasabi: para comprar bitcoins anonimamamente (**comprar bitcoins no es una recomendación ni un ejercicio. Simplemente visita la web, sin comprar nada**): http://wasabiukrxmkdgve5kynjztuovbg43uxcbcxn6y2okcrsg7gb6jdmbad.onion/
-
-Estos sitios son probablemente seguros, pero hay sitios .onion **terriblemente desagradables, inmorales o delictivos**. Ten **mucho cuidado** con seguir un enlace .onion que no sepas qué es. En mi opinión, el navegador Tor no debería estar al alcance de los niños
