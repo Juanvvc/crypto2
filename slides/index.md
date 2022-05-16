@@ -57,15 +57,12 @@ Intereses:
 
 Versión más actualizada:
 
-- Acceso directo HTML: <http://juanvvc.github.io/crypto/slides>
+- Acceso directo HTML: <http://juanvvc.github.io/crypto2>
     - Puedes pulsar `p` para ver las notas de presentación
     - Con "Inicio" (en pie de cada transparencia) puedes venir a esta presentación, con el índice global de contenidos
-    - Encontrarás la versión en PDF entre los recursos de la asignatura
-- Código Markdown: <https://github.com/juanvvc/crypto>
+- Código Markdown: <https://github.com/juanvvc/crypto2>
 
 Durante el estudio personal es muy recomendable seguir los enlaces que aparecen en las transparencias para completar el tema.
-
-El curso está adaptado de [las notas de Jordi Íñigo Griera](https://github.com/jig/crypto), antiguo profesor de la asignatura
 
 [![Licencia de Creative Commons](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/) Esta obra esta sujeta a una licencia de [Atribución 4.0 Internacional de Creative Commons](http://creativecommons.org/licenses/by/4.0/)
 
@@ -92,7 +89,7 @@ Los ejercicios son notebook de Jupyter:
 ## Bibliografía
 <!-- _class: smaller-font -->
 
-- Del profesor: <https://juanvvc.github.io/crypto/slides/>
+- Del profesor: <https://juanvvc.github.io/crypto2/>
 - "[*A Graduate Course in Applied Cryptography*](http://toc.cryptobook.us/)".  Dan Boneh   and   Victor Shoup. Con vídeos en:
     - <https://crypto.stanford.edu/~dabo/courses/OnlineCrypto/>
     - https://www.coursera.org/learn/crypto
