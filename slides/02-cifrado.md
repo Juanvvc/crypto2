@@ -71,7 +71,7 @@ $$
 P[m|c] = P[m]
 $$
 
-Sistema con confidencialidad perfecta: un atacante no podría descifrarlo nunca, invierta el dinero que invierta e independientemente de cuandos siglos lo intente
+Sistema con confidencialidad perfecta: un atacante no podría descifrarlo nunca, invierta el dinero que invierta e independientemente de por cuántos siglos lo intente
 
 <!--
 Desde que los matemáticos entraron en la criptografía, existe definiciones de todos los términos tan exactas y formales como incomprensibles para un profano
@@ -84,23 +84,23 @@ Cosas que implica:
 
 ---
 
-Si un cifado perfecto teórico cifra como XHAJSJXXNFHFDOIOJUMNFNNNF, existe una clave que descifra "ATACAREMOS A LAS 8 EN PUNTO" y otra que descifra "SE HA QUEDADO BUENA TARDE"
+Si un cifado perfecto cifra un texto como XHAJSJXXNFHFDOIOJUMNFNNNF, existe una clave que descifra "ATACAREMOS A LAS 8 EN PUNTO" y otra que descifra "SE HA QUEDADO BUENA TARDE"
 
 Un cifrado perfecto no puede descifrarse ni siquiera por fuerza bruta porque un atacante no puede distinguir el mensaje real de todos los mensajes falsos posibles
 
-## Atacaremos a las "F" horas
+## Ejemplo: atacaremos a las "F" horas
 
 - Si el enemigo intercepta el mensaje, no tiene forma saber a qué hora se atacará. **Este cifrado es perfecto**
 - Pero el enemigo sabrá:
 	- Si no le han atacado a la 1, F no es 1
 	- Si no le han atacado a las 2, F no es 2
 	- Si le atacan a las 3, F es 3
-- Solo se puede usar esta clave una vez. A la siguiente, el enemigo ya tendrá mucha información
+- Es decir: solo se puede usar esta clave una vez
 - Hay que volver a enviar una nueva clave cada vez que queramos enviar un mensaje nuevo, con el riesgo de que el enemigo intercepte el mensaje de envío de clave
 
 ## Requisitos para la confidencialidad perfecta
 
-Tenemos confidencialidad perfecta si y solo sí usamos un cifrado con las siguientes características:
+Tenemos confidencialidad perfecta si y solo si usamos un cifrado con las siguientes características:
 
 - una clave tan larga como el mensaje
 - no conocida por el atacante. Es decir: totalmente aleatoria
