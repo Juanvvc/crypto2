@@ -41,9 +41,9 @@ Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases pa
 <!-- _class: cool-list -->
 
 1. [Confidencialidad perfecta y computacional](#5)
-1. [Cifrado simétrico o de clave secreta](#19)
-1. [Cifrado asimétrico o de clave pública](#47)
-1. [Resumen y referencias](#73)
+1. [Cifrado simétrico o de clave secreta](#21)
+1. [Cifrado asimétrico o de clave pública](#49)
+1. [Resumen y referencias](#76)
 
 ---
 <!-- _class: with-info -->
@@ -255,6 +255,25 @@ Esta sesión estudiaremos las dos primeras ramas: clave pública y clave secreta
 La próxima sesión estudiaremos los algoritmos de hash
 -->
 
+## Criptografía simétrica / clave secreta
+<!-- _class: two-columns -->
+
+![](images/simetrica.svg)
+
+- La misma clave para cifrar que para descifrar
+- Problema: ¿Cómo acuerdan las dos partes la clave?
+
+## Criptografía asimétrica / clave pública
+<!-- _class: two-columns -->
+
+![](images/asimetrica.svg)
+
+- Una clave para cifrar, una clave diferente para descifrar
+- Problema:
+    - No supimos cómo hacerla hasta los años 70
+    - Es lenta y compleja
+
+
 # Criptografía simétrica o de clave secreta
 <!-- _class: lead -->
 
@@ -279,6 +298,14 @@ Ejemplos rotos y obsoletos: RC4, DES, TDES
 ---
 
 ![center](images/cryptodefinition.png)
+
+<!--
+Aquí vemos el esquema de clave secreta
+
+Observa: antes de empezar a comunicase, Alice y Bob necesitan acordar / generar una clave por un camino diferente
+
+Por ahora vamos a ignorar este camino, y supondremos que Alice y Bob ya tienen una clave en común
+-->
 
 ## Criptografía simétrica: tipos
 
@@ -625,7 +652,7 @@ Cada persona tiene dos claves:
 
 A veces son intercambiables: lo que se cifra con una se descifra con la otra
 
-![bg right:40% w:90%](https://upload.wikimedia.org/wikipedia/commons/f/f9/Public_key_encryption.svg)
+![bg right:40% w:90%](images/asimetrica.svg)
 
 > Compara con criptografía simétrica: misma clave para cifrar y descifrar, Bob y Alice tienen que manetenarla en secreto
 
@@ -684,6 +711,16 @@ en realidad no sabemos si el DLP es difícil: solo lo sospechamos muy fuertement
 -->
 
 ## Protocolo Diffie-Hellman
+
+Utilizado para acordar una clave simétrica entres dos personas antes de las comunicaciones
+
+Idea básica:
+
+1. Bob envía a Alice una parte de la clave simétrica que usarán, cifrándola con la clave pública de Alice.
+1. Alice envía a Bob una parte de la clave simétrica que usarán, cifrándola con la clave pública de Bob.
+1. La clave final es la combinación de ambas partes, que solo las conocen Alice y Bob
+
+---
 <!-- _class: smaller-font -->
 
 Dos usuarios $Alice$ y $Bob$ que no se han visto nunca:
@@ -909,8 +946,13 @@ Característica|Cifrado simétrico|Cifrado asimétrico
 Eficiencia|Muy rápido|Lento
 Claves|1 (secreta, compartida)|2 (una pública y otra privada)
 Tamaño de clave|256 bits|15360 bits (RSA), 512 bits (curvas elípticas)
-Servicios|Confidencialidad|Autenticación, integridad, intercambio de claves simétricas
+Servicios|Confidencialidad|Autenticación, integridad, intercambio de claves simétricas (Diffie-Hellman)
 Ejemplos|AES, ChaCha|RSA, ECDSA, ECDH
+
+<!--
+ECDSA: Elliptic Curve DSA
+ECDH: Elliptic Curve Diffie-Hellman
+-->
 
 ## Resumen
 <!-- _class: smaller-font -->
@@ -932,11 +974,10 @@ Ejemplos|AES, ChaCha|RSA, ECDSA, ECDH
 - Criptografía asimétrica: cada persona tiene dos claves, una para cifrar y otra para descifrar. Una de esas claves es pública (es decir, cualquiera puede conocer la clave pública de otra persona) y la otra es secreta
 - Muchísimo **más lenta** que el cifrado simétrico
 - Se utiliza para:
-    - intercambiar claves simétricas
-    - firmado digital
-    - identidad digital
-- Ejemplos clásicos: RSA, DSA, D-H. Basados en el problema de la factorización de números primos y logaritmo discreto. Los ejemplos clásicos necesitan tamaños de clave grandes y eso dificulta su implementación
-- Basar la seguridad en curvas elípticas (EC) permite claves mucho más pequeñas
+    - intercambiar claves simétricas (Diffie-Hellman, ECDH)
+    - firmado e identidad digital (RSA, ECDSA)
+- Ejemplos clásicos: RSA, DSA, D-H. Están basados en el problema de la factorización de números primos y logaritmo discreto. Necesitan tamaños de clave grandes y eso dificulta su implementación
+- Las curvas elípticas (EC) permite claves mucho más pequeñas = más rápidos
 - Ejemplos modernos: ECDH, ECDSA, que son adaptaciones de D-H y DSA sobre curvas elípticas
 
 ## Referencias

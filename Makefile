@@ -15,6 +15,7 @@ THEME=marp-viu
 THEME_SET=$(IN_DIR)/themes
 THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
 
+VERSION=$(shell date '+%Y%m')
 
 all:
 	make htmls
@@ -26,6 +27,11 @@ build:
 
 pdfs: build
 	PUPPETEER_TIMEOUT=0 $(MARP) -I $(IN_DIR) -o $(OUT_DIR) --no-config $(THEME_OPTS) --pdf --allow-local-files --html --pdf-notes
+
+release: pdfs
+	rm -rf $(OUT_DIR)/themes
+	rm -rf $(OUT_DIR)/images
+	cd $(OUT_DIR) && zip $(VERSION)-slides.zip *pdf && rm *.pdf
 
 htmls: build
 	$(MARP) -I $(IN_DIR) -o $(OUT_DIR) --no-config $(THEME_OPTS) --bespoke.progress true --html 
