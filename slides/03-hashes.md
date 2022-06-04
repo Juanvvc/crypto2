@@ -1,6 +1,6 @@
 ---
 marp: true
-title: Criptografía - Funciones de Hash y Blockchains
+title: Criptografía - Funciones de Hash y Firma digital
 author: Juan Vera
 keywords: criptografía,hash,sha256,bitcoin
 paginate: true
@@ -18,7 +18,7 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Funciones de Hash y Blockchains
+# Funciones de Hash y Firma digital
 <!-- _class: first-slide -->
 
 Juan Vera del Campo
