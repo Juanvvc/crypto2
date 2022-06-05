@@ -2,7 +2,7 @@
 marp: true
 title: Criptografía - Funciones de Hash y Firma digital
 author: Juan Vera
-keywords: criptografía,hash,sha256,bitcoin
+keywords: criptografía,hash,sha256,integridad,firma digital
 paginate: true
 footer: '[Inicio](index.html)'
 headingDivider: 2
@@ -152,7 +152,7 @@ Existen infinitos mensajes diferentes con el mismo resumen: esto se llama "colis
 <!--
 El principio del palomar dice que si tienes 9 agujeros y 10 palomas, es necesario que dos palomas compartan agujero. Puede parecer una obviedad, pero a veces se nos pasan las obviedades:
 
-Si los mensaje de 1.000.000 de caracteres se resumen en 256 caracteres... ¡por fuerza varios mensajes tendrán el mismo resumen!
+Si los mensajes de 1.000.000 de caracteres se resumen en 256 caracteres... ¡por fuerza varios mensajes tendrán el mismo resumen!
 -->
 
 ## Paradoja del cumpleaños
@@ -333,7 +333,7 @@ $$
 
 <!--
 
-Integredidad Capacidad de **detectar** si un mensaje ha sido modificado desde su transmisión hasta su recepción.
+Integredad Capacidad de **detectar** si un mensaje ha sido modificado desde su transmisión hasta su recepción.
 
 La modificación se refiere tanto a una modificación **explícita por un atacante** como a una modificación debido a un error (por ejemplo de transmisión). 
 
