@@ -13,7 +13,7 @@ theme: marp-viu
     the YAML header: section: | */
 </style>
 
-# Criptografía
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
 
 **Anexo: Glosario**

@@ -2,7 +2,7 @@
 marp: true
 title: Criptografía - Anonimato
 author: Juan Vera
-keywords: anonimato
+keywords: criptografía,anonimato
 paginate: true
 footer: '[Inicio](index.html)'
 headingDivider: 2
@@ -18,14 +18,12 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Servicio de anonimato
+# Criptografía y autenticación
 <!-- _class: first-slide -->
 
+**Anonimato**
+
 Juan Vera del Campo
-
-
-
-Did 
 
 <juan.vera@campusviu.es>
 

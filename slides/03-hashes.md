@@ -18,8 +18,10 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Funciones de Hash y Firma digital
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
+
+**Funciones de Hash y Firma digital**
 
 Juan Vera del Campo
 

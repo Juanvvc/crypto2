@@ -18,12 +18,14 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
 
-**Tema 10: Autenticación de usuarios**
+**Autenticación de usuarios**
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo
+
+<juan.vera@campusviu.es>
 
 
 # Como decíamos ayer...
@@ -627,7 +629,10 @@ El problema de la autenticación segura aún está a medio resolver en entornos 
 ---
 <!-- _class: center -->
 
-Continúa en: [Business Email Compromise (BEC)](06-bec.html)
+Continúa en:
+
+- [Business Email Compromise (BEC)](06-bec.html)
+- [Anonimato](07-anonimato.html)
 
 
 

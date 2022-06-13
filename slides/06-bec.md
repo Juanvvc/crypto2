@@ -1,6 +1,7 @@
 ---
 marp: true
-title: Criptografía - Amenazas
+title: Criptografía - Business Email Compromise
+keywords: criptografía, bec, email, autenticación
 paginate: true
 footer: '[Inicio](index.html)'
 headingDivider: 2
@@ -15,8 +16,10 @@ theme: marp-viu
 	/* section footer { display: none; } */
 </style>
 
-# Business Email Compromise
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
+
+**Business Email Compromise**
 
 Juan Vera del Campo
 

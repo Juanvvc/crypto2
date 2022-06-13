@@ -18,12 +18,14 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
 
-**Tema 8: TLS y Public Key Infrastructure**
+**TLS y Public Key Infrastructure**
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo
+
+<juan.vera@campusviu.es>
 
 
 ## Hoy hablamos de...
@@ -59,7 +61,7 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
 
 ## Problemas cifrado asimétrico
 
-![bg left:50%](images/I-m-Wolf-I-solve-problems.jpg)
+![bg left:50% w:90%](images/I-m-Wolf-I-solve-problems.jpg)
 
 - Solo cifran números enteros con una longitud igual a la clave. Ej: 4096 bits
 - Muy lento comparado con el cifrado simétrico
@@ -74,19 +76,19 @@ O cómo combinar los ladrillos que hemos visto para construir protocolos
 
 ## Definición
 
-* La criptografía simétrica permite cifrar **muy rápidamente**
-* Los hashes permiten calcular resúmenes **muy rápidamente**
-* La criptografía asimétrica permite cifrar cosas sin tener que intercambiar una clave privada... **pero es lenta**
-* [Criptografía híbrida](https://es.wikipedia.org/wiki/Criptograf%C3%ADa_h%C3%ADbrida)
+- La criptografía simétrica permite cifrar **muy rápidamente**
+- Los hashes permiten calcular resúmenes **muy rápidamente**
+- La criptografía asimétrica permite cifrar cosas sin tener que intercambiar una clave privada... **pero es lenta**
+- [Criptografía híbrida](https://es.wikipedia.org/wiki/Criptograf%C3%ADa_h%C3%ADbrida)
     - **Cifrado híbrido**: enviamos clave simétrica cifrado con clave pública
     - **Firma digital**: ciframos hash con clave privada
 
 ## Firma digital: proceso
 
 
-* Los algoritmos como RSA solo cifran **números enteros** de una longitud igual a la clave. Por ejemplo, 4096 bits.
-* Alice podría dividir el documento en bloques de 4096b, pero eso no es eficiente
-* Solución: **hash cifrado con la clave privada**
+- Los algoritmos como RSA solo cifran **números enteros** de una longitud igual a la clave. Por ejemplo, 4096 bits.
+- Alice podría dividir el documento en bloques de 4096b, pero eso no es eficiente
+- Solución: **hash cifrado con la clave privada**
     - Alice calcula el hash de su documento de 10MB. El hash tiene 512 bytes
     - Alice cifra el hash con su clave privada
     - Cualquiera persona (eso incluye a Bob) puede conocer la clave pública de Alice y descifrar el hash
@@ -425,6 +427,4 @@ Si esto pasa, hace falta comunicarlo a la RA (Autoridad de Registro) siguiendo l
 ---
 <!-- _class: center -->
 
-Anexo recomendable: [Criptografía ofensiva](A3-ofensiva.html)
-
-Continúa en: [Protocolos](09-protocolos.html)
+Continúa en: [Autenticación](05-autenticacion.html)

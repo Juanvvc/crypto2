@@ -21,8 +21,10 @@ transition: fade
  	}
 </style>
 
-# Confidencialidad: sistemas de cifrado
+# Criptografía y Autenticación
 <!-- _class: first-slide -->
+
+**Confidencialidad: sistemas de cifrado**
 
 Juan Vera del Campo
 
