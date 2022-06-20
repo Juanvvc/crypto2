@@ -50,35 +50,23 @@ Es decir, no repudio = autenticidad + integridad
 ## Hoy hablamos de...
 <!-- _class: cool-list -->
 
-1. [Autenticación](#5)
-1. [Desafío / Respuesta](#20)
-1. [Usuario y contraseña](#27)
+1. [Autenticación](#4)
+1. [Desafío / Respuesta](#21)
+1. [Usuario y contraseña](#29)
 1. [Tokens](#39)
-1. [Resumen y referencias](#51)
-
-## TLS y la autenticación
-<!-- _class: extra-slide -->
-
-En el [Tema 9](09-protocolos.html) se ve cómo TLS puede ofrecer autenticación
-
-- Autenticación de servidor: el servidor envía su clave pública al cliente, que lo acepta por PKI, como se ve en el [Tema 8](08-pki.html). El servidor ahora autentica al cliente con algún mecanismo que no se explica en el tema 9
-- Autenticación doble: servidor y cliente intercambian claves públicas, que se aceptan por PKI, como se ve en el [Tema 8](08-pki.html)
-
-En ambos casos, con tener la clave pública de la otra persona no es suficiente: tenemos que **probar** que la otra persona tiene también la privada.
-
-En este tema veremos los detalles técnicos de estos métodos de autenticación
+1. [Resumen y referencias](#54)
 
 # Autenticación
 <!-- _class: lead -->
 
 ## ¿Qué es la autenticación?
 
-**En Internet, nadie es quien dice ser**
+**En Internet, es fácil hacerse pasar por otra persona**
 
 - Man in the middle
 - Impersonation
 
-La autenticación: proceso de confirmar que alguien es quien dice ser
+Autenticación: proceso de confirmar que alguien es quien dice ser
 
 ![bg right:40%](https://www.totalentertainment.biz/wp-content/gallery/impersonators/elvis.jpg)
 
@@ -98,7 +86,7 @@ La diferencia es que en el caso de man in the middle malloy tiene algo más de v
 
 ## Diffie-Hellman y el ataque Man in the Middle
 
-El algoritmo Diffie-Hellman ([Tema 5](05-asimetrica.html)) permite que dos personas que no se conocen acuerden una clave secreta común
+El algoritmo Diffie-Hellman ([Tema 3](03-cifrado.html)) permite que dos personas que no se conocen acuerden una clave secreta común
 
 Un atacante **no puede conocer la clave secreta**
 
@@ -132,7 +120,6 @@ Hay muchas formas de guardar nuestra identidad en internet:
 En el caso de webs o empresas, la identidad puede ser simplemente que cuando el usuario se conecta a bancosantander.com, que el servidor que le responda es propiedad del Banco Santander
 -->
 
-
 ## Factores de la autenticación
 
 **Algo que sabemos** (*knowledge*): contraseña, PIN...
@@ -159,7 +146,49 @@ Este sistema está poco seguro pero muy fácil de usar
 
 ![bg right w:80%](https://upload.wikimedia.org/wikipedia/commons/f/f1/Mediawiki_1.25_sign_in_form.png)
 
-## Two factor authentication: 2FA
+---
+
+Vulnerabilidades de *algo que sabemos*:
+
+- Ataques de diccionario "offline"
+- Muchos usuarios utilizan contraseñas del "top 100": https://en.wikipedia.org/wiki/List_of_the_most_common_passwords
+- Muchos usuarios **reutilizan** contraseñas en varios lugares
+- A veces es posible "adivinar contraseñas", si tienen una estructura
+- A veces, el administrador de sistemas no cambia la contraseña por defecto
+
+## Alto que *tenemos*
+<!-- _class: center -->
+
+![ w:15em](https://cdn.mos.cms.futurecdn.net/gQod8s5hcRCyuY4XnXWXuf-970-80.jpg) ![ w:15em](https://www.androidguys.com/wp-content/uploads/2016/05/google-authenticator-696x522.jpg)
+
+- USB Keys
+- Google Authenticator
+- SMS de validación...
+
+---
+
+Vulnerabilidades de *algo que tenemos*:
+
+- Que nos roben el móvil
+- Que esté intervenido por un atacante
+    - Troyanos bancarios
+    - Malware en Android
+
+## Algo que *somos*
+
+![center w:25em](https://www.iphonepedia.com/wp-content/uploads/2019/01/faceid.jpg)
+
+---
+
+Vulnerabilidades de *algo que somos*:
+
+- [Que la biometría no sea una ciencia exacta](https://www.ncsc.gov.uk/collection/biometrics/how-biometrics-are-attacked)
+
+![center](https://www.idrnd.ai/wp-content/uploads/2021/05/Liveness-Presentation-Attacks-e1619997533456.jpg.webp)
+
+> https://www.idrnd.ai/can-biometric-data-be-stolen/
+
+## 2FA: Doble Factor de Autenticación
 
 Usa al menos dos de los factores anteriores
 
@@ -180,34 +209,18 @@ EnEl 2FA de Gmail preguntan primero por contraseña y después confirmación en 
 
 ## *Passwordless / No password authentication*
 
-No usa el factor *algo que sabemos*
+![center w:25em](images/passwordless.png)
 
-![center w:25em](https://doubleoctopus.com/wp-content/uploads/2020/04/img_5e8b02587d9e4.png)
+> https://doubleoctopus.com/security-wiki/authentication/passwordless-authentication/
+> https://www.youtube.com/watch?v=8Na793pxKpk
 
----
+## Single Sign On
 
-En muchas webs nos podemos autenticar con nuestro usuario de Google, Facebook o Microsoft
+En muchas webs nos podemos autenticar con nuestro usuario de **Google**, **Facebook**, **Microsoft** u **Okta**
 
 [Microsoft](https://www.microsoft.com/en-us/security/business/identity-access-management/passwordless-authentication) y [Google](https://androidcommunity.com/google-planning-on-a-more-secure-no-password-future-20210506/) proponen que nos autentiquemos en sus sistemas solo con nuestro móvil: en el futuro próximo, ¡puede que no usemos contraseñas!
 
 ![center w:25em](https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4MHhB?ver=3b34&q=0&m=6&h=771&w=1619&b=%23FFFFFFFF&u=t&l=f&f=jpg&o=t&aim=true)
-
-## Vulnerabilidades de *algo que sabemos*
-
-- Ataques de diccionario "offline"
-- Muchos usuarios utilizan contraseñas del "top 100": https://en.wikipedia.org/wiki/List_of_the_most_common_passwords
-- Muchos usuarios **reutilizan** contraseñas en varios lugares
-- A veces es posible "adivinar contraseñas", si tienen una estructura
-- A veces, el administrador de sistemas no cambia la contraseña por defecto
-
-## Vulnerabilidades de *algo que tenemos/somos*
-
-- Que nos roben el móvil, o que esté intervenido por un atacante
-- [Que la biometría no sea una ciencia exacta](https://www.ncsc.gov.uk/collection/biometrics/how-biometrics-are-attacked)
-
-![center](https://www.idrnd.ai/wp-content/uploads/2021/05/Liveness-Presentation-Attacks-e1619997533456.jpg.webp)
-
-> https://www.idrnd.ai/can-biometric-data-be-stolen/
 
 ## Vulnerabilidades generales
 
@@ -215,26 +228,17 @@ En muchas webs nos podemos autenticar con nuestro usuario de Google, Facebook o 
 - Un atacante puede repetir exactamente lo que hemos hecho: replay attack
 - Un atacante puede obligarnos a hacer algo (sin que nos demos cuenta) aprovechando nuestas credenciales
 
-## *Lateral movement*
-
-Piensa en una red Windows: si un atacante controla un equipo y se pone a escuchar las contraseñas que los trabajadores usan en ese equipo en concreto... ¡podría aprovechar estas contraseñas en otros equipos!
-
-Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque cibernético
-
-![bg right w:100%](https://i0.wp.com/ciberseguridadenlinea.com/wp-content/uploads/2020/06/lateralmovement.jpg?resize=768%2C563&ssl=1)
-
 ## Vamos a ver tres soluciones
 <!-- _class: cool-list -->
 
-1. [Desafío-respuesta / firma digital](#20)
-1. [Contraseñas / biometría](#27)
+1. [Desafío-respuesta / firma digital](#21)
+1. [Contraseñas / biometría](#29)
 1. [Tokens](#39)
 
 # Desafío - Respuesta
 <!-- _class: lead -->
 
-(basado en firma digital)
-
+Basado en firma digital
 
 ## Desafío-Respuesta (*Challenge-Response*)
 
@@ -246,16 +250,26 @@ Pueden ser un **primer filtro** de entrada a tus sistemas para evitar ataques au
 
 ![bg right:50% w:60%](https://upload.wikimedia.org/wikipedia/en/8/80/Images_Recaptcha.png)
 
+## TLS: autenticación de servidores
+<!-- _class: with-warning -->
+
+TLS (https) permite autenticar servidores y (opcionalmente) usuarios:
+
+- **Autenticación de servidor**: el servidor envía su clave pública al cliente al inicio de la conexión HTTPS, que lo acepta usando PKI, como se ve en el [Tema 4](04-pki.html). En este modo, el usuario se autentica con algún sistema de este tema.
+- **Autenticación doble**: servidor y cliente intercambian claves públicas, que se aceptan por PKI.
+
+Con tener la clave pública de la otra persona no es suficiente: tenemos que **probar** que la otra persona tiene también la privada.
+
 ## ¿Es suficiente con que nos presenten una clave pública?
 
-Una CA puede enlazar una clave pública a una identidad: "*esta es sin duda la clave pública de Juan Vera*". Eso es el certificado ([Tema 8](08-pki.html))
+Una CA puede enlazar una clave pública a una identidad: "*esta es sin duda la clave pública de Juan Vera*". Eso es el certificado ([Tema 4](04-pki.html))
 
 Pero que alguien te enseñe el certificado de Juan Vera no es suficiente para que sepas que estas hablando conmigo: mi clave pública (es decir, mi certificado) es público, cualquiera puede obtenerlo y presentarlo.
 
-Se necesita algo más: la persona con la que hablas tiene que tener la clave privada de Juan Vera. Solo así sabrás que sin duda estás hablando con Juan Vera.
+Se necesita algo más: la persona con la que hablas tiene que tener la clave privada de Juan Vera. Solo así sabrás que sin duda estás hablando con Juan Vera:
 
-- Tiene la clave pública de Juan Vera, avalada por alguien en quien confiamos (una CA)
-- Demuestra que tiene la clave privada de Juan Vera
+1. Tiene la clave pública de Juan Vera, avalada por alguien en quien confiamos (una CA)
+1. Además, demuestra que tiene la clave privada de Juan Vera
 
 ## Desafío-Respuesta (*Challenge-Response*) usando criptografía asimétrica
 
@@ -279,13 +293,13 @@ Fíjate:
 - Aunque sepamos que esa es sin duda la clave pública de Bob, aún es necesario asegurarse de que estamos hablando realmente con Bob. Le desafiamos a que firme algo con la clave privada que dice tener.
 -->
 
-## Proceso
-<!-- _class: two-columns -->
+## Proceso del desafío
+<!-- _class: two-columns smaller-font -->
 
 [![w:20em](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBIRUxMT1xuICAgIEJvYi0-Pi1BbGljZTogQ2xhdmUgcMO6YmxpY2EgQm9iXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBsYSBjbGF2ZSBww7pibGljYSBlcyBPS1xuICAgIEFsaWNlLT4-K0JvYjogQ2hhbGxlbmdlPVwiODMyN2g0aDN5XCJcbiAgICBCb2ItPj4tQWxpY2U6IFJTQSg4MzI3aDRoM3kpXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBlbCBkZXNjaWZyYWRvIGVzIE9LXG4gICAgTm90ZSBvdmVyIEFsaWNlLEJvYjogRGlmZmllLUhlbGxtYW4gcGFyYSBhY29yZGFyIGNsYXZlIEFFU1xuICAgIE5vdGUgb3ZlciBBbGljZSxCb2I6IENvbXVuaWNhY2nDs24gY2lmcmFkYSBjb24gQUVTIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBIRUxMT1xuICAgIEJvYi0-Pi1BbGljZTogQ2xhdmUgcMO6YmxpY2EgQm9iXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBsYSBjbGF2ZSBww7pibGljYSBlcyBPS1xuICAgIEFsaWNlLT4-K0JvYjogQ2hhbGxlbmdlPVwiODMyN2g0aDN5XCJcbiAgICBCb2ItPj4tQWxpY2U6IFJTQSg4MzI3aDRoM3kpXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBlbCBkZWNpZnJhZG8gZXMgT0tcbiAgICBOb3RlIG92ZXIgQWxpY2UsQm9iOiBEaWZmaWUtSGVsbG1hbiBwYXJhIGFjb3JkYXIgY2xhdmUgQUVTXG4gICAgTm90ZSBvdmVyIEFsaWNlLEJvYjogQ29tdW5pY2FjacOzbiBjaWZyYWRhIGNvbiBBRVMiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
 
 - Alice tiene que enviar una challenge diferente cada vez, que no sea predecible por un atacante
-- Alice necesita algún mecanismo adicional para comprobar que esa clave pública está asociada a Bob ([tema 8](08-pki.html))
+- Alice necesita algún mecanismo adicional para comprobar que esa clave pública está asociada a Bob ([tema 4](04-pki.html))
 
 ## Firma digital como challenge-response
 <!-- _class: with-info -->
@@ -323,10 +337,10 @@ Esta es la versión de D-H implementada en SSL/TLS (tema 10)
 # Autenticación por contraseña
 <!-- _class: lead -->
 
-(en esta sección: "contraseña" es algo guardado una BBDD: una clave, una huella digital...)
+En esta sección: "contraseña" es algo guardado una BBDD: una clave, una huella digital...
 
-## Solución 1: contraseña en claro en la BBDD
-<!-- _class: two-columns -->
+## "Solución 1": contraseña en claro en la BBDD
+<!-- _class: two-columns with-warning -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPS1xuICAgICAgICAgICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLS0-Pi1BbGljZTogT0tcbiAgICAgICAgICAgICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
 
@@ -334,6 +348,8 @@ Esta es la versión de D-H implementada en SSL/TLS (tema 10)
 - Si roban la base de datos... ¡roban las contraseñas!
     - Los usuarios suelen reutilizar contraseñas
     - El administrator de la BBDD conoce nuestra contraseña
+
+Nunca uses este método para almacenar contraseñas
 
 <!--
 La BBDD podría cifrar las contraseñas, pero eso es una solución parcial: si alguien es capaz de robar la base de datos, es muy posible que también sea capaz de robar la contraseña de cifrado.
@@ -344,7 +360,7 @@ Que el adminitrador de la BBDD conozca la contraseña es un problema: ¿realment
 -->
 
 ## Solución 2: hash de la contraseña
-<!-- _class: two-columns -->
+<!-- _class: two-columns with-warning -->
 
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbywgaGFzaChQYXNzd29yZClcbiAgICBCQkRELT4-LUJvYjogT0tcbiAgICBCb2ItPj4tQWxpY2U6IE9LXG4gICAgICAgICAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyBcbiAgICBCQkRELT4-LUJvYjogXCJTYWx0XCIgZGVsIHVzdWFyaW9cbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbywgaGFzaChQYXNzd29yZClcbiAgICBCQkRELT4-LUJvYjogT0tcbiAgICBCb2ItPj4tQWxpY2U6IE9LXG4gICAgICAgICAgICAiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
@@ -352,6 +368,7 @@ Que el adminitrador de la BBDD conozca la contraseña es un problema: ¿realment
 - Ventaja: la BBDD no guarda las contraseñas sino sus hashes. Si alguien roba la BBDD, tiene que romper los hashes
 - Existen hashes especializados en huellas biométricas
 
+Intenta evitar este método para almacenar contraseñas
 
 <!--
 Nota: Alice podría enviar o bien su contraseña, o bien su hash. Es normal que Alice envíe a Bob (una página web) la contraseña, pero Bob calcula inmediatamente el hash: Alice se fía de Bob, pero Bob no se fía de la base de datos
@@ -368,14 +385,15 @@ Nota: Alice podría enviar o bien su contraseña, o bien su hash. Es normal que 
     - si se usan contraseñas sencillas... se pueden romper con *rainbow tables* o tablas precalculadas de contraseñas
 
 ## Solución 3: hash de contraseña + salt
-<!-- _class: two-columns -->
+<!-- _class: two-columns with-success -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPSyIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOnRydWUsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
 
-- El "*salt*" es algo parecido al "*nonce*" ([Tema 3](03-simetrica.html)): se puede guardar en claro en la BBDD
+- El "*salt*" es algo parecido al "*nonce*" ([Tema 2](02-cifrado.html)): se puede guardar en claro en la BBDD
 - El *salt* tiene que ser un valor **totalmente aleatorio y diferente para cada usuario**
 - Ya no es posible tener tablas precomputadas
-- Esta es la solución tomada en la actualidad
+
+Esta es la solución usada en la actualidad
 
 ## Análisis de seguridad
 <!-- _class: with-info -->
@@ -422,9 +440,11 @@ Esto es lo que guarda la BBDD para cada usuario
 - Derivación de clave, que es el proceso lento de Blowfish, se hace $2^{cost}$ veces.
 - Cifra con la clave derivada la cadena estándar *OrpheanBeholderScryDoubt* 64 veces.
 
----
+<!--
 
 ![center w:32em](https://i.stack.imgur.com/Z63W8.png)
+
+-->
 
 ## Ejemplos
 <!-- _class: smaller-font -->
@@ -451,6 +471,11 @@ bcrypt_check(password, hpwd)
 Fijaos que ejecutar bcrypt sobre la misma contraseña "sesamo", da resultados diferentes. De esta forma se puede guardar las contraseñas repetidas sin que ndie pueda saber que son repetidas
 -->
 
+# Sesiones por tokens
+<!-- _class: lead -->
+
+En esta sección, *credenciales* es lo que el usuario tenga para autenticarse: 2FA, contraseñas, certificados...
+
 ## Problema
 
 Imagina una petición con HTTP (ó HTTPS)
@@ -472,12 +497,9 @@ alice:sesame%
 Para evitar enviar siempre la contraseña (o su hash): sesiones por tokens
 
 
-# Sesiones por tokens
-<!-- _class: lead -->
-
 ## Autenticación por token
 
-1. El usuario envía un usuario y contraseña
+1. El usuario envía sus credenciales
 2. Si es correcto (ver sección anterior), el usuario recibe un token
 3. Para el resto de peticiones el usuario envía **solo** el token
 4. En cada petición, el servidor verifica que el token es correcto
@@ -494,7 +516,7 @@ Para evitar enviar siempre la contraseña (o su hash): sesiones por tokens
 
 - Hay una verificación inicial de usuario
 - El token es $E_ {K_{Bob}}(Alice, caducidad)$. Es decir: cifrado con una clave que solo Bob conoce del nombre de Alice y una caducidad
-- Una vez obtenido el token, Alice lo incluye siempre en las siguientes peticiones: mientras no caduque el token, no tiene que volver a enviar usuario / contraseña
+- Una vez obtenido el token, Alice lo incluye siempre en las siguientes peticiones: mientras no caduque el token, no tiene que volver a enviar credenciales
 - Cuando Bob recibe una nueva petición, comprueba el token:
     - que puede descifrarlo
     - que no ha caducado
@@ -541,6 +563,7 @@ Para solucionarlo: usa tokens con caducidad tan corta como sea posible. Idealmen
 - El uso de tokens nos permite tener servidores especializados en la autenticación, que son independientes del servicio
 - El servicio final no necesita conocer usuario y contraseña, solo validar que el token viene desde el servidor de autenticación.
     - Verificación: el token está firmado con la clave privada del servidor de autenticación
+- Ejemplos: Directorio Activo de Windows, OAuth, Okta...
 
 ---
 
@@ -559,7 +582,7 @@ Podemos usar tokens, que se validan y caducan en cada paso, y así no hace falta
 
 Gracias a OAuth, un usuario puede delegar el acceso a terceros a su cuenta de Google, Facebook, Twitter... sin necesidad de compartir contraseña
 
-1. El usuario accede a un se∫rvicio de terceros (aplicación, página web...) que necesita acceder al Twitter, fotos de Google... del usuario
+1. El usuario accede a un servicio de terceros (aplicación, página web...) que necesita acceder al Twitter, fotos de Google... del usuario
 2. Twitter, Google confirma con el usuario que garantiza el acceso
 3. Twitter, Google envían a la aplicación de terceros un **token** que la aplicación puede usar para acceder al contenido protegido
 
@@ -593,6 +616,19 @@ Kerberos se utiliza, por ejemplo, en redes Windows corporaivas: un usuario de do
 CUIDADO: en los ciberataques actuales, los atacantes buscan por todos los medios hacerse con estos tokens
 -->
 
+## Windows
+<!-- _class: two-columns smaller-font -->
+
+![](https://ldapwiki.com/attach/Security%20Support%20Provider%20Interface/SSPI-Architecture.png)
+
+- En redes corporativas, identidades gestionadas de forma centralizada: **Active Directory**
+- El usuario se autentica con Smartcard, PIN, contraseña, biometría...
+- Las contraseñas se mantienen cifradas: SAM
+- Los tickets/hashes se mantienen en la RAM del PC: LSASS
+    - Tickets Kerberos
+    - Hashes NT ó LN
+    - En memoria RAM
+
 ## Ataques
 
 Se han descrito ataques contra TODOS estos sistemas
@@ -604,8 +640,16 @@ Se han descrito ataques contra TODOS estos sistemas
 
 El problema de la autenticación segura aún está a medio resolver en entornos complejos
 
+![bg right:60% w:100%](images/mimikatz.png)
 
-![bg right:60% w:100%](https://blogvaronis2.wpengine.com/wp-content/uploads/2018/12/what-can-mimikatz-do@2x-1-960x669.png)
+## *Lateral movement*
+
+Piensa en una red Windows: si un atacante controla un equipo y se pone a escuchar las contraseñas que los trabajadores usan en ese equipo en concreto... ¡podría aprovechar estas contraseñas en otros equipos!
+
+Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque cibernético
+
+![bg right w:100%](https://i0.wp.com/ciberseguridadenlinea.com/wp-content/uploads/2020/06/lateralmovement.jpg?resize=768%2C563&ssl=1)
+
 
 # Resumen y referencias
 <!-- _class: lead -->
@@ -618,6 +662,14 @@ El problema de la autenticación segura aún está a medio resolver en entornos 
     - hash + salt
     - bcrypt
 - Lo ideal es que solo tengamos que "probar nuestra identidad" una vez, y el resto de peticiones funcionamos con tokens
+
+## Recomendaciones generales
+
+- Usar contraseñas aleatorias
+- No reusar contraseñas
+- Utilizar gestores de contraseñas
+- Usar siempre doble factor de autenticación
+- Si es posible, moverse hacia "passwordless": Okta, Smartcards...
 
 ## Referencias
 
