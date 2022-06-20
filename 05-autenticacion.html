@@ -853,8 +853,8 @@ alice:sesame%
 <li>Usar contraseñas aleatorias</li>
 <li>No reusar contraseñas</li>
 <li>Utilizar gestores de contraseñas</li>
-<li>Usar siempre doble factor de autenticación</li>
-<li>Si es posible, moverse hacia &quot;passwordless&quot;: Okta, Smartcards...</li>
+<li>Usar <strong>siempre</strong> doble factor de autenticación (2FA)</li>
+<li>Si es posible, &quot;passwordless&quot;: Okta, Smartcards...</li>
 </ul>
 <footer><a href="index.html">Inicio</a></footer>
 </section>
@@ -898,19 +898,19 @@ En el caso de webs o empresas, la identidad puede ser simplemente que cuando el 
 
 Depende del sistema, y especialmente de lo difícil que sea atacar cada paso. Interesa preguntar primero lo que sea más difícil atacar.
 
-EnEl 2FA de Gmail preguntan primero por contraseña y después confirmación en el móvil. Eso es porque Gmail bloquea la cuenta si detecta muchos intentos de pruebas de contraseña: Gmail considera que &quot;adivinar una contraseña&quot; es más difícil que &quot;robar un móvil&quot;.</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>Aunque los CAPTCHA son ejemplos sencillos de desafío-respuesta, vamos a centrarnos en protocolos criptográficos
+En el 2FA de Gmail preguntan primero por contraseña y después confirmación en el móvil. Eso es porque Gmail bloquea la cuenta si detecta muchos intentos de pruebas de contraseña: Gmail considera que &quot;adivinar una contraseña&quot; es más difícil que &quot;robar un móvil&quot;.</p></div><div class="bespoke-marp-note" data-index="24" tabindex="0"><p>Aunque los CAPTCHA son ejemplos sencillos de desafío-respuesta, vamos a centrarnos en protocolos criptográficos
 
 Como parte de otros protocolos, se suele implementar un sistemas challenge-response para probar que alguien tiene la clave privada que se corresponde con una clave pública
 
 Fíjate:
 
-- Cuando hablamos con alguien, nos envía su certificado con su clave pública. Con los mecanismos del tema 8 sabemos que esa es, sin ninguna duda, la clave pública de Bob
+- Cuando hablamos con alguien, nos envía su certificado con su clave pública. Con los mecanismos del tema de PKI sabemos que esa es, sin ninguna duda, la clave pública de Bob
 - ¿Pero realmente estamos hablando con Bob? En realidad solo estamos hablando con alguien que TIENE la clave pública de Bob, igual que nosotros la tenemos ahora.
 - Aunque sepamos que esa es sin duda la clave pública de Bob, aún es necesario asegurarse de que estamos hablando realmente con Bob. Le desafiamos a que firme algo con la clave privada que dice tener.</p></div><div class="bespoke-marp-note" data-index="27" tabindex="0"><p>Es un Diffie-Hellman tradicional, pero los mensajes van firmados con las claves privadas de cada parte
 
-De esta forma, si tenemos y confiamos en la clave pública de la otra parte (ver tema 8), entonces sabemos que no se ha puesto nadie en medio de las comunicaciones
+De esta forma, si tenemos y confiamos en la clave pública de la otra parte (ver tema PKI), entonces sabemos que no se ha puesto nadie en medio de las comunicaciones
 
-Esta es la versión de D-H implementada en SSL/TLS (tema 10)</p></div><div class="bespoke-marp-note" data-index="29" tabindex="0"><p>La BBDD podría cifrar las contraseñas, pero eso es una solución parcial: si alguien es capaz de robar la base de datos, es muy posible que también sea capaz de robar la contraseña de cifrado.
+Esta es la versión de D-H implementada en SSL/TLS</p></div><div class="bespoke-marp-note" data-index="29" tabindex="0"><p>La BBDD podría cifrar las contraseñas, pero eso es una solución parcial: si alguien es capaz de robar la base de datos, es muy posible que también sea capaz de robar la contraseña de cifrado.
 
 Aún así, guardar las contraseñas cifradas es sin duda mejor que guardarla en claro. Simplemente, hay soluciones mejores que no requieren una contraseña de cifrado, como veremos a continuación
 
