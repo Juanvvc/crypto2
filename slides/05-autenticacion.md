@@ -204,7 +204,7 @@ Pregunta: ¿el orden en que se prueba cada factor importa? Es decir: ¿es lo mis
 
 Depende del sistema, y especialmente de lo difícil que sea atacar cada paso. Interesa preguntar primero lo que sea más difícil atacar.
 
-EnEl 2FA de Gmail preguntan primero por contraseña y después confirmación en el móvil. Eso es porque Gmail bloquea la cuenta si detecta muchos intentos de pruebas de contraseña: Gmail considera que "adivinar una contraseña" es más difícil que "robar un móvil".
+En el 2FA de Gmail preguntan primero por contraseña y después confirmación en el móvil. Eso es porque Gmail bloquea la cuenta si detecta muchos intentos de pruebas de contraseña: Gmail considera que "adivinar una contraseña" es más difícil que "robar un móvil".
 -->
 
 ## *Passwordless / No password authentication*
@@ -288,7 +288,7 @@ Como parte de otros protocolos, se suele implementar un sistemas challenge-respo
 
 Fíjate:
 
-- Cuando hablamos con alguien, nos envía su certificado con su clave pública. Con los mecanismos del tema 8 sabemos que esa es, sin ninguna duda, la clave pública de Bob
+- Cuando hablamos con alguien, nos envía su certificado con su clave pública. Con los mecanismos del tema de PKI sabemos que esa es, sin ninguna duda, la clave pública de Bob
 - ¿Pero realmente estamos hablando con Bob? En realidad solo estamos hablando con alguien que TIENE la clave pública de Bob, igual que nosotros la tenemos ahora.
 - Aunque sepamos que esa es sin duda la clave pública de Bob, aún es necesario asegurarse de que estamos hablando realmente con Bob. Le desafiamos a que firme algo con la clave privada que dice tener.
 -->
@@ -329,9 +329,9 @@ Documento: cualquier mensaje que Bob quiera intercambiar. No es solo un .docx, e
 <!--
 Es un Diffie-Hellman tradicional, pero los mensajes van firmados con las claves privadas de cada parte
 
-De esta forma, si tenemos y confiamos en la clave pública de la otra parte (ver tema 8), entonces sabemos que no se ha puesto nadie en medio de las comunicaciones
+De esta forma, si tenemos y confiamos en la clave pública de la otra parte (ver tema PKI), entonces sabemos que no se ha puesto nadie en medio de las comunicaciones
 
-Esta es la versión de D-H implementada en SSL/TLS (tema 10)
+Esta es la versión de D-H implementada en SSL/TLS
 -->
 
 # Autenticación por contraseña
@@ -668,8 +668,8 @@ Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque ciberné
 - Usar contraseñas aleatorias
 - No reusar contraseñas
 - Utilizar gestores de contraseñas
-- Usar siempre doble factor de autenticación
-- Si es posible, moverse hacia "passwordless": Okta, Smartcards...
+- Usar **siempre** doble factor de autenticación (2FA)
+- Si es posible, "passwordless": Okta, Smartcards...
 
 ## Referencias
 
