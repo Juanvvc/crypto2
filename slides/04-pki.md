@@ -428,3 +428,6 @@ Si esto pasa, hace falta comunicarlo a la RA (Autoridad de Registro) siguiendo l
 <!-- _class: center -->
 
 Continúa en: [Autenticación](05-autenticacion.html)
+
+---
+<!-- _class: last-slide -->

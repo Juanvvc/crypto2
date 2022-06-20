@@ -486,7 +486,7 @@ Hay muchos sistemas para perfilar: no hay mucha gente en el mundo que tenga una 
 El navegador Tor intenta no enviar nada de esto, y utiliza un User-Agent cambiante. Pero eso no evita que la web pueda identificarte por los plugins que tengas instalados o el tamaño de tu ventana. ¡No cambies estas cosas!
 -->
 
-# Referencias y ejercicios
+# Referencias
 <!-- _class: lead -->
 
 ## Referencias
@@ -495,3 +495,6 @@ El navegador Tor intenta no enviar nada de esto, y utiliza un User-Agent cambian
 - Tor y el Onion Routing, de tejedoresdelweb: http://tejedoresdelweb.com/w/TOR
 - How Tor works?, by Hussein Nasser: https://www.youtube.com/watch?v=gIkzx7-s2RU
 - Is Tor Trustworthy and Safe? https://restoreprivacy.com/tor/
+
+---
+<!-- _class: last-slide -->

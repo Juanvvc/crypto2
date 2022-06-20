@@ -493,3 +493,6 @@ Google uses another DKIM signature that uses other headers. This is probably a s
 <!-- _class: center -->
 
 Continúa en: [Anonimato](07-anonimato.html)
+
+---
+<!-- _class: last-slide -->

@@ -185,3 +185,6 @@ XOR es una operación muy común en criptografía que usaremos en el tema 3, y l
 <!--
 Pero solo XOR no es suficiente para un algoritmo: si la clave es 0000, ¡el texto cifrado será el texto en claro! Eso es lo que nos permitió romper el sistema de los Cuentacuentos en la primera sesión
 -->
+
+---
+<!-- _class: last-slide -->

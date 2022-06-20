@@ -52,10 +52,10 @@ Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases pa
 
 Esta sesión es un resumen de la asignatura "Criptografía y teoría de códigos". Encontrarás aquí más detalles técnicos
 
-- <https://juanvvc.github.io/crypto/slides/02-historia.html>
-- <https://juanvvc.github.io/crypto/slides/03-simetrica.html>
-- <https://juanvvc.github.io/crypto/slides/04-complejidad.html>
-- <https://juanvvc.github.io/crypto/slides/05-asimetrica.html>
+- <https://juanvvc.github.io/crypto/02-historia.html>
+- <https://juanvvc.github.io/crypto/03-simetrica.html>
+- <https://juanvvc.github.io/crypto/04-complejidad.html>
+- <https://juanvvc.github.io/crypto/05-asimetrica.html>
 
 Objetivo de la sesión: saber qué son los sistemas de cifrado simétrico y asimétrico y cuándo se usa cada uno. **Fíjate en estos cuadros azules**
 
@@ -1006,3 +1006,6 @@ Las curvas elípticas son un concepto complejo. Esto son algunas propuestas expl
 <!-- _class: center -->
 
 Continúa en: [Funciones de Hash y firma digital](03-hashes.html)
+
+---
+<!-- _class: last-slide -->

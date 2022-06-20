@@ -610,3 +610,6 @@ header: ''
 Continúa en: [Sistemas de cifrado](02-cifrado.html)
 
 Es muy recomendable tener a mano el [glosario](A1-glosario.html) para recordar los conceptos fundamentales
+
+---
+<!-- _class: last-slide -->

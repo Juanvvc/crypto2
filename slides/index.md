@@ -13,7 +13,7 @@ theme: marp-viu
     the YAML header: section: | */
 </style>
 
-# Criptografía y Autenticación
+# Criptografía y autenticación
 <!-- _class: first-slide -->
 
 **Presentación**
@@ -27,6 +27,7 @@ Juan Vera del Campo
 <!-- _class: cool-list -->
 
 1. [Conceptos básicos](01-conceptos.html)
+    - Anexo: [Glosario](A1-glosario.html)
 1. [Sistemas de cifrado](02-cifrado.html)
 1. [Funciones de hash y Firma digital](03-hashes.html)
 1. [TLS y Public Key Infrastructure](04-pki.html)
@@ -66,7 +67,8 @@ Durante el estudio personal es muy recomendable seguir los enlaces que aparecen 
 
 [![Licencia de Creative Commons](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/) Esta obra esta sujeta a una licencia de [Atribución 4.0 Internacional de Creative Commons](http://creativecommons.org/licenses/by/4.0/)
 
-## Instrucciones de uso de los ejercicios
+## Instrucciones de uso de las actividades
+<!-- _class: with-warning smaller-font -->
 
 Los ejercicios son notebook de Jupyter:
 
@@ -79,7 +81,9 @@ Los ejercicios son notebook de Jupyter:
     - https://www.youtube.com/watch?v=jZ952vChhuI
     - https://www.dataquest.io/blog/jupyter-notebook-tutorial/
 
-## Conocimientos necesarios
+Presenta las actividades como PDF: si usas los notebook, opción **imprimir a PDF**
+
+## Conocimientos recomendables
 
 - Álgebra básica, teoría de conjuntos, probabilidad
 - Conocimientos básicos de programación: ejemplos en Python
@@ -104,4 +108,7 @@ Los ejercicios son notebook de Jupyter:
 ---
 <!-- _class: center -->
 
-Continúa en: [Conceptos básicos](01-conceptos.html)
+Continúa en: [Principios básicos](01-conceptos.html)
+
+---
+<!-- _class: last-slide -->
