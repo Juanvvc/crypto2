@@ -94,6 +94,7 @@ Do you believe you would never fall for this?
 * [Hackers siphon $47 million out of tech company's accounts](https://www.fox9.com/news/ceo-spoofing-costs-drug-company-50-million), 2015
 * [Unusual CEO Fraud via Deepfake Audio Steals US$243,000 From UK Company](https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/unusual-ceo-fraud-via-deepfake-audio-steals-us-243-000-from-u-k-company), 2019
 * [Un mail, una llamada y 4 millones robados a la EMT de València que volaron a Hong Kong: así fue el 'fraude del CEO' más salvaje de España ](https://www.eldiario.es/comunitat-valenciana/llamada-fabulosa-millones-emt-valencia_1_1243386.html), 2019
+* [460,242 euro invoice due to pay to the Bilbao Club](https://www.majorcadailybulletin.com/news/local/2021/12/10/94245/mallorca-crime-alleged-ceo-scam-spain.html), 2021
 * [Social engineering. CEO fraud of 9 million euros in the phishing scam to the biopharmaceutical company Zendal](https://kymatio.com/en/social-engineering-ceo-fraud-of-9-million-euros-in-the-phishing-scam-to-the-biopharmaceutical-company-zendal/), 2020.
 * Most of them are covered up by the companies and never hit the news
 
@@ -116,31 +117,31 @@ There is movie about his life: Je Compte sur Vous
 
 ---
 
-- Scam targeting companies who conduct wire transfers and have suppliers abroad
-- Corporate or publicly available email accounts of employees related to finance are either spoofed or compromised
-- BEC attackers rely heavily on social engineering tactics: attackers carefully research and closely monitor their potential target victims and their organizations
-- Often, they impersonate CEO or any executive authorized to do wire transfers.  In addition, fraudsters also 
-- Some of the sample email messages have subjects containing words such as request, payment, transfer, and urgent, among others
-
-> https://www.trendmicro.com/vinfo/us/security/definition/business-email-compromise-(bec)
-
----
-
-- **The Bogus Invoice Scheme**: attackers pretend to be the suppliers requesting fund transfers for payments to an account owned by fraudsters
+- **The Bogus Invoice Scheme**: attackers pretend to be suppliers requesting fund transfers for payments to an account owned by fraudsters
 - **CEO Fraud**: Attackers pose as the company CEO or any executive and send an email to employees in finance, requesting them to transfer money to the account they control
 - **Account Compromise**: An executive or employee’s email account is hacked and used to request invoice payments to vendors listed in their email contacts
 - **Attorney Impersonation**: Attackers pretend to be a lawyer or someone from the law firm supposedly in charge of crucial and confidential matters
-- **Data Theft**: Employees under HR and book-keeping are targeted to obtain personally identifiable information (PII) or tax statements of employees and executives. Such data can be used for future attacks
+- **Data Theft**: Employees in HR and book-keeping are targeted to obtain personally identifiable information (PII) or tax statements of employees and executives. Such data can be used for future attacks
+
+> https://www.trendmicro.com/vinfo/us/security/definition/business-email-compromise-(bec)
+
+<!--
+- BEC attackers rely heavily on social engineering tactics: attackers carefully research and closely monitor their potential target victims and their organizations
+- Often, they impersonate CEO or any executive authorized to do wire transfers
+- Some of the sample email messages have subjects containing words such as request, payment, transfer, and urgent, among others
+-->
 
 ## Mail in the middle
 
 ![center w:28em](images/BEC/bec-mailinthemiddle.png)
+
 
 <!--
 Impersonation example: man-in-the-middle
 
 The attacker sends an email to both ends with similar addresses but not quite the same. The text is "send further communications to..." or the "reply-to address is changed. i.e
 
+Corporate or publicly available email accounts of employees related to finance are either spoofed or compromised
 
 Objective: get an "email thread" where the other party is not involved
 
@@ -208,6 +209,8 @@ Some acting is usually involved. Someone might call you!
 ---
 
 ![](images/BEC/bec4.png)
+
+> Other examples: <https://www.tessian.com/blog/covid-19-real-life-examples-of-opportunistic-phishing-emails-2/>
 
 ## Sextorsion
 
@@ -495,4 +498,5 @@ Google uses another DKIM signature that uses other headers. This is probably a s
 Continúa en: [Anonimato](07-anonimato.html)
 
 ---
+# Gracias
 <!-- _class: last-slide -->
