@@ -1,8 +1,9 @@
 # Criptografía y autenticación
 
-Este curso es una continuación del curso "Introducción a la criptografía", aunque no asume que los alumnos han realizado el otro curso primero
+Este curso es una continuación del curso "Introducción a la criptografía", aunque no asume que los alumnos han realizado el otro curso primero. Puedes encontrar las transparencias del primer curso en 
+[juanvvc.github.io/crypto/slides](https://juanvvc.github.io/crypto/slides/index.html),
 
-Transparencias en
+Las transparencias de este curso están en
 [juanvvc.github.io/crypto2/slides](https://juanvvc.github.io/crypto2/slides/index.html),
 pero puedes acceder directamente a cada capítulo seleccionando los enlaces en
 el apartado "Contenido".

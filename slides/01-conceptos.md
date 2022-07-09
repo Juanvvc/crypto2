@@ -21,9 +21,7 @@ transition: fade
 
 **Conceptos básicos**
 
-Juan Vera del Campo
-
-<juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@campusviu.es>
 
 # Hoy hablamos de...
 <!-- _class: cool-list -->
@@ -611,5 +609,5 @@ Continúa en: [Sistemas de cifrado](02-cifrado.html)
 
 Es muy recomendable tener a mano el [glosario](A1-glosario.html) para recordar los conceptos fundamentales
 
----
+# ¡Gracias!
 <!-- _class: last-slide -->

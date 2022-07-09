@@ -26,9 +26,7 @@ transition: fade
 
 **Confidencialidad: sistemas de cifrado**
 
-Juan Vera del Campo
-
-<juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@campusviu.es>
 
 ## Recordatorio: servicios de seguridad
 
@@ -1007,5 +1005,5 @@ Las curvas elípticas son un concepto complejo. Esto son algunas propuestas expl
 
 Continúa en: [Funciones de Hash y firma digital](03-hashes.html)
 
----
+# ¡Gracias!
 <!-- _class: last-slide -->

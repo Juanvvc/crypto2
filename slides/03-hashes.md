@@ -23,9 +23,7 @@ transition: fade
 
 **Funciones de Hash y Firma digital**
 
-Juan Vera del Campo
-
-<juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@campusviu.es>
 
 
 # Como decíamos ayer...
@@ -587,5 +585,5 @@ Los veremos en la siguiente sesión
 
 Continúa en: [TLS y Public Key Infrastructure](04-pki.html)
 
----
+# ¡Gracias!
 <!-- _class: last-slide -->

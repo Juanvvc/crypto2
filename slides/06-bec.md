@@ -21,9 +21,7 @@ theme: marp-viu
 
 **Business Email Compromise**
 
-Juan Vera del Campo
-
-<juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@campusviu.es>
 
 
 # Hoy hablamos de...
@@ -497,6 +495,5 @@ Google uses another DKIM signature that uses other headers. This is probably a s
 
 Continúa en: [Anonimato](07-anonimato.html)
 
----
-# Gracias
+# ¡Gracias!
 <!-- _class: last-slide -->

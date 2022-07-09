@@ -23,9 +23,7 @@ transition: fade
 
 **Anonimato**
 
-Juan Vera del Campo
-
-<juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@campusviu.es>
 
 
 # Como decíamos ayer...
@@ -52,7 +50,7 @@ En este tema veremos cómo usar la criptografía para ofrecer el servicio de ano
 
 ![center](https://www.htl.london/images/top-tips-to-combat-voip-eavesdropping.jpg)
 
-Los servicios clásicos de seguridad (*confidencialidad*) aseguran que nadie que escuche pasivamente una comunicación sabe qué estamos diciendo. También evitan ataques activos man-in-the-middle (*integridad*, *autenticación*). Todo esto lo ofrece TLS ([tema 9](09-protocolos.html))
+Los servicios clásicos de seguridad (*confidencialidad*) aseguran que nadie que escuche pasivamente una comunicación sabe qué estamos diciendo. También evitan ataques activos man-in-the-middle (*integridad*, *autenticación*). Todo esto lo ofrece TLS
 
 **Pero no evitan que se sepa quién habla con quién**: el cifrado se aplica en la capa de aplicación, no estamos cifrando los paquetes de red que incluyen IP origen e IP destino
 
@@ -496,5 +494,5 @@ El navegador Tor intenta no enviar nada de esto, y utiliza un User-Agent cambian
 - How Tor works?, by Hussein Nasser: https://www.youtube.com/watch?v=gIkzx7-s2RU
 - Is Tor Trustworthy and Safe? https://restoreprivacy.com/tor/
 
----
+# ¡Gracias!
 <!-- _class: last-slide -->
