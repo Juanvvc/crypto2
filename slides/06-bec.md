@@ -16,10 +16,8 @@ theme: marp-viu
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía y Autenticación
+# Business Email Compromise
 <!-- _class: first-slide -->
-
-**Business Email Compromise**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 

@@ -18,10 +18,8 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía y autenticación
+# Anonimato
 <!-- _class: first-slide -->
-
-**Anonimato**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 

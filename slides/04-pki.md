@@ -18,10 +18,8 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía y Autenticación
+# TLS y Public Key Infrastructure
 <!-- _class: first-slide -->
-
-**TLS y Public Key Infrastructure**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
@@ -410,8 +408,20 @@ Si esto pasa, hace falta comunicarlo a la RA (Autoridad de Registro) siguiendo l
 - se publica una CRL: Certificate Revocation List
 - se publica en un servidor OCSP
 
-# Conclusiones
+# Resumen y referencias
 <!-- _class: lead -->
+
+## Resumen
+
+- Hemos reducido el problema de la seguridad en un problema de gestión de claves públicas
+- Tres soluciones:
+  - SSH: claves públicas gestinadas manualmente
+  - PGP: claves públicas proporcionadas por amigos
+  - PKI (certificados): claves públicas proporcionadas por terceras partes de confianza y firmadas digitalmente
+- TLS / HTTPS:
+  - Primera parte: negocia la seguridad de un servidor con una clave pública y PKI
+  - Opcional: clave simétrica calculada con D-H
+  - Tras la negociación, cifrado simétrico
 
 ## Referencias
 

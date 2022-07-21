@@ -18,15 +18,12 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía y Autenticación
+# Autenticación de usuarios
 <!-- _class: first-slide -->
-
-**Autenticación de usuarios**
 
 Juan Vera del Campo
 
 <juan.vera@campusviu.es>
-
 
 # Como decíamos ayer...
 
@@ -54,7 +51,8 @@ Es decir, no repudio = autenticidad + integridad
 1. [Desafío / Respuesta](#21)
 1. [Usuario y contraseña](#29)
 1. [Tokens](#39)
-1. [Resumen y referencias](#54)
+2. [Security Assertion Markup Language](#54)
+3. [Resumen y referencias](#58)
 
 # Autenticación
 <!-- _class: lead -->
@@ -92,9 +90,7 @@ Un atacante **no puede conocer la clave secreta**
 
 Pero un atacante **puede convencer a cada parte que es otra persona**: así se pone en medio (*man in the middle*): D-H es vulnerable a ataques MitM.
 
----
-
-![center w:30em](https://i.imgur.com/Cq78TET.png)
+![bg right w:100%](https://i.imgur.com/Cq78TET.png)
 
 > https://www.trendmicro.com/en_us/research/15/i/how-exploit-kit-operators-are-misusing-diffie-hellman-key-exchange.html
 
@@ -209,7 +205,7 @@ En el 2FA de Gmail preguntan primero por contraseña y después confirmación en
 
 ## *Passwordless / No password authentication*
 
-![center w:25em](images/passwordless.png)
+![center w:25em](images/auth/passwordless.png)
 
 > https://doubleoctopus.com/security-wiki/authentication/passwordless-authentication/
 > https://www.youtube.com/watch?v=8Na793pxKpk
@@ -593,7 +589,7 @@ Gracias a OAuth, un usuario puede delegar el acceso a terceros a su cuenta de Go
 
 ---
 
-[![center](images/twitter-oauth.png)](https://twitter.com/LittleJoeTables/status/1366098640482230281)
+[![center](images/auth/twitter-oauth.png)](https://twitter.com/LittleJoeTables/status/1366098640482230281)
 
 ## Kerberos
 
@@ -640,7 +636,7 @@ Se han descrito ataques contra TODOS estos sistemas
 
 El problema de la autenticación segura aún está a medio resolver en entornos complejos
 
-![bg right:60% w:100%](images/mimikatz.png)
+![bg right:60% w:100%](images/auth/mimikatz.png)
 
 ## *Lateral movement*
 
@@ -648,8 +644,34 @@ Piensa en una red Windows: si un atacante controla un equipo y se pone a escucha
 
 Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque cibernético
 
-![bg right w:100%](https://i0.wp.com/ciberseguridadenlinea.com/wp-content/uploads/2020/06/lateralmovement.jpg?resize=768%2C563&ssl=1)
+![bg right w:100%](images/auth/lateralmovement.jpg)
 
+# Security Assertion Markup Language
+<!-- _class: lead -->
+
+## Security Assertion Markup Language
+
+Security Assertion Markup Language (SAML) is an XML-based open-standard for transferring identity data between two parties: an identity provider (IdP) and a service provider (SP).
+
+- Identity Provider — Performs authentication and passes the user's identity and authorization level to the service provider.
+
+- Service Provider — Trusts the identity provider and authorizes the given user to access the requested resource.
+
+---
+
+![center w:40em](images/auth/SAML-flow-21.png)
+
+> https://bigdataanalyticsnews.com/how-does-saml-work/
+
+## Benefits of SAML Authentication
+
+- Improved User Experience — Users only need to sign in one time to access multiple service providers. This allows for a faster authentication process and less expectation of the user to remember multiple login credentials for every application. In the example above, that user could have clicked on any of the other icons in their dashboard and been promptly logged in without ever having to enter more credentials!
+
+- Increased Security — SAML provides a single point of authentication, which happens at a secure identity provider. Then, SAML transfers the identity information to the service providers. This form of authentication ensures that credentials are only sent to the IdP directly.
+
+- Loose Coupling of Directories — SAML doesn't require user information to be maintained and synchronized between directories.
+
+- Reduced Costs for Service Providers — With SAML, you don't have to maintain account information across multiple services. The identity provider bears this burden.
 
 # Resumen y referencias
 <!-- _class: lead -->
@@ -677,6 +699,7 @@ Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque ciberné
 - [Kerberos Authentication Explained | A deep dive](https://www.youtube.com/watch?v=5N242XcKAsM)
 - [What is OAuth really all about - OAuth tutorial - Java Brains](https://www.youtube.com/watch?v=t4-416mg6iU)
 - [Why We Hash Passwords](https://dzone.com/articles/why-we-hash-passwords)
+- [How SAML Authentication Works](https://auth0.com/blog/how-saml-authentication-works/#What-is-SAML)
 
 ---
 <!-- _class: center -->

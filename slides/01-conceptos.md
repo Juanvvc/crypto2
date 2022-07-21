@@ -16,10 +16,8 @@ transition: fade
     the YAML header: section: | */
 </style>
 
-# Criptografía y Autenticación
+# Conceptos básicos de la criptografía
 <!-- _class: first-slide -->
-
-**Conceptos básicos**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 

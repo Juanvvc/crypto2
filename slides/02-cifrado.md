@@ -21,10 +21,8 @@ transition: fade
  	}
 </style>
 
-# Criptografía y Autenticación
+# Confidencialidad: sistemas de cifrado
 <!-- _class: first-slide -->
-
-**Confidencialidad: sistemas de cifrado**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 

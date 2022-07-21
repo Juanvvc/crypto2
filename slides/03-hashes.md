@@ -18,10 +18,8 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía y Autenticación
+# Funciones de Hash y Firma digital
 <!-- _class: first-slide -->
-
-**Funciones de Hash y Firma digital**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
