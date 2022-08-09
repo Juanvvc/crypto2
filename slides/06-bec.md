@@ -21,17 +21,19 @@ theme: marp-viu
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
+<!--
+Las transparencias de hoy están en inglés
+-->
 
-# Hoy hablamos de...
-<!-- _class: cool-list with-warning -->
 
-1. [Business Email Compromise (BEC)](#4)
-1. [Types of BEC](#10)
-1. [Investigation](#21)
-1. [Detection](#29)
-1. [Referencias](#44)
+# Contents
+<!-- _class: cool-list with-warning toc -->
 
-Las transparencias de esta sesión están en inglés
+1. [Business Email Compromise (BEC)](#3)
+1. [Types of Business Email Compromise (BEC)](#10)
+1. [Investigating a BEC](#20)
+1. [Prevention](#28)
+1. [References](#43)
 
 # Business Email Compromise (BEC)
 <!-- _class: lead -->

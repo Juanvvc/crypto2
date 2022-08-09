@@ -36,15 +36,13 @@ Los hashes nos permiten calcular **una firma digital**
 ![bg right w:90%](https://i.imgur.com/Cq78TET.png?1)
 
 # Hoy hablamos de...
-<!-- _class: cool-list -->
+<!-- _class: cool-list toc -->
 
 1. [Funciones de hash](#4)
 1. [Usos](#22)
 1. [Firma digital: punto de vista técnico](#33)
 1. [Firma digital: punto de vista legal](#42)
-1. [Resumen y referencias](#50)
-
-Ejercicios: https://github.com/Juanvvc/crypto2/tree/master/ejercicios/03
+1. [Conclusiones](#51)
 
 # Funciones de hash
 <!-- _class: lead -->
@@ -579,7 +577,7 @@ Los veremos en la siguiente sesión
 
 ---
 
-<!-- _class: center -->
+Ejercicios: https://github.com/Juanvvc/crypto2/tree/master/ejercicios/03
 
 Continúa en: [TLS y Public Key Infrastructure](04-pki.html)
 

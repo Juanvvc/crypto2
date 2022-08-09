@@ -45,14 +45,14 @@ Es decir, no repudio = autenticidad + integridad
 -->
 
 ## Hoy hablamos de...
-<!-- _class: cool-list -->
+<!-- _class: cool-list toc -->
 
 1. [Autenticación](#4)
-1. [Desafío / Respuesta](#21)
-1. [Usuario y contraseña](#29)
-1. [Tokens](#39)
-2. [Security Assertion Markup Language](#54)
-3. [Resumen y referencias](#58)
+1. [Desafío - Respuesta](#20)
+1. [Autenticación por contraseña](#28)
+1. [Sesiones por tokens](#38)
+1. [Security Assertion Markup Language](#53)
+1. [Resumen y referencias](#57)
 
 # Autenticación
 <!-- _class: lead -->

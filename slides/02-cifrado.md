@@ -36,29 +36,27 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
 Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases para los demás
 
 # Hoy hablamos de...
-<!-- _class: cool-list -->
+<!-- _class: cool-list toc -->
 
 1. [Confidencialidad perfecta y computacional](#5)
-1. [Cifrado simétrico o de clave secreta](#21)
-1. [Cifrado asimétrico o de clave pública](#49)
-1. [Resumen y referencias](#76)
+1. [Criptografía simétrica o de clave secreta](#21)
+1. [Criptografía asimétrica o de clave pública](#49)
+1. [Conclusiones](#76)
 
 ---
 <!-- _class: with-info -->
 
-Esta sesión es un resumen de la asignatura "Criptografía y teoría de códigos". Encontrarás aquí más detalles técnicos
+Esta sesión es un resumen de la asignatura "Criptografía y teoría de códigos", donde desarrollamos los conceptos en seis sesiones. Encontrarás aquí más detalles técnicos de cada tema:
 
 - <https://juanvvc.github.io/crypto/02-historia.html>
 - <https://juanvvc.github.io/crypto/03-simetrica.html>
 - <https://juanvvc.github.io/crypto/04-complejidad.html>
 - <https://juanvvc.github.io/crypto/05-asimetrica.html>
 
-Objetivo de la sesión: saber qué son los sistemas de cifrado simétrico y asimétrico y cuándo se usa cada uno. **Fíjate en estos cuadros azules**
-
+No podemos aprenderlo todo hoy. Objetivo de la sesión: saber qué son los sistemas de cifrado simétrico y asimétrico y cuándo se usa cada uno. **Fíjate en estos cuadros azules**
 
 # Confidencialidad perfecta y computacional
 <!-- _class: lead -->
-
 
 ---
 <!-- _class: with-info -->

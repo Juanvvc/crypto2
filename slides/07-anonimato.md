@@ -34,12 +34,12 @@ Servicios de seguridad:
 En este tema veremos cómo usar la criptografía para ofrecer el servicio de anonimato. Así aprendemos un nuevo servicio, afianzamos conceptos que ya sabemos, conoceremos nuevos protocolos y exploramos qué capacidades tienen los adversarios
 
 # Hoy hablamos de...
-<!-- _class: cool-list -->
+<!-- _class: cool-list toc -->
 
 1. [Comunicaciones anónimas](#4)
 1. [Enrutamiento onion](#16)
 1. [Servicios onion](#27)
-1. [Referencias y ejercicios](#37)
+1. [Referencias](#37)
 
 # Comunicaciones anónimas
 <!-- _class: lead -->
