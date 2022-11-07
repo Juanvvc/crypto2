@@ -42,7 +42,7 @@ Los hashes nos permiten calcular **una firma digital**
 1. [Usos](#22)
 1. [Firma digital: punto de vista técnico](#33)
 1. [Firma digital: punto de vista legal](#42)
-1. [Resumen y referencias](#51)
+1. [Conclusiones](#51)
 
 # Funciones de hash
 <!-- _class: lead -->

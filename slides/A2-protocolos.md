@@ -2,7 +2,7 @@
 marp: true
 title: Criptografía - Protocolos
 author: Juan Vera
-keywords: criptografía,protocolos
+keywords: criptografía,protocolos,tls
 paginate: true
 footer: '[Inicio](index.html)'
 headingDivider: 2
@@ -18,10 +18,8 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Criptografía
+# Protocolo TLS
 <!-- _class: first-slide -->
-
-**Tema 9: protocolos**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
@@ -345,9 +343,5 @@ Antes, los certificados se compraban
 - [What is TLS (Transport Layer Security)?](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
 - [Seguridad en el protocolo SSL-TLS. Ataques criptoanaliticos modernos. Dr. Alfonso Muñoz](https://github.com/mindcrypt/libros/blob/master/Book.%20Seguridad%20en%20el%20protocolo%20SSL-TLS.%20Ataques%20criptoanaliticos%20modernos.%20Dr.%20Alfonso%20Mu%C3%B1oz%20-%2027092020.pdf)
 
----
-<!-- _class: center -->
-
-Continúa en: [Autenticación](10-autenticacion.html)
-
-Anexo recomendable: [Comunicaciones anónimas](A4-anonimato.html)
+# ¡Gracias!
+<!-- _class: last-slide -->

@@ -22,16 +22,18 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
 
 
 ## Temario
-<!-- _class: cool-list -->
+<!-- _class: cool-list smaller-font -->
 
 1. [Conceptos básicos](01-conceptos.html)
     - Anexo: [Glosario](A1-glosario.html)
 1. [Sistemas de cifrado](02-cifrado.html)
 1. [Funciones de hash y Firma digital](03-hashes.html)
+1. *Intermedio*
+    - [Business Email Compromise](06-bec.html)
+    - [Anonimato](07-anonimato.html)
 1. [TLS y Public Key Infrastructure](04-pki.html)
+    - Anexo: [TLS en detalle](A2-protocolos.html)
 1. [Sistemas de autenticación](05-autenticacion.html)
-1. [(Opcional) Business Email Compromise](06-bec.html)
-1. [(Opcional) Anonimato](07-anonimato.html)
 
 
 # Presentación
@@ -68,18 +70,25 @@ Durante el estudio personal es muy recomendable seguir los enlaces que aparecen 
 ## Instrucciones de uso de las actividades
 <!-- _class: with-warning smaller-font -->
 
-Los ejercicios son notebook de Jupyter:
+Los ejercicios son notebook de Jupyter / Google Colab:
 
-1. Instala Jupyter como módulo de Python (Windows, MacOS, Linux): `python3 -m pip install jupyter`
 1. En el directorio de ejercicios, ejecuta `jupyter notebook`
 1. Comandos básicos:
     - INTRO: edita línea actual
     - SHIFT+INTRO: ejecuta línea actual
-1. Tutoriales:
+1. Tutoriales de Jupyter:
     - https://www.youtube.com/watch?v=jZ952vChhuI
     - https://www.dataquest.io/blog/jupyter-notebook-tutorial/
 
-Presenta las actividades como PDF: si usas los notebook, opción **imprimir a PDF**
+Presenta las actividades como PDF: si usas los notebook, **imprime a PDF**
+
+## Evaluación
+<!-- _class: with-warning -->
+
+- 50% examen
+- 50% ejercicios
+
+Son tres ejercicios en total, se recomienda realizarlos después del tema 3
 
 ## Conocimientos recomendables
 

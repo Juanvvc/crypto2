@@ -435,6 +435,8 @@ Si esto pasa, hace falta comunicarlo a la RA (Autoridad de Registro) siguiendo l
 ---
 <!-- _class: center -->
 
+Anexo recomendado: [Protocolo TLS](A2-protocolos.html)
+
 Continúa en: [Autenticación](05-autenticacion.html)
 
 # ¡Gracias!
