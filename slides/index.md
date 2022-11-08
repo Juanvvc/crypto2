@@ -61,6 +61,7 @@ Versión más actualizada:
 - Acceso directo HTML: <http://juanvvc.github.io/crypto2>
     - Puedes pulsar `p` para ver las notas de presentación
     - Con "Inicio" (en pie de cada transparencia) puedes venir a esta presentación, con el índice global de contenidos
+    - Puedes "Imprimir a PDF" usando Chrome para tener las transparencias en PDF
 - Código Markdown: <https://github.com/juanvvc/crypto2>
 
 Durante el estudio personal es muy recomendable seguir los enlaces que aparecen en las transparencias para completar el tema.

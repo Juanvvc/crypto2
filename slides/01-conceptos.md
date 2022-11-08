@@ -110,7 +110,7 @@ Firma digital de un contrato entre dos empresas
 Fondo: https://pixabay.com/photos/binding-contract-contract-secure-948442/ Uso comercial libre
 -->
 
-## Principapes servicios de seguridad
+## Principales servicios de seguridad
 
 [New Directions in Cryptography](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.37.9720) (Whitfield Diffie y Martin Hellman, 1976) exploraba qué se necesitaba para que dos empresas pudiesen firmar un contrato mercantil:
 
@@ -413,9 +413,9 @@ La solución adoptada en la actualidad para sistemas criptográficos: "**obligar
 
 Alquilando equipos en la nube por segundos, con un euro cada segundo podemos probar $10^{11}$ claves
 
-Si estimamos que nuestro "secreto" vale 1000 €: nos hacen falta un sistema criptográfico que permita escoger entre $10^{14}$ claves diferentes para guardar el secreto durante una hora.
+Si estimamos que nuestro "secreto" vale 1000 €: nos hacen falta un sistema criptográfico que permita escoger entre $10^{14}$ claves diferentes para guardar el secreto durante una hora. 
 
-Nota que $10^{14}\approx 2^{48}$. Se dice que este sistema tiene una fortaleza de 48 bits.
+Nota que $10^{14}\approx 2^{48}$. Se dice que este sistema tiene una fortaleza de 48 bits: un atacante tiene que probar $2^{48}$ claves si quiere romperlo por fuerza bruta
 
 Observa: aumentando el número de bits de la clave aumentamos exponencialmente el tiempo necesario para romper el sistema. Con 128 bits... necesitaríamos miles de años.
 
@@ -486,7 +486,7 @@ Un cifrado perfecto no puede descifrarse ni siquiera por fuerza bruta porque un 
 
 ![bg right:40% w:100%](https://upload.wikimedia.org/wikipedia/commons/f/fc/Byzantine_Generals.png)
 
-Imagina que un ejército decide el siguiente mapeo
+Imagina que un ejército decide el siguiente mapeo, es decir, clave:
 
 - A = 16
 - B = 7
