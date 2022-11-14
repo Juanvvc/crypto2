@@ -102,43 +102,8 @@ Tenemos confidencialidad perfecta si y solo si usamos un cifrado con las siguien
 - no conocida por el atacante. Es decir: totalmente aleatoria
 - la clave no se usa nunca más
 
+Durante 30 años, desde los años 40 a los 70, este sistema se conocía como **one-time-pad**, "libro de claves un solo uso", y era el más usado.
 
-## One-Time pads
-
-Vernam patentó el *one-time-pad* de la siguiente manera:
-
-$c = e(k,m)=k \otimes m$
-$m' = d(k,c) = e(k,c)=k \otimes c$
-
-La longitud en bytes de $k$ es igual que la longitud en bytes de $m$.
- 
-Las claves se guardaban en hojas de papel de un solo uso. Las dos partes tenían una colección de estas hojas y se de    struía en cuanto se usaba.
-
-La NSA tenía 86.000 *one-time-pads* solo para el año 1972.
-
-![bg left:50%](https://www.cryptomuseum.com/spy/r353/img/300148/191/full.jpg)
-
-> Si lo necesitas, mira la operación XOR en [el glosario](A1-glosario.html)
-
-
-
-<!--
-
-Una confidencialidad p
-
-La confidencialidad es perfecta en cifrados tipo Vernam si la clave:
-
-- Es perfectamente aleatoria
-- Solo se usa una vez
-- Es tan larga como el mensaje
-
-Es decir: hay que distribuir claves tan grandes como mensajes de una forma secreta antes de poder distribuir un mensaje. Esto no es práctico.
-
-Hoy veremos como solucionarlo:
-
-- Relajando la confidencialidad perfecta a la confidencialidad computacional
-- Usando algoritmos de cifrado simétrico
--->
 
 ## La confidencialidad perfecta no es práctica
 <!-- _class: with-info -->
@@ -346,16 +311,15 @@ $$
 
 ![w:25em center](images/symmetric-example.png)
 
-## Generadores de números aleatorios
-<!-- _class: small-text -->
+PRNG: *Pseudo Random Number Generator*
 
-La función *PRNG* (*Pseudo Random Number Generator*) es un generador de bits que tiene como entrada una **semilla** (que será la clave de cifrado $k$) y tiene como salida el flujo de bits que aplicaremos sobre el mensaje para cifrarlo con *XOR*
+<!--
+PRNG: *Pseudo Random Number Generator* es un generador de bits que tiene como entrada una **semilla** (que será la clave de cifrado $k$) y tiene como salida el flujo de bits que aplicaremos sobre el mensaje para cifrarlo con *XOR*
 
 La velocidad del cifrado depende totalmente de la velocidad del PRNG, porque el XOR es instantáneo
-
-![bg right:50%](https://upload.wikimedia.org/wikipedia/commons/1/1c/6sided_dice_%28cropped%29.jpg)
-
----
+ -->
+ 
+ ---
 
 ![bg left:50%](https://upload.wikimedia.org/wikipedia/commons/4/4d/Lorenz-SZ42-2.jpg)
 
@@ -471,28 +435,14 @@ Nota importante: la figura muestra un confrado de bloque totalmente inseguro, co
 Fíjate: los bloques no tienen memoria, al contrario de lo que pasaba en el cifrado de flujo. Veremos que esto es una de sus debilidades.
 -->
 
-## Vulnerabilidades
-
-La estadística del mensaje en claro aparece en el texto cifrado.
-
-En secuencias constantes (por ejemplo, un gráfico) se pueden dar bloques enteros idénticos
-
-![center](https://upload.wikimedia.org/wikipedia/commons/f/f0/Tux_ecb.jpg)
-
----
-<!-- _class: center -->
-
-Un cifrado debe parecerse a esto:
-
-![center](images/gimp/bio-c.png)
-
 ## Modos de operación
+<!-- _class: with-warning -->
 
-Esta "vulnerabilidad" es una propiedad de todos los cifrados de bloque
+Los cifrados de bloque se organizan como "modos de operación": como ordenamos las cajas de cifrados y descifrados.
 
-La contramedida es la misma para todos: no cifrar nunca bloque a bloque, sino cifrar parte del bloque anterior en el bloque actual.
+Cada modo de operación tiene ventajas y desventajas según para qué queremos usar el sistema
 
-Este encadenamiento se denomina modo de operación **y no es opcional**
+Atención: hay un modo de operación que no debe usarse nunca
 
 ---
 
