@@ -164,12 +164,11 @@ Protocolo negociado: TLS_AES_128_GCM_SHA256
 ## Qué sabemos hacer
 
 - Sabemos enviar mensajes con confidencialidad: criptografía simétrica
-    - [Tema 3](03-simetrica.html): AES, ChaCha20
+    - [Tema 2](02-cifrado.html): AES, ChaCha20
 - Sabemos acordar una clave con alguien a quien no conocíamos:
-    - [Tema 4](05-asimetrica.html): Diffie-Hellman
+    - [Tema 2](02-cifrado.html): Diffie-Hellman
 - Sabemos firmar mensajes: hash y después cifrado con criptografía asimétrica
-    - [Tema 5](05-asimetrica.html): RSA
-    - [Tema 6](06-hashes.html): resumen de mensajes, hashes, firmas
+    - [Tema 3](03-hashes.html): resumen de mensajes, hashes, firmas
 
     
 ---

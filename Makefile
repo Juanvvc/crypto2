@@ -31,7 +31,7 @@ pdfs: build
 	PUPPETEER_TIMEOUT=0 $(MARP) -I $(IN_DIR) -o $(OUT_DIR) --no-config $(THEME_OPTS) --pdf --allow-local-files --html --pdf-notes
 
 serve:
-	$(MARP) -I $(IN_DIR) $(THEME_OPTS) -w -s --bespole.progress true --html
+	$(MARP) -I $(IN_DIR) $(THEME_OPTS) -w -s --bespoke.progress true --html
 
 release: pdfs
 	mkdir -p $(RELEASE_DIR)

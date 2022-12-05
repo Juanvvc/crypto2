@@ -39,9 +39,9 @@ Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases pa
 <!-- _class: cool-list toc -->
 
 1. [Confidencialidad perfecta y computacional](#5)
-1. [Criptografía simétrica o de clave secreta](#21)
-1. [Criptografía asimétrica o de clave pública](#49)
-1. [Conclusiones](#76)
+1. [Criptografía simétrica o de clave secreta](#20)
+1. [Criptografía asimétrica o de clave pública](#45)
+1. [Conclusiones](#72)
 
 ---
 <!-- _class: with-info -->
