@@ -278,7 +278,9 @@ Most of the times, they even hide this emails. His objective is that the victim 
 - On-premises: Exchange, dovecot...
 - "In the cloud": Google Workspace, Microsoft 365... they usually have [audit logs](https://support.google.com/a/answer/4579579?hl=en) and [litigation modes](https://docs.microsoft.com/en-us/microsoft-365/compliance/create-a-litigation-hold?view=o365-worldwide). Warning: [they cost extra](https://workspace.google.com/pricing.html) and they must be activated BEFORE the incident
 
-![bg right:40% w:100%](https://okcracks.com/wp-content/uploads/2020/05/office_365-1024x776-1.png)
+![bg right:40% w:100%](images/BEC/ransom-o365logs.png)
+
+> https://answers.microsoft.com/en-us/msoffice/forum/all/office-365-admin-portal-logs/70ca8227-0c69-408f-a2c3-e2c8a8cadfb5
 
 # Prevention
 <!-- _class: lead -->
@@ -337,7 +339,7 @@ i.e.: you authenticate the email <someone@gmail.com> was sent from a server auth
 
 > https://medium.com/@pendraggon87/short-primer-on-spf-dkim-and-dmarc-9827eb2f359d
 
-## Email forgery: DomainKeys Identified Mail
+## Email forgery: DomainKeys Identified Mail (DKIM)
 
 The receiving **server** checks the digital signature of the sending **server**
 
@@ -355,21 +357,20 @@ i.e.: your email provider authenticates than an email sent from <someone@gmail.c
 Received mails have an additional header:
 
 ```
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=estudiantat-upc-edu.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
-        bh=26fwnGl79NZUquxVrOtlExhF4Sac4SXUDxQTOAjLuYw=;
-        b=yRktraNE10cCr+kd55jE+x7RirvFdgPzkeuxDz257hQ1IjKnXOg2bFQmCZBkiqAeNr
-         4HeHlNObsVbeQw9H9rDHUYw3FdhtRagIgsSz6alsxHRf8m7Uc/cprZ29dJTwP5GxHCud
-         yZyPKSaSrA6nidFYorJEOa1UccbwIeSDAsVBi9E4C+OWzVIR+thcVK7QfLWJEEgbDRFa
-         ZFlIsiZjvPFEuFTpxHFPSCZv3OhIbipPikI44q8BbHE++3YZZ/UpTHXe5r6DP90ROce9
-         qB7M2f9CjFcAhvuM91A92v0Q2MHXpF5BDMcsYpWo7bOEOxOwXdGPWgw94HaTXZ96DJ0B
-         /l2Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=blackboard.com;
+ s=sep2018; t=1670602715; bh=cS05YrQmiEH2S8VAGWK3wheZ287IPz+hfGXR1TsDY70=;
+  h=Date:From:Subject:Reply-To; 
+  b=gGHlf9eKK51Zw09JP98lOUgODgF61ZF7juJKDLjWLBxDDndvM8QMe4122XUO2wKgC
+	 4SkqQkabmXk66gUsKIge9Z2pjnabs9klfTgZcCT13wxAUsIQur4SIJ+8f3a1sBnGTT
+	 qSlMlB7ss5+0jIXVszWFtzkoHGPQ/UjVk9L24KGPwxRGyfGMI2JSgNHVWuP/61squO
+	 rpG03vHZxsGyegGuXYt4/AADov8yNL3KVGq42bGAb7XKgt8MrtZGWA8GR9iWYIm3V1
+	 6miGagayTXZANUbsdmtYtoPmxxdAuoOHiClnoXrdxhBFED8VrnhH8dMjd3ADZ1LaOA
+	 LVRFXW1djkSrg==
 ```
 
-- `d`: domain: `estudiantat-upc-edu.20210112.gappssmtp.com`
-- `s`: selector `20210112`
-- `h`: headers fields: `mime-version`, `references`, `in-reply-to`, `from`, `date`, `message-id`, `subject`, `to`.
+- `d`: domain: `blackboard.com`
+- `s`: selector `sep2018`
+- `h`: headers fields: `Date:From:Subject:Reply-To;`.
 - `bh`: body **hash**
 - `b`: **signature** of headers and body
 
@@ -388,19 +389,28 @@ Of course, there are libraries for this
 Digital signature:
 
 ```
-> dig 20210112.estudiantat-upc-edu.20210112.gappssmtp.com TXT
+> dig backboard.com TXT
 ...
-;; ANSWER SECTION:
+blackboard.com.		28800	IN	TXT	"v=spf1 include:
+_netblocks.blackboard.com ...
+
+> dig spf.blackboardconnect.com TXT
+...
+spf.blackboardconnect.com. 1800	IN	TXT	"v=spf1
+ip4:34.215.79.96
+ip4:34.213.216.156
+...
+DNS Record - sep2018._domainkey.blackboard.com
+Selector - sep2018
+Domain - blackboard.com 
+
 20210112.estudiantat-upc-edu.20210112.gappssmtp.com. 3600 IN TXT
-"v=DKIM1; k=rsa;
-p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8XlwdG7GKz3
-E2ynrLRPzb3iP/vNCfrMdcN1Akhrj1Snu5pQi3gSnI6U5KWM56An4eC+c
-+BHq5ujk9HEdk04HYRIT0CjW9fIqeFQmahOivtPBAN6oOg/VQ2Y2L5IE4
-gHHjLOQzPXC4H5soG8PNWPK00NEQ5Y6lUGWubuMJnQtrVyHMCcDeXh0So
-1n5DAgtO1U"
-"vhyvZ82hrx7hhiMuTZ8yQ+f8AzxcjYL9x/+M7hmrUDnA8Np7j1/OU/wi
-KWvsllKSFElGQpFd8VFYYvqt4sUAzqfkYqvWKLGXhWbpm1uY1ce1qSQiE
-FMd7ycz754lMhc15lZfU3TdiGhQjgps+gQIwIDAQAB"
+v=DKIM1;k=rsa;g=*;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvs5qVO9zW6c
+82vTZNGUA9YYZKfoxtSXGdG/+QEHe0Kg9D0wIuHobngn/+NmvYSmZ2KtdnQssTF93MhXBlQ8jX3
+mjndj0tIaW6Snsm0+q68sJdzA7NtJBr4ljcEQRjq3jI6RQUrhs9gJ1DaKtws3SXMR8M72pQIbku
+c5vkMxPCU5GPTj6TW9QweD/dZclLZ3o2AlcgONifoQY/7x2fV5GE9r55+xGB2m8yXKGeOybEkOA
+G9goPDp4/XQVPHfX6+Icv/OflXQ+mAuzutgyeWAe0NvYaO6NiN0I2MkcgXACsuOVwCnLs9lPkWb
+G9grZUEVz4wsJquAXgNQkse3eCpadIQIDAQAB
 ```
 
 > https://www.dmarcanalyzer.com/dkim/dkim-checker/

@@ -335,6 +335,14 @@ Esta es la versión de D-H implementada en SSL/TLS
 
 En esta sección: "contraseña" es algo guardado una BBDD: una clave, una huella digital...
 
+## Seguridad de las contraseñas de usuario
+
+1. No uses datos personales o reconocibles en tus contraseñas
+2. Usa contraseñas fuertes. Idealmente: totalmente alaatorias
+4. Acompañálas siempre de un doble factor de autenticación (2FA)
+5. No uses la misma contraseña en varios sitios
+6. Usa un gestor de contraseñas. Ejemplos: KeePass
+
 ## "Solución 1": contraseña en claro en la BBDD
 <!-- _class: two-columns with-warning -->
 
@@ -395,7 +403,7 @@ Esta es la solución usada en la actualidad
 <!-- _class: with-info -->
 
 - La BBDD guarda $hash(SALT:PASSWORD)$
-    - No es vulenrable a tablas precalculadas de contraseñas
+    - No es vulnerable a tablas precalculadas de contraseñas
     - Si dos usuarios tienen la misma contraseña, con gran probabilidad tendrán *salt* diferente así que la BBDD no sabe que las contraseñas son iguales
     - La BBDD no conoce la contraseña original, solo el hash
 - La salt tiene que ser aleatoria
