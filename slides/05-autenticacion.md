@@ -50,9 +50,9 @@ Es decir, no repudio = autenticidad + integridad
 1. [Autenticación](#4)
 1. [Desafío - Respuesta](#20)
 1. [Autenticación por contraseña](#28)
-1. [Sesiones por tokens](#38)
-1. [Security Assertion Markup Language](#53)
-1. [Resumen y referencias](#57)
+1. [Sesiones por tokens](#39)
+1. [Security Assertion Markup Language](#54)
+1. [Resumen y referencias](#58)
 
 # Autenticación
 <!-- _class: lead -->
@@ -178,9 +178,11 @@ Vulnerabilidades de *algo que tenemos*:
 
 Vulnerabilidades de *algo que somos*:
 
-- [Que la biometría no sea una ciencia exacta](https://www.ncsc.gov.uk/collection/biometrics/how-biometrics-are-attacked)
+- [La biometría no sea una ciencia exacta](https://www.ncsc.gov.uk/collection/biometrics/how-biometrics-are-attacked)
 
 ![center](https://www.idrnd.ai/wp-content/uploads/2021/05/Liveness-Presentation-Attacks-e1619997533456.jpg.webp)
+
+- Si algo va mal... **no podemos cambiar nuestros datos biométricos**
 
 > https://www.idrnd.ai/can-biometric-data-be-stolen/
 
@@ -590,14 +592,17 @@ Gracias a OAuth, un usuario puede delegar el acceso a terceros a su cuenta de Go
 2. Twitter, Google confirma con el usuario que garantiza el acceso
 3. Twitter, Google envían a la aplicación de terceros un **token** que la aplicación puede usar para acceder al contenido protegido
 
-![bg right:40% w:100%](https://docs.axway.com/bundle/APIGateway_762_OAuthUserGuide_allOS_en_HTML5/page/Content/Resources/Images/docbook/images/oauth/APIgw_Oauth_ex_client_workfl.png)
+![bg right:40% w:100%](images/auth/oauth_overview.png)
 
-> https://docs.axway.com/bundle/APIGateway_762_OAuthUserGuide_allOS_en_HTML5/page/Content/OAuthGuideTopics/oauth_intro.htm
 > https://aaronparecki.com/oauth-2-simplified/
+> https://docs.oracle.com/cd/E55956_01/doc.11123/oauth_guide/content/oauth_intro.html
 
 ---
+<!-- _class: with-warning -->
 
 [![center](images/auth/twitter-oauth.png)](https://twitter.com/LittleJoeTables/status/1366098640482230281)
+
+Cuidado: ¡implementar OAuth es complicado!
 
 ## Kerberos
 
