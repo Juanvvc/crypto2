@@ -33,7 +33,7 @@ Las transparencias de hoy están en inglés
 1. [Types of Business Email Compromise (BEC)](#10)
 1. [Investigating a BEC](#20)
 1. [Prevention](#28)
-1. [References](#43)
+1. [References](#45)
 
 # Business Email Compromise (BEC)
 <!-- _class: lead -->
@@ -291,18 +291,21 @@ Most of the times, they even hide this emails. His objective is that the victim 
 -  Identifying suspicious login activity is useful for assessing initial access and lateral movement. 
 -  Permission changes on existing or newly created accounts often indicate the threat  actor established persistence, and could indicate the scope of an investigation is wider than initially assessed. 
 - Abusing OAuth applications or other vulnerabilities. 
-- Assessing which emails or data has been accessed and/or exfiltrated is critical for  determining the impact on an organisation, including but not limited to financial losses, privacy implications and reputational damages. 
+- Assessing which emails or data has been accessed and/or ex-filtrated is critical for  determining the impact on an organization, including but not limited to financial losses, privacy implications and reputational damages. 
 - Threat intelligence is an important part of the investigative process-
 - BEC intrusions are typically opportunistic and attribution is difficult.
 
 ## External confirmation
 
+You can check the reputation of a domain in several sites:
 
 - https://emailrep.io
 - https://email-checker.net
 - https://tools.emailhippo.com
 - https://hunter.io/email-verifier
 - https://trumail.io
+
+Warning: the response from these services is just a suggestion!
 
 ## Threat intelligence
 
@@ -319,19 +322,47 @@ BlueLiv is a company from Barcelona specialized in Threat Intelligence. If I'm n
 -->
 
 
-## Email forgery: PGP
+## Signing / encypting emails: PGP
 
 Your contacts send their public keys to you manually. All communications from a contact must be signed using one of the accepted keys.
 
 The perfect solution: sender signs the email, the receiver only accept emails from trusted parties
 
-![bg right w:100%](https://docs.deistercloud.com/mediaContent/Axional%20development%20libraries.20/Server%20side%20javascript.50/AX%20Library.10/crypt/media/PGP.png)
+![bg right w:100%](images/BEC/pgp-process.png)
 
 Bad news: PGP is rarely used in real life!
 
-## Email forgery: SPF
+> https://docs.deistercloud.com/mediaContent/Axional%20development%20libraries.20/Server%20side%20javascript.50/AX%20Library.10/crypt/media/PGP.png
 
-Check in the DNS the sender IP is authorized to send emails from that server
+## Protecting the channel, not the emails
+
+Protecting emails end-to-end is not going to happen in the near future
+
+Current solution: protecting emails in the middle
+
+![center w:40em](images/BEC/email_process.png)
+
+
+<!--
+Ideally, we should be able to protect emails from one side to the other. Since PGP is not well implemented out of companies, the current solution is protecting an email when they travel between servers, and trust in the authentication methods used by the servers to protect the final link to the users
+
+Process to send an email:
+
+1. a user sends the email to the mail server controlled by his company
+2. the sender email sender sends the email to the receiver server. Here, it is possible to have several "jumps" between different servers due to aliases, groups or forwards.
+3. The receiver server sends the email to the final recipients
+
+Three tecnologies protect the communications between servers: SPF, DKIM and DMARC
+
+Image source: > https://statics.esputnik.com/photos/shares/Blog/images/AMP/image4.png
+
+-->
+
+## Email protection: SPF
+
+Companies publish is their DNS the list of IP addresses of the servers allowed to send emails "from" the company
+
+Receiver: check if the IP of the server that sent an email is authorized
 
 i.e.: you authenticate the email <someone@gmail.com> was sent from a server authorized by GMail
 
@@ -339,7 +370,7 @@ i.e.: you authenticate the email <someone@gmail.com> was sent from a server auth
 
 > https://medium.com/@pendraggon87/short-primer-on-spf-dkim-and-dmarc-9827eb2f359d
 
-## Email forgery: DomainKeys Identified Mail (DKIM)
+## Email protection: DomainKeys Identified Mail (DKIM)
 
 The receiving **server** checks the digital signature of the sending **server**
 
@@ -347,7 +378,7 @@ Your server (not you!) authenticates the content received from the sending **ser
 
 i.e.: your email provider authenticates than an email sent from <someone@gmail.com> was not modified since it left `gmail.com`
 
-![bg right:40% w:90%](https://public-assets.postmarkapp.com/blog/_normal/DKIM.png?mtime=20180411071134&focal=none&tmtime=20200702165737)
+![bg right:40% w:90%](images/BEC/dkim-process.png)
 
 > Fuente: https://dmarcian.es/what-is-dkim/
 > RFC 6376: [DomainKeys Identified Mail (DKIM) Signatures](https://www.rfc-editor.org/info/rfc6376) September 2011
@@ -451,17 +482,34 @@ Google uses another DKIM signature that uses other headers. This is probably a s
 
 ---
 
-![center w:25em](https://dmarcian.com/wp-content/uploads/2021/01/WhyDMARCIllustration-1.png)
+![center w:40em](images/BEC/dmarc-2-how-dmarc-works-final.png)
 
+> https://www.agari.com/blog/pros-cons-dmarc-reject-vs-quarantine
+
+## Email authentication: summary
+<!-- _class: smaller-font -->
+
+Technology|Use|If not configured...
+--|--|--
+SPF|Check if the IP is authorized to send an email from the domain|Anyone in the Internet can send an email "from" mycompany.com
+DKIM|Digital signature of emails sent from a domain|Anyone in the middle could change emails sent from mycompany.com
+DMARC|Inform receivers about the recommended actions|Receivers "don't know what to do" if a email from mycompany.com doesn't pass SPF or DKIM
+-|-|Emails from mydomain.com are going to be classified as "spam" or "suspicious" automatically
+
+List of authorized IPs, public key and policies are announced in the domain's DNS entry
+
+<!--
+Warning: since emails without SPF/DKIM are going to be classified as spam or suspicious, the sender could request whitelisting them in your email system
+
+Do not whitelist emails "from mycompany.com" if mycompany.com has not configured SPF!!. No SPF means anyone can send emails "from mycompany.com" and you cannot distinguish good from bad emails
+-->
 
 ## The bad news...
 
 - PGP is rarely used in real life... unfortunately
-- Not all companies implement SPF or DKIM
+- Not all companies implement SPF or DKIM, but this is changing very fast
 - These mechanisms do not protect against an email sent from `macdonalds.com`: the attackers can configure SPF and DKIM too!
 - These mechanisms only authenticate from the sending server to the receiving server!
-
-![center w:25em](https://statics.esputnik.com/photos/shares/Blog/images/AMP/image4.png)
 
 <!--
 - Los malos pueden configurar también sus servidores
