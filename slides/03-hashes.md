@@ -429,8 +429,11 @@ Solución: cifrar solo el hash del mensaje
 En firma digital se cifra el hash del mensaje con nuestra clave privada
 
 $$
-Firma_{Bob}(document) = E_{RSA}(K_{priv}^{Bob}, hash(document)) \\
-Verificacion(document, Firma_{Bob}) = D_{RSA}(K_{pub}^{Bob}, Firma_{Bob}) =^? hash(document)
+Firma_{Bob}(document) = E_{RSA}(K_{priv}^{Bob}, hash(document))
+$$
+
+$$
+Verificacion(document, Firma_{Bob}) = (D_{RSA}(K_{pub}^{Bob}, Firma_{Bob}) =^? hash(document))
 $$
 
 ---

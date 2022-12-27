@@ -206,7 +206,7 @@ Un algoritmo está **criptográficamente roto** si se conoce un ataque más efic
 
 ---
 
-![](images/cta2296-fig-0002-m.jpg)
+![](images/conceptos/cta2296-fig-0002-m.jpg)
 
 <!--
 Estos son los algoritmos de seguridad computacional que utilizamos
@@ -252,7 +252,7 @@ Ejemplos actuales: AES, ChaCha
 
 Ejemplos rotos y obsoletos: RC4, DES, TDES
 
-![bg right](images/pexels-cottonbro-7319077.jpg)
+![bg right](images/generic/pexels-cottonbro-7319077.jpg)
 
 > Fondo: <https://www.pexels.com/photo/photo-of-person-using-magnifying-glass-7319077/>
 
