@@ -42,7 +42,7 @@ header: 'Servicios criptográficos'
 
 Protección de la comunicaciones a través de **medios desprotegidos** entre un emisor y uno o varios destinatarios
 
-![bg right:40% w:100%](images/pexels-cottonbro-7319077.jpg)
+![bg right:40% w:100%](images/generic/pexels-cottonbro-7319077.jpg)
 
 ...y eso es mucho más que mantener un mensaje secreto...
 
@@ -158,7 +158,7 @@ Otros servicios como la autorización, aunque sin duda son importantes para que 
 
 ---
 
-[![w:33em center](images/rely-attack.png)](https://www.youtube.com/watch?v=uxzm_6SYBFo)
+[![w:33em center](images/conceptos/rely-attack.png)](https://www.youtube.com/watch?v=uxzm_6SYBFo)
 
 > https://www.youtube.com/watch?v=uxzm_6SYBFo
 
@@ -186,7 +186,7 @@ header: Estrategias de seguridad
 ## Modelo de sistema criptográfico
 <!-- _class: two-columns with-header -->
 
-![center w:25em](https://www.tutorialspoint.com/cryptography/images/cryptosystem.jpg)
+![center w:25em](images/conceptos/cryptosystem.jpg)
 
 - **Mensaje o texto en claro**: $m$
 - **Texto cifrado**: $c = e(k_1, m)$
@@ -199,6 +199,8 @@ header: Estrategias de seguridad
 Este es el modelo sobre el que trabajaremos: dos personas "Alice y Bob" comunicándose por un canal inseguro porque puede haber un adversario "Maloy" en medio.
 
 Alice y Bob no tienen otra forma de comunicación: no pueden confirmar una operación bancaria enviada por correo electrónico usando una clave enviada al teléfono, por ejemplo. En criptografía asumiremos que no existen estas vías alternativas de comunicación, aunque en la realidad sí existen y los utilizamos en la vida real para mejorar aún más la seguridad del sistema.
+
+Imagen: https://www.tutorialspoint.com/cryptography/images/cryptosystem.jpg
 -->
 
 ## Principios de Kerckhoffs
@@ -206,7 +208,7 @@ Alice y Bob no tienen otra forma de comunicación: no pueden confirmar una opera
 
 <https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle>
 
-![bg left:33%](images/Auguste_Kerckhoffs.jpg)
+![bg left:33%](images/conceptos/Auguste_Kerckhoffs.jpg)
 
 1. **Si el sistema no es teóricamente irrompible, al menos debe serlo en la práctica.**
 1. **La efectividad del sistema no debe depender de que su diseño permanezca en secreto.**
@@ -249,7 +251,7 @@ Pero son recomendaciones muy informadas.
 ## Máxima de Shannon
 <!-- _class: with-success -->
 
-![bg left:33%](images/220px-ClaudeShannon_MFO3807.jpg)
+![bg left:33%](images/conceptos/220px-ClaudeShannon_MFO3807.jpg)
 
 *El atacante conoce el sistema*
 
@@ -278,7 +280,7 @@ No bases tu seguridad en la oscuridad, pero añadir un poco de oscuridad siempre
 
 ## Gestión de claves
 
-![bg left:33% h:100%](https://securityledger.com/wp-content/uploads/2021/07/Lea_Kissner.jpeg)
+![bg left:33% h:100%](images/conceptos/Lea_Kissner.jpeg)
 
 *La criptografía es una herramienta para convertir un montón de problemas diferentes en un problema de gestión de claves*
 
@@ -310,7 +312,7 @@ La composición es compleja y todo debe funcionar como un reloj.
 
 ---
 
-![](images/cta2296-fig-0002-m.jpg)
+![](images/conceptos/cta2296-fig-0002-m.jpg)
 
 <!--
 - **Sin clave**: el emisor usa sólo el mensaje $m$ como argumento de la función criptográfica. Ejemplo: hash.
@@ -345,7 +347,7 @@ Encontrarás más detalles en: <https://juanvvc.github.io/crypto/02-historia.htm
 
 ---
 
-![bg left:40% w:100%](https://pics.filmaffinity.com/the_imitation_game-824166913-large.jpg)
+![bg left:40% w:100%](images/conceptos/the_imitation_game-824166913-large.jpg)
 
 Años 40: Alemania controla Europa y amenaza al resto del mundo
 
@@ -365,7 +367,7 @@ Hasta los años 70 del siglo XX, la criptografía se usaba solo en el ámbito mi
 
 El resultado debería ser un mensaje igual que el original
 
-![bg right:40% w:100%](https://www.tutorialspoint.com/cryptography/images/cryptosystem.jpg)
+![bg right:40% w:100%](images/conceptos/cryptosystem.jpg)
 
 
 <!--
@@ -458,7 +460,7 @@ El cifrado César, incluso con mapeos aleatorios, lleva roto como mínimo desde 
 
 ## Confidencialidad perfecta
 
-![bg left:40%](https://upload.wikimedia.org/wikipedia/commons/0/06/USpatent1310719.fig1.png)
+![bg left:40%](images/conceptos/USpatent1310719.fig1.png)
 
 **Seguridad perfecta o incondicional**: no se puede deducir ninguna propiedad del texto original en claro, incluso aunque el atacante tenga recursos infinitos (tiempo, dinero)
 
@@ -469,6 +471,8 @@ El cifrado César, incluso con mapeos aleatorios, lleva roto como mínimo desde 
 
 <!-- 
 excepto la longitud... y el momento de enviarlo, ...y el número de mensajes
+
+Imagen: https://upload.wikimedia.org/wikipedia/commons/0/06/USpatent1310719.fig1.png
  -->
 
  ---
@@ -484,7 +488,7 @@ Un cifrado perfecto no puede descifrarse ni siquiera por fuerza bruta porque un 
 
 ## ¿A qué hora atacamos?
 
-![bg right:40% w:100%](https://upload.wikimedia.org/wikipedia/commons/f/fc/Byzantine_Generals.png)
+![bg right:40% w:100%](images/conceptos/Byzantine_Generals.png)
 
 Imagina que un ejército decide el siguiente mapeo, es decir, clave:
 
@@ -496,6 +500,10 @@ Imagina que un ejército decide el siguiente mapeo, es decir, clave:
 El enemigo captura este mensaje: "Atacamos a las F horas"
 
 ¿Tiene alguna forma el enemigo de conocer a qué hora le atacarán?
+
+<!--
+Imagen: https://upload.wikimedia.org/wikipedia/commons/f/fc/Byzantine_Generals.png
+-->
 
 ---
 <!-- _class: smaller-font -->
@@ -527,7 +535,7 @@ Las claves se guardaban en hojas de papel de un solo uso. Las dos partes tenían
 
 En 1972, la NSA tenía 86.000 *one-time-pads*
 
-![bg left:30%](https://www.cryptomuseum.com/spy/r353/img/300148/191/full.jpg)
+![bg left:30%](images/conceptos/cryptomuseum1.jpg)
 
 > Si lo necesitas, mira la operación XOR en [el glosario](A1-glosario.html)
 
@@ -539,6 +547,8 @@ La clave $k$ se intercambiaba por valija diplomática en cinta perforada que se 
 Además, el *one-time-pad* permitía trabajar de forma segura sin intercambiar ningún algoritmo secreto que diera ventaja técnica al enemigo
 
 Para poder usar un *one-time-pad*, la clave se prepara por adelantado para cuando haga falta enviar algún mensaje inmediatamente.
+
+Imagen: https://www.cryptomuseum.com/spy/r353/img/300148/191/full.jpg
 -->
 
 ## Vulnerabilidades del one-time-pad
@@ -565,7 +575,7 @@ Cuesta tanto enviar $k$ de forma segura como enviar directamente $m$ en claro po
 
 > Más ejemplos: https://www.cryptomuseum.com/covert/conceal/index.htm
 
-![bg right:60%](https://www.cryptomuseum.com/covert/deaddrop/img/302193/011/full.jpg)
+![bg right:60%](images/conceptos/cryptomuseum2.jpg)
 
 <!--
 
