@@ -706,6 +706,22 @@ Security Assertion Markup Language (SAML) is an XML-based open-standard for tran
 - Usar **siempre** doble factor de autenticación (2FA)
 - Si es posible, "passwordless": Okta, Smartcards...
 
+---
+
+Pero procura no forzar a usar las "reglas tontas"
+
+[![center](images/auth/dumbpass.png)](https://dumbpasswordrules.com/sites/)
+
+¿Sabrías explicar por qué?
+
+<!--
+Si fuerzas "reglas para las contraseñas"...
+
+- Baja la entropía de las contraseñas: los atacantes ya no tienen que probar contraseñas que no contengan  números
+- No evitas que los usuarios acaben usando contraseñas sencillas que cumplan las reglas: S3samo!
+- No evitas "trucos" como "Sesamo2022" "Sesamo2023"
+-->
+
 ## Referencias
 
 - [WebAuthn 101 - Demystifying WebAuthn](https://i.blackhat.com/USA-19/Thursday/us-19-Brand-WebAuthn-101-Demystifying-WebAuthn.pdf). Christiaan Brand, Google. Blackhat 2019
