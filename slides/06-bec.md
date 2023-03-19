@@ -9,11 +9,15 @@ theme: marp-viu
 ---
 
 <style>
-    /* You can add custom style here. VSCode supports this.
-    Other editor might need these custom code in
-    the YAML header: section: | */
-	/* section header { display: none; } */
-	/* section footer { display: none; } */
+section.a-story ul li {
+    list-style-type: none;
+    text-align: center;
+    line-height: 1.15em;
+    margin-bottom: 1em;
+}
+section.a-story blockquote {
+    margin-top: inherit;
+}
 </style>
 
 # Business Email Compromise
@@ -243,17 +247,20 @@ Beware: these fake extortions **MAY** include personal information collected fro
 [![](images/BEC/trendmicro.png)](https://www.youtube.com/watch?v=k0eECA2vwjQ)
 
 ## Opportunistic attacks
+<!-- _class: with-warning -->
 
-The attackers know exactly when to attack:
+The attackers know exactly when to attack. They know...
 
-- The person they have to contact
+- which person they have to contact
 - When the CEO is away the office and cannot be reached
 - The precise moment they have to change bank accounts
-- The involves parties
+- All the partied involved
 
 How did the attacker send the first email?
 
 How did the attacker know it was the right moment?
+
+A BEC attack usually begins as a phishing attack, and inboxes are controlled since long before the detection
 
 ## Control of the inbox
 
@@ -546,7 +553,8 @@ Do not whitelist emails "from mycompany.com" if mycompany.com has not configured
 - [What is Business Email Compromise (BEC)? How Does it Work? ](https://www.tessian.com/blog/bec-business-email-compromise/), Tessian 2021
 - [Business Email Compromise](https://www.fbi.gov/scams-and-safety/common-scams-and-crimes/business-email-compromise) FBI 
 - [Business Email Compromise Guide for O365](https://github.com/PwC-IR/Business-Email-Compromise-Guide) - PwC 2021
-- [Anatomy of a Business Email Compromise Investigation](https://www.magnetforensics.com/blog/anatomy-of-a-business-email-compromise-investigation/?utm_source=Pardot&utm_medium=Email&utm_campaign=2021_MonthlyNewsletterDecember)
+- [Phishing investigation](https://learn.microsoft.com/en-us/security/operations/incident-response-playbook-phishing) - Microsoft 2023
+- [Anatomy of a Business Email Compromise Investigation](https://www.magnetforensics.com/blog/anatomy-of-a-business-email-compromise-investigation/?utm_source=Pardot&utm_medium=Email&utm_campaign=2021_MonthlyNewsletterDecember) - Magnet Forensics 2021
 - [Awesome-BEC: repository of information](https://github.com/randomaccess3/Awesome-BEC/blob/main/README.md)
 
 ---

@@ -24,6 +24,8 @@ transition: fade
 # Confidencialidad: sistemas de cifrado
 <!-- _class: first-slide -->
 
+**AES y ChaCha**
+
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
 ## Recordatorio: servicios de seguridad
@@ -130,7 +132,8 @@ Preferimos sistemas que, aunque puedan descifrarse, el atacante tenga que dedica
 ## Seguridad computacional
 <!-- _class: with-info -->
 
-Un sistema es seguro computacionalmente si cualquier algoritmo probabilístico en tiempo polinomial solo puede romper el algoritmo con probabilidad negligible en $\|n\|$
+
+**Seguridad computacional**: un sistema es seguro computacionalmente si cualquier algoritmo probabilístico en tiempo polinomial solo puede romper el algoritmo con probabilidad negligible en $\|n\|$
 
 Informalmente: un atacante no puede descifrar el mensaje:
 
@@ -138,7 +141,7 @@ Informalmente: un atacante no puede descifrar el mensaje:
 - con la tecnología actual
 - ...probablemente
 
-**Seguridad computacional**: "quiero un sistema criptográfico que mantenga este mensaje confidencial como mínimo durante los próximos 100 años"
+Con la seguridad computacional hay que definir el objetivo: "quiero un sistema criptográfico que mantenga este mensaje secreto durante los próximos 100 años"
 
 <!-- Desde que los matemáticos entraron en la criptografía, existe definiciones de todos los términos tan exactas y formales como incomprensibles para un profano
 
@@ -219,7 +222,7 @@ La próxima sesión estudiaremos los algoritmos de hash
 ## Criptografía simétrica / clave secreta
 <!-- _class: two-columns -->
 
-![](images/simetrica.svg)
+![](images/simetrica/simetrica.svg)
 
 - La misma clave para cifrar que para descifrar
 - Problema: ¿Cómo acuerdan las dos partes la clave?
@@ -227,7 +230,7 @@ La próxima sesión estudiaremos los algoritmos de hash
 ## Criptografía asimétrica / clave pública
 <!-- _class: two-columns -->
 
-![](images/asimetrica.svg)
+![](images/asimetrica/asimetrica.svg)
 
 - Una clave para cifrar, una clave diferente para descifrar
 - Problema:
@@ -274,7 +277,7 @@ Flujo|Bloque
 --|--
 Más rápido|Más lento (a menos que exista ayuda del hardware)
 Fácil de programar: pequeños dispositivos|Más complejo
-Implementado en hardware|Implementado en software
+Implementado en software|Implementado en hardware
 RC4, **ChaCha20**|3DES, **AES**
 
 <!--
@@ -326,6 +329,8 @@ La velocidad del cifrado depende totalmente de la velocidad del PRNG, porque el 
 La seguridad del cifrado depende del generador PRNG utilizado...
 
 ...**y de que nunca se envíen dos mensajes cifrados con la misma clave**
+
+(vamos a repetir esto muchas veces en el curso)
 
 [Lorenz SZ](https://en.wikipedia.org/wiki/Lorenz_cipher#Cryptanalysis) fue una máquina alemana de cifrado de flujo, rota porque un operador envió dos mensajes diferentes seguidos sin cambiar la clave.
 
@@ -430,7 +435,7 @@ Alternativa al cifrado de flujo: cortar el texto en claro en bloques de la misma
 El cifrado de bloque es el muy utilizado: es rápido, no necesita exigentes o lentos algoritmos PRNG y ya tenemos hardware especializado en su cifrado/descifrado
 
 <!--
-Nota importante: la figura muestra un confrado de bloque totalmente inseguro, como veremos en un momento
+Nota importante: la figura muestra un cifrado de bloque totalmente inseguro, como veremos en un momento
 
 Fíjate: los bloques no tienen memoria, al contrario de lo que pasaba en el cifrado de flujo. Veremos que esto es una de sus debilidades.
 -->
@@ -459,7 +464,7 @@ Si acumulamos estado durante el cifrado, podemos utilizar este estado sobre el c
 
 ## ECB: Electronic Code-Book
 
-![center Wikipedia w:35em](images/ECB_encryption.svg)
+![center Wikipedia w:35em](images/simetrica/ECB_encryption.svg)
 
 ---
 <!-- _class: center with-info -->
@@ -474,15 +479,15 @@ No se debe usar un cifrado de bloque en modo ECB
 
 ## CBC: Cipher Block Chaining
 
-![center Wikipedia w:35em](images/CBC_encryption.svg)
+![center Wikipedia w:35em](images/simetrica/CBC_encryption.svg)
 
 ## OFB: Output Feedback
 
-![center Wikipedia w:35em](images/OFB_encryption.svg)
+![center Wikipedia w:35em](images/simetrica/OFB_encryption.svg)
 
 ## CTR: Counter
 
-![center Wikipedia w:35em](images/CTR_encryption.svg)
+![center Wikipedia w:35em](images/simetrica/CTR_encryption.svg)
 
 ## Vector de Inicialización (IV)
 
@@ -505,7 +510,9 @@ Desarrollado por Vincent Rijmen y Joan Daemen (aka: Rijndael), que ganaron el co
 - longitud de bloque: 128 bits (16 Bytes)
 - longitud de clave: 128, 192 ó 256 bits
 
-![bg left:40%](https://whatsupcourtney.com/wp-content/uploads/2017/10/Things-to-do-in-Leuven-52-e1560945504897.jpeg)
+![bg left:40%](images/simetrica/leuven.jpg)
+
+> background: https://whatsupcourtney.com/wp-content/uploads/2017/10/Things-to-do-in-Leuven-52-e1560945504897.jpeg
 
 <!--
 AES fue desarrollado por Vincent Rijmen y Joan Daemen en el COSIC de la KU Leuven, Bélgica.
@@ -529,7 +536,7 @@ Hay hardware especializado en cifrar y descifrar AES, entre ellas las CPUs de co
 
 # Resumen
 
-![w:16em center](images/symmetric-example.png)
+![w:16em center](images/simetrica/symmetric-example.png)
 
 El cifrados de flujo (ej. ChaCha) y de bloque  (ej. AES) permiten enviar mensajes computacionalmente seguros
 
@@ -555,7 +562,7 @@ El protocolo de intercambio de claves Diffie-Hellman permitió por primera vez e
 
 ¿Qué direcciones eran esas?
 
-![bg right:30%](https://www.publicdomainpictures.net/pictures/370000/velka/signpost-giving-directions.jpg)
+![bg right:30%](images/asimetrica/signpost-giving-directions.jpg)
 
 > Foto: https://www.publicdomainpictures.net/en/view-image.php?image=363738&picture=signpost-giving-directions (CC0)
 
@@ -598,20 +605,20 @@ Cada persona tiene dos claves:
 
 A veces son intercambiables: lo que se cifra con una se descifra con la otra
 
-![bg right:40% w:90%](images/asimetrica.svg)
+![bg right:40% w:90%](images/asimetrica/asimetrica.svg)
 
 > Compara con criptografía simétrica: misma clave para cifrar y descifrar, Bob y Alice tienen que manetenarla en secreto
 
 ## Esquema de cifrado
 
-![w:20em center](images/IMG_0056.PNG)
+![w:20em center](images/asimetrica/IMG_0056.PNG)
 
 - Todos conocen la clave $K_{pub}$ de Bob, solo Bob conoce la clave $K_{priv}$
 - **Cualquier puede cifrar un mensaje para Bob, solo Bob puede descifrarlo**: confidencialidad
 
 ## Esquema de firma electrónica
 
-![w:20em center](images/IMG_0055.PNG)
+![w:20em center](images/asimetrica/IMG_0055.PNG)
 
 - Solo Bob puede cifrar con su clave $K_{priv}$ y cualquier puede descifrar con $K_{pub}$
 - Pero si pueden descifrar el mensaje, **todos saben que el mensaje solo puede haberlo enviado Bob: autenticación**
@@ -700,7 +707,7 @@ Alice y Bob, que no se habían visto nunca antes, puede utilizar $s=g^{ab}$ como
 ## Problemas de Diffie Hellman: Man in the middle
 <!-- _class: with-info -->
 
-![center](https://i.imgur.com/Cq78TET.png?1)
+![center](images/asimetrica/dh-maninthemiddle.png)
 
 Diffie-Hellman no protege contra MitM, no tiene un sistema de gestión de claves públicas asociadas a identidades. Necesitamos otras tecnologías.
 
@@ -714,11 +721,13 @@ Luego, las soluciones se refinaron con curvas elípticas: ECDH (*Elliptic Curves
 
 ## RSA
 
-![bg left](https://hsto.org/getpro/habr/post_images/453/10e/602/45310e602d784a489301bf1996edef68.jpg)
+![bg left](images/asimetrica/rsa-creators.jpg)
 
 [A method for obtaining digital signatures and public-key cryptosystems](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.607.2677), Ron **R**ivest, Adi **S**hamir, Leonard **A**dleman, 1978
 
 *trap door function*: dificultad del cálculo de la raíz $e$-ésima($\mod n$) para valores de $n$ con ciertas propiedades
+
+> Background: https://hsto.org/getpro/habr/post_images/453/10e/602/45310e602d784a489301bf1996edef68.jpg
 
 <!--
 Fundaron la empresa RSA Security LLC, que sigue siendo uno de los mayores proveedores de seguridad del mundo
@@ -823,7 +832,7 @@ Dado un punto $A$, definimos una operación "proyección" $A+B = C$ como:
 
 $C$ es "la proyección de recta que une $A$ y $B$, reflejada al otro lado de la curva"
 
-![center w:20em](images/elliptic55-addition.png)
+![center w:20em](images/asimetrica/elliptic55-addition.png)
 
 Usamos el símbolo "suma" por tradición, pero no es una "suma geométrica"
 
@@ -831,7 +840,7 @@ Usamos el símbolo "suma" por tradición, pero no es una "suma geométrica"
 
 Y lo volvemos a aplicar, varias veces, desde el mismo origen
 
-![center](images/elliptic55-addition2.png)
+![center](images/asimetrica/elliptic55-addition2.png)
 
 ---
 
@@ -839,7 +848,7 @@ En vez de empezar con dos puntos, podemos empezar con uno solo, y la recta inici
 
 $$P=nA$$
 
-![center w:20em](images/elliptic.gif)
+![center w:20em](images/asimetrica/elliptic.gif)
 
 > Fuente: https://medium.com/@icostan/animated-elliptic-curves-cryptography-122fff8fcae
 
@@ -877,7 +886,7 @@ A cambio, son más complejas de entender y programar pero eso como usuarios no e
 
 ---
 
-![center](images/keysize-compare.png)
+![center](images/asimetrica/keysize-compare.png)
 
 NOTA: RSA está basado en "factorización", DSA y D-H en "logaritmo discreto"
 
