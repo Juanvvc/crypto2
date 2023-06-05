@@ -2,7 +2,7 @@
 marp: true
 title: Criptografía - Sistemas de cifrado
 author: Juan Vera
-keywords: criptografía,simétrica,aes,chacha,salsa
+keywords: seguridad computacinal,cifrado,confidencialidad,criptografía,simétrica,aes,chacha,asimétrica,rsa,dsa,curvas,elípticas
 paginate: true
 footer: '[Inicio](index.html)'
 headingDivider: 2
@@ -24,7 +24,7 @@ transition: fade
 # Confidencialidad: sistemas de cifrado
 <!-- _class: first-slide -->
 
-**AES y ChaCha**
+**Seguridad computacional, cifrado asimétrico y cifrado asimétrico**
 
 Juan Vera del Campo - <juan.vera@campusviu.es>
 
@@ -69,6 +69,8 @@ $$
 P[m|c] = P[m]
 $$
 
+Encontrarás explicaciones y ejemplos en el [tema 1](01-conceptos.html)
+
 Sistema con confidencialidad perfecta: un atacante no podría descifrarlo nunca, invierta el dinero que invierta e independientemente de por cuántos siglos lo intente
 
 <!--
@@ -80,28 +82,12 @@ Cosas que implica:
 - Dado un texto cifrado, el mensaje en claro podría ser cualquiera:
 -->
 
----
-
-Si un cifado perfecto cifra un texto como XHAJSJXXNFHFDOIOJUMNFNNNF, existe una clave que descifra "ATACAREMOS A LAS 8 EN PUNTO" y otra que descifra "SE HA QUEDADO BUENA TARDE"
-
-Un cifrado perfecto no puede descifrarse ni siquiera por fuerza bruta porque un atacante no puede distinguir el mensaje real de todos los mensajes falsos posibles
-
-## Ejemplo: atacaremos a las "F" horas
-
-- Si el enemigo intercepta el mensaje, no tiene forma saber a qué hora se atacará. **Este cifrado es perfecto**
-- Pero el enemigo sabrá:
-	- Si no le han atacado a la 1, F no es 1
-	- Si no le han atacado a las 2, F no es 2
-	- Si le atacan a las 3, F es 3
-- Es decir: solo se puede usar esta clave una vez
-- Hay que volver a enviar una nueva clave cada vez que queramos enviar un mensaje nuevo, con el riesgo de que el enemigo intercepte el mensaje de envío de clave
-
 ## Requisitos para la confidencialidad perfecta
 
 Tenemos confidencialidad perfecta si y solo si usamos un cifrado con las siguientes características:
 
 - una clave tan larga como el mensaje
-- no conocida por el atacante. Es decir: totalmente aleatoria
+- totalmente aleatorio y no conocida por el atacante, ni siquiera en parte
 - la clave no se usa nunca más
 
 Durante 30 años, desde los años 40 a los 70, este sistema se conocía como **one-time-pad**, "libro de claves un solo uso", y era el más usado.
@@ -137,15 +123,23 @@ Preferimos sistemas que, aunque puedan descifrarse, el atacante tenga que dedica
 
 Informalmente: un atacante no puede descifrar el mensaje:
 
-- en un tiempo razonable
-- con la tecnología actual
+- ni juntando todo el dinero y la tecnología actual
 - ...probablemente
+- ...y quizá en el futuro sí se pueda
 
 Con la seguridad computacional hay que definir el objetivo: "quiero un sistema criptográfico que mantenga este mensaje secreto durante los próximos 100 años"
 
 <!-- Desde que los matemáticos entraron en la criptografía, existe definiciones de todos los términos tan exactas y formales como incomprensibles para un profano
 
 Lo importante es que relajamos el sistema lo suficiente como para que, por un tiempo determinado, ningún atacante con unos recursos razonables pueda descifrar el mensaje -->
+
+---
+
+La criptografía es una de las ramas más pesimistas de la ciencia. Asume la existencia de adversarios con capacidad ilimitada de ataque, los cuales pueden leer todos tus mensajes, generar información ilegítima o modificar tus claves aleatorias a su antojo.
+
+Curiosamente, también es una de las ramas más optimistas, mostrando cómo incluso en el peor escenario inimaginable el poder de las matemáticas y la algoritmia puede sobreponerse a cualquier dificultad.
+
+[Alfonso Muñoz, Evasión de antivirus y seguridad perimetral usando esteganografía, 2021](https://raw.githubusercontent.com/mindcrypt/libros/master/Libro%20Estegomalware%20-%20Evasi%C3%B3n%20de%20antivirus%20y%20seguridad%20perimetral%20usando%20esteganograf%C3%ADa%20v1%20-%20Dr.%20Alfonso%20Munoz%20-%20mindcrypt.pdf)
 
 ## Ataques de fuerza bruta
 <!-- _class: with-info -->
@@ -312,7 +306,7 @@ $$
 
 ---
 
-![w:25em center](images/symmetric-example.png)
+![w:25em center](images/simetrica/symmetric-example.png)
 
 PRNG: *Pseudo Random Number Generator*
 

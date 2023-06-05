@@ -33,7 +33,7 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
 
 Los hashes nos permiten calcular **una firma digital**
 
-![bg right w:90%](https://i.imgur.com/Cq78TET.png?1)
+![bg right w:90%](images/asimetrica/dh-maninthemiddle.png)
 
 # Hoy hablamos de...
 <!-- _class: cool-list toc -->
