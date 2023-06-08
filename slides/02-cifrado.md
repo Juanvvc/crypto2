@@ -41,9 +41,9 @@ Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases pa
 <!-- _class: cool-list toc -->
 
 1. [Confidencialidad perfecta y computacional](#5)
-1. [Criptografía simétrica o de clave secreta](#20)
-1. [Criptografía asimétrica o de clave pública](#45)
-1. [Conclusiones](#72)
+1. [Criptografía simétrica o de clave secreta](#19)
+1. [Criptografía asimétrica o de clave pública](#44)
+1. [Conclusiones](#71)
 
 ---
 <!-- _class: with-info -->
@@ -253,18 +253,6 @@ Ejemplos rotos y obsoletos: RC4, DES, TDES
 
 > Fondo: <https://www.pexels.com/photo/photo-of-person-using-magnifying-glass-7319077/>
 
----
-
-![center](images/cryptodefinition.png)
-
-<!--
-Aquí vemos el esquema de clave secreta
-
-Observa: antes de empezar a comunicase, Alice y Bob necesitan acordar / generar una clave por un camino diferente
-
-Por ahora vamos a ignorar este camino, y supondremos que Alice y Bob ya tienen una clave en común
--->
-
 ## Criptografía simétrica: tipos
 
 Flujo|Bloque
@@ -448,7 +436,7 @@ Atención: hay un modo de operación que no debe usarse nunca
 Si acumulamos estado durante el cifrado, podemos utilizar este estado sobre el cifrado del siguiente bloque:
 
 - **ECB**: *Electronic Code-Book*,
-    - no-op
+    - no debe usarse
 - **CBC**: *Cipher Block Chaining*
     - el bloque $i−1$ se aplica $\otimes$ sobre el bloque en claro $i$
 - **OFB**: *Output Feedback*
@@ -528,7 +516,18 @@ Hay hardware especializado en cifrar y descifrar AES, entre ellas las CPUs de co
 - DES: 250 Mbps (seguridad 56 bit)
 - 3DES: 100 Mbps (seguridad 112 bit)
 
-# Resumen
+# Comparación flujo y bloque
+<!-- _class: center -->
+
+ 
+Flujo|Bloque
+--|--
+Más rápido|Más lento (a menos que exista ayuda del hardware)
+Fácil de programar: pequeños dispositivos|Más complejo
+Implementado en software|Implementado en hardware, mucho soporte ya desplegado
+RC4, **ChaCha20**|3DES, **AES**
+
+# Problema del cifrado simétrico
 
 ![w:16em center](images/simetrica/symmetric-example.png)
 
@@ -657,7 +656,7 @@ Resuelve la $x$:
 en realidad no sabemos si el DLP es difícil: solo lo sospechamos muy fuertemente
 -->
 
-## Protocolo Diffie-Hellman
+## Protocolo Diffie-Hellman: intercambio de claves simétricas
 
 Utilizado para acordar una clave simétrica entres dos personas antes de las comunicaciones
 
@@ -713,13 +712,17 @@ En pocos años aparecieron nuevas funciones basadas en esas ideas: **RSA**, ElGa
 
 Luego, las soluciones se refinaron con curvas elípticas: ECDH (*Elliptic Curves Diffie-Hellman*), ECDSA (*Elliptic Curves DSA*)...
 
-## RSA
+## RSA: claves públicas y privadas
 
 ![bg left](images/asimetrica/rsa-creators.jpg)
 
+Fue el primer método de cifrado conocido que usaba claves públicas y privadas
+
+Sigue usándose en la actualidad
+
 [A method for obtaining digital signatures and public-key cryptosystems](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.607.2677), Ron **R**ivest, Adi **S**hamir, Leonard **A**dleman, 1978
 
-*trap door function*: dificultad del cálculo de la raíz $e$-ésima($\mod n$) para valores de $n$ con ciertas propiedades
+Está basado en la dificultad en factorizar números grandes
 
 > Background: https://hsto.org/getpro/habr/post_images/453/10e/602/45310e602d784a489301bf1996edef68.jpg
 
