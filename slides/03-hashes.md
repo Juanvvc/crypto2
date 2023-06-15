@@ -39,10 +39,8 @@ Los hashes nos permiten calcular **una firma digital**
 <!-- _class: cool-list toc -->
 
 1. [Funciones de hash](#4)
-1. [Usos](#22)
-1. [Firma digital: punto de vista técnico](#33)
-1. [Firma digital: punto de vista legal](#42)
-1. [Conclusiones](#51)
+1. [Usos](#23)
+1. [Conclusiones](#34)
 
 # Funciones de hash
 <!-- _class: lead -->
@@ -71,7 +69,7 @@ Ejemplos:
 
 Todos estos son resúmenes, pero no son de utilidad en criptografía
 
-![bg right:30% w:100%](https://www.gatevidyalay.com/wp-content/uploads/2018/10/Parity-Check-Parity-Bit.png)
+![bg right:40% w:120%](images/hashes/parity-check.png)
 
 
 > https://es.wikipedia.org/wiki/Verificaci%C3%B3n_de_redundancia_c%C3%ADclica
@@ -151,6 +149,26 @@ El principio del palomar dice que si tienes 9 agujeros y 10 palomas, es necesari
 Si los mensajes de 1.000.000 de caracteres se resumen en 256 caracteres... ¡por fuerza varios mensajes tendrán el mismo resumen!
 -->
 
+---
+<!-- _class: with-success -->
+
+Por ejemplo:
+
+Si queremos resumir fotografías de 1MB en resúmenes de 256 bits (tamaño típico)
+
+$$
+\left.
+\begin{aligned}
+    \|r\| & = 256\text{b} \Rightarrow |r| = 2^{256}\text{resúmenes} \\
+    \|m\| & \approx 10^6\text{B} \Rightarrow |m| = 2^{2^{23}}\text{fotografías}
+\end{aligned}
+\right\} \frac{|m|}{|r|} = \frac{2^{2^{23}}}{2^{256}} = 2^{2^{23}-256} \approx 2^{8·10^6} \approx 10^{26·10^6}
+$$
+
+Es decir, hay un número $10^{26·10^6}$, que en la práctica es "casi infinito", de fotografías de 1MB que se resumen en el mismo número de 256 bits
+
+Queremos que no sea nada fácil (computacionalmente hablando) encontrar cualquiera de esas "casi infinitas" fotografías: la única forma debe de ser probar las fotografías una a una
+
 ## Paradoja del cumpleaños
 
 En realidad hay un ataque a la resistencia a la colisión que deriva de la paradoja del cumpleaños:
@@ -159,7 +177,7 @@ En realidad hay un ataque a la resistencia a la colisión que deriva de la parad
 
 Sólo hace falta que el grupo llegue a 70 personas para que la probabilidad sea del 99%
 
-![bg right:40%](images/pexels-nappy-3063910.jpg)
+![bg right:40%](images/generic/pexels-nappy-3063910.jpg)
 
 > Foto: [nappy](https://www.pexels.com/photo/group-of-people-standing-on-metal-stairs-3063910/), free to use
 
@@ -207,7 +225,7 @@ Si calculas los valores de hash del archivo, verás que no coinciden. Eso es por
 
 ## Visual SHA-256
 
-[![center w:30em](images/visual-sha256.png)](https://sha256algorithm.com/)
+[![center w:30em](images/hashes/visual-sha256.png)](https://sha256algorithm.com/)
 
 > https://sha256algorithm.com/
 
@@ -284,7 +302,7 @@ Solución: calcular hash solo de los bloques que cambien, y agruparlos en un ár
 
 Permite firmar bases de datos, discos... de forma eficiente
 
-![center w:25em](images/Hash_Tree.svg)
+![center w:25em](images/hashes/Hash_Tree.svg)
 
 ## Almacenamiento de contraseñas
 
@@ -303,7 +321,7 @@ Un atacante realizar un "diccionario" con el hash de todas las palabras, nombres
 
 $$hash(hash(hash(...hash(salt\|contraseña))))$$
 
-![](https://i.stack.imgur.com/m8opZ.png)
+![](images/hashes/bcrypt.png)
 
 <!--
 En la imagen se puede ver un ejemplo de cómo guarda una base de datos una contraseña protegida con bcrypt
@@ -329,7 +347,7 @@ $$
 
 <!--
 
-Integredad Capacidad de **detectar** si un mensaje ha sido modificado desde su transmisión hasta su recepción.
+Integridad: Capacidad de **detectar** si un mensaje ha sido modificado desde su transmisión hasta su recepción.
 
 La modificación se refiere tanto a una modificación **explícita por un atacante** como a una modificación debido a un error (por ejemplo de transmisión). 
 
@@ -390,173 +408,6 @@ Cifrando **el hash de un mensaje** con nuestra clave privada, aseguramos que ese
 
 Firma digital de un mensaje = cifrado del hash de un mensaje con mi clave privada
 
-# Firma digital: punto de vista técnico
-<!-- _class: lead -->
-
----
-
-Podemos proteger la **integridad, no-repudio y autenticidad de un mensaje** mediante una combinación de hash y cifrado asimétrico
-
-- Bob tiene un documento que quiere firmar
-- Bob tiene también una clave pública y otra privada
-- Alice conoce la clave pública de Bob
-
----
-
-![w:20em center](images/IMG_0055.PNG)
-
-- Solo Bob puede cifrar con su clave $K_{priv}$ y cualquier puede descifrar con $K_{pub}$
-- Pero si pueden descifrar el mensaje, **todos saben que el mensaje solo puede haberlo enviado Bob: autenticación**
-
----
-
-Problema: los documentos a firmar pueden ser muy grandes
-
-* Los algoritmos como RSA solo cifran **números enteros** de una longitud igual a la clave. Por ejemplo, 4096 bits.
-* Bob podría dividir el documento en bloques de 4096B, pero eso no es eficiente
-* Solución: **hash cifrado con la clave privada**
-    - Bob calcula el hash de su documento de 10MB. El hash tiene 512 bytes
-    - Bob cifra el hash con su clave privada
-    - Cualquiera persona (eso incluye a Alice) puede conocer la clave pública de Bob y descifrar el hash
-    - Si se encuentra un documento con un hash firmado por una clave pública, cualquier persona puede verificar que el autor del documento es el poseedor de la clave privada.
-
-> https://cryptobook.nakov.com/digital-signatures/rsa-signatures
-
-## Firma digital
-
-Solución: cifrar solo el hash del mensaje
-
-En firma digital se cifra el hash del mensaje con nuestra clave privada
-
-$$
-Firma_{Bob}(document) = E_{RSA}(K_{priv}^{Bob}, hash(document))
-$$
-
-$$
-Verificacion(document, Firma_{Bob}) = (D_{RSA}(K_{pub}^{Bob}, Firma_{Bob}) =^? hash(document))
-$$
-
----
-
-![](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/assets/signature-sign-verify.png)
-
-> https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/digital-signatures.html
-
-## Ejemplo: Debian firma sus imágenes
-
-- Ejemplo: https://danilodellaquila.com/en/blog/how-to-verify-authenticity-of-downloaded-debian-iso-images
-- Archivos: https://cdimage.debian.org/debian-cd/10.9.0-live/amd64/iso-hybrid/
-
----
-
-![](images/hash-debian.png)
-
----
-
-(archivo anterior, *hasheado* y cifrado con clave privada de Debian)
-
-```
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEE35ucSeqpKYQyWJ122ofoDWKUvpsFAmBfrDUACgkQ2ofoDWKU
-vpsNrRAAh+bSjSbiIXcugkI9faItOdKnwM+JaqGFRrDVK68Qbc/Y5Nv4Z8KmhL/a
-7nlzOrwA7dyEWFuwRiyLpoZOnlNLTXLWr8/7UJhJGt//2vJFpoHmBcXKnRFeZHfE
-4XXhAq7XA/naPoTHfbuEAFVqZlnWhewBtsvwL3cn/FwyvsujCxEK9LtXl6L7ziK5
-Am6LcIB6TJe3shMeUSRmvhF+d/dZ1LTYKwmm4SkCLsp0Z52dg8eRUpbq2uyQpkHM
-TdtC0kE4a2u7GmDZD+VIggslfHS2tm3vE9RLfWcobjoF51bvowrPGFGm9tg+ANFt
-We+sUDNv+cAUrTq9dfwoDBJueR4IRxAZoEKyl4V4mxtRsawG6w0Uzz66qrq7ROUn
-isBz3sGBcNerI6uOUfP/U1mMmDMsjbaVSQCUsM9Pzpt8Y39vHgzMVwTGOkfzgUZJ
-Qcf+cqyGDSpin2DjcPlUAKKtGdnnWDPVPskrgSTxzQmV8n+VgEiGRW1y46i5sh4t
-dc4ETsKoz2H1JFVJY/t3kAthHCAkW/hhDX4mBM8ZPSdfNZiXNNOZGu673VwLI/bN
-pN8+FgezKfD8iZHWZxHk++91Kj8sZVToVI3m8rL5nKvhEKLFNS7XDq2bmKKbtF0t
-kKw8HI5Tzv55YG0P4oToeLpE6ajxxZVrCAGJvD6lMiyfftOYU2A=
-=KWqY
------END PGP SIGNATURE-----
-```
-
-# Firma digital: punto de vista legal
-<!-- _class: lead -->
-
-## Desde un punto de vista legal...
-
-- Firma: artículo 3.11
-    - Persona física
-    - Autenticación, no repudio, integridad
-    - Misma función que firma manuscrita
-- Sello: artículo 3.26
-    - Persona jurídica
-    - Autenticación e integridad
-
-
-> [Reglamento (UE) 910/2014 del Parlamento Europeo y del Consejo, de 23 de julio de 2014 relativo a la identificación electrónica y los servicios de confianza para las transacciones electrónicas en el mercado interior](https://www.boe.es/doue/2014/257/L00073-00114.pdf)
-
-## Propiedades de firmas y sellos
-
-- Vinculadas de forma única creador
-- Permite la identificación del creador: **autenticación**
-- Solo controlada por el creador
-- Permite probar que el creador ha tenido acceso al documento: sabe qué está firmando
-- Permite detección de alteraciones en el documento: **integridad**
-- Necesita la utilización de un dispositivo informático
-
-![bg right:30% w:100%](https://upload.wikimedia.org/wikipedia/commons/d/dc/RubberStamp_blank.jpg)
-
-## Firma cualificada
-
-Firma electrónica aceptada por la administración
-
-¡No tiene por qué ser la mejor!
-
-Caso DNI-e en España: mínima implantación por problemas de usabilidad
-
-Se exige personarse presencialmente en una agencia de certificación
-
-![bg left:40% w:80%](https://cambiarpin.es/wp-content/uploads/2021/04/DNI-3.jpg)
-
-## Usos
-
-La administración solo admite firmas/sellos electrónicos cualificados
-
-En Europa, asimilables a firma manuscrita o sello de entidad
-
-ojo: firmas no cualificadas **podrían tener también efectos jurídicos**
-
-## Un poco de historia: ROCA
-
-The ROCA factorization attack could potentially allow a remote attacker to reverse-calculate a private encryption key just by having a target’s public key
-
-Algunas tarjetas utilizaban una implementación no segura
-
-Se tuvieron que retirar todas y [no aceptar firma electrónica durante ese periodo](https://elpais.com/politica/2017/11/09/actualidad/1510217634_470836.html)
-
-![bg right:50% w:100%](https://crocs.fi.muni.cz/_media/public/papers/roca_impact.png?w=400&tok=973b60)
-
-> https://crocs.fi.muni.cz/public/papers/rsa_ccs17
-
----
-
-Del anuncio de la vulnerabilidad (https://crocs.fi.muni.cz/public/papers/rsa_ccs17): 
-
-The time complexity and cost for the selected key lengths (Intel E5-2650 v3@3GHz Q2/2014):
-
-- 512 bit RSA keys - 2 CPU hours (the cost of $0.06);
-- 1024 bit RSA keys – 97 CPU days (the cost of $40-$80);
-- 2048 bit RSA keys – 140.8 CPU years, (the cost of $20,000 - $40,000).
-
-## Delegación de firma
-
-- Sellos “por poderes”: una persona firma en nombre de una empresa
-- Sistema “Cl@ve”: la administración firma por nosotros
-
-## Certificados electrónicos
-
-- Declaración electrónica que vincula los datos de validación de un sello con una persona jurídica y confirma el nombre de esa persona
-- Declaración que permite autenticar un sitio web y vincula el sitio web con la persona física o jurídica a quien se ha expedido el certificado
-- La norma exige que se gestione el ciclo de vida de un certificado. Revocaciones, cambios de estado...
-
-Los veremos en la siguiente sesión
-
-
 # Conclusiones
 <!-- _class: lead -->
 
@@ -575,14 +426,19 @@ Los veremos en la siguiente sesión
 
 - [Hashing Algorithms and Security - Computerphile](https://www.youtube.com/watch?v=b4b8ktEV4Bg)
 - [The State of Hashing Algorithms — The Why, The How, and The Future](https://medium.com/@rauljordan/the-state-of-hashing-algorithms-the-why-the-how-and-the-future-b21d5c0440de)
-- [Base legal de la Firma Electrónica (España)](https://firmaelectronica.gob.es/Home/Ciudadanos/Base-Legal.html)
-- [What are Digital Signatures? - Computerphile](https://www.youtube.com/watch?v=s22eJ1eVLTU)
 
 ---
 
 Ejercicios: https://github.com/Juanvvc/crypto2/tree/master/ejercicios/03
 
-Continúa en: [TLS y Public Key Infrastructure](04-pki.html)
+Sigue el tema en:
+
+- [Firma digital](03-firma.html)
+- [Blockchain](03-blockchain.html)
+
+Siguiente tema:
+
+- [TLS y Public Key Infrastructure](04-pki.html)
 
 # ¡Gracias!
 <!-- _class: last-slide -->

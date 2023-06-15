@@ -43,7 +43,7 @@ Hoy hablaremos del primero, confidencialidad, y empezaremos a poner las bases pa
 1. [Confidencialidad perfecta y computacional](#5)
 1. [Criptografía simétrica o de clave secreta](#19)
 1. [Criptografía asimétrica o de clave pública](#44)
-1. [Conclusiones](#71)
+1. [Conclusiones](#70)
 
 ---
 <!-- _class: with-info -->
@@ -697,13 +697,6 @@ Paso 1 |Qué sabe Alice|Qué sabe Bob|Qué es público
 
 Alice y Bob, que no se habían visto nunca antes, puede utilizar $s=g^{ab}$ como clave de un cifrado simétrico de flujo o bloque como ChaCha20 ó AES
 
-## Problemas de Diffie Hellman: Man in the middle
-<!-- _class: with-info -->
-
-![center](images/asimetrica/dh-maninthemiddle.png)
-
-Diffie-Hellman no protege contra MitM, no tiene un sistema de gestión de claves públicas asociadas a identidades. Necesitamos otras tecnologías.
-
 ## Nuevas direcciones
 
 El DLP, en la versión D-H de 1976, no una solución completa: permite hacer acuerdo de claves, pero no cifrado
@@ -905,7 +898,7 @@ Ejemplos|AES, ChaCha|RSA, ECDSA, ECDH
 ECDSA: Elliptic Curve DSA
 ECDH: Elliptic Curve Diffie-Hellman
 -->
-
+ 
 ## Resumen
 <!-- _class: smaller-font -->
 
