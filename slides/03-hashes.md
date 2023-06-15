@@ -33,14 +33,13 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
 
 Los hashes nos permiten calcular **una firma digital**
 
-![bg right w:90%](images/asimetrica/dh-maninthemiddle.png)
-
 # Hoy hablamos de...
 <!-- _class: cool-list toc -->
 
 1. [Funciones de hash](#4)
-1. [Usos](#23)
-1. [Conclusiones](#34)
+1. [Ejemplos de aplicaciones](#23)
+1. [Aplicación: cadena de custodia](#34)
+1. [Resumen y referencias](#40)
 
 # Funciones de hash
 <!-- _class: lead -->
@@ -97,7 +96,7 @@ Dado un mensaje $m$ con un resumen $r=h(m)$, para encontrar otro mensaje $m'$ co
 
 ## Ejemplos de valores de hash
 
-![center w:25em](https://upload.wikimedia.org/wikipedia/commons/2/2b/Cryptographic_Hash_Function.svg)
+![center w:30em](https://upload.wikimedia.org/wikipedia/commons/2/2b/Cryptographic_Hash_Function.svg)
 
 <!--
 Ejemplos de valores de hash:
@@ -126,7 +125,7 @@ Los hashes se usan mucho en minería bitcoin, así que podemos utilizar sus tabl
 - Bitmain AntMiner D3: 19,3 GH/s
 - Avalon 6: 3.5 TH/s
 
-![bg right:50%](https://images-na.ssl-images-amazon.com/images/I/610vUTCY-qL._AC_SL1000_.jpg)
+![bg right:50%](images/hashes/avalon6.jpg)
 
 > Más ejemplos: https://miningchamp.com/
 > En la imagen, un Avalon 6, bloque especializado en calcular hashes
@@ -276,7 +275,7 @@ b12ee96400fa19e7909a48f1727d3c81f6af71178209b58b612b5d2e75bf2d13  -
 
 https://crackstation.net/
 
-![center w:40em](images/crackstation.png)
+![center w:40em](images/hashes/crackstation.png)
 
 ---
 <!-- _class: extra-slide -->
@@ -288,21 +287,21 @@ En este curso no hacemos criptoanálisis, es decir, no rompemos cosas. Si estái
 - Usando diccionarios de "contraseñas probables"
 - Herramientas como [John the Ripper](https://www.openwall.com/john/) o [CrackHash](https://pypi.org/project/crackhash/) aprovechan estas técnicas
 
-# Usos
+# Ejemplos de aplicaciones
 <!-- _class: lead -->
 
 Árboles de Merkle, Integridad, Cadena de custodia...
 
-## Merkle Hash tree
-<!-- _class: smaller-font -->
+## Firma digital
+<!-- _class: with-success -->
 
-Si un archivo gran cambia a menudo y hay que calcular su hash cada vez, llevará mucho tiempo
+Cifrando **el hash de un mensaje** con nuestra clave privada, aseguramos que ese mensaje lo hemos enviado nosotros y cualquier puede verificarlo
 
-Solución: calcular hash solo de los bloques que cambien, y agruparlos en un árbol
+![center w:15em](https://upload.wikimedia.org/wikipedia/commons/7/78/Private_key_signing.svg)
 
-Permite firmar bases de datos, discos... de forma eficiente
+Firma digital de un mensaje = cifrado del hash de un mensaje con mi clave privada
 
-![center w:25em](images/hashes/Hash_Tree.svg)
+Tenemos todo un [tema para hablar de firma digital](03-firma.html)
 
 ## Almacenamiento de contraseñas
 
@@ -390,25 +389,61 @@ Hay modos de AES que utilizan estos esquemas: [AES-GCM](https://en.wikipedia.org
 - Usado en TLS
 - Vulnerable algún ataques de padding: [Padding Oracle, pentesterlab](https://book.hacktricks.xyz/crypto/padding-oracle-priv)
 
-## Cadena de custodia
+## Merkle Hash tree
+<!-- _class: smaller-font -->
+
+Si un archivo gran cambia a menudo y hay que calcular su hash cada vez, llevará mucho tiempo
+
+Solución: calcular hash solo de los bloques que cambien, y agruparlos en un árbol
+
+Permite firmar bases de datos, discos... de forma eficiente
+
+![center w:25em](images/hashes/Hash_Tree.svg)
+
+## Blockchain
+
+![w:30em center](images/blockchain/bc-transactions.png)
+
+Tenemos todo un [tema para hablar de blockchain](03-blockchain.html)
+
+## Aplicación: cadena de custodia
+<!-- _class: lead -->
+
+---
 
 Cuando se investiga un crimen... ¿cómo se protegen las evidencias digitales contra modificaciones?
 
-Inicio de cadena de custodia publicando sus hashes
-
 ![center w:20em](https://www.ealde.es/wp-content/uploads/2021/02/analisis-forense-digital-ealde.jpg)
 
+---
 
-## Firma digital
-<!-- _class: with-success -->
+![center](images/hashes/dossier.png)
 
-Cifrando **el hash de un mensaje** con nuestra clave privada, aseguramos que ese mensaje lo hemos enviado nosotros y cualquier puede verificarlo
 
-![center w:15em](https://upload.wikimedia.org/wikipedia/commons/7/78/Private_key_signing.svg)
+## Inicio de una cadena de custodia
 
-Firma digital de un mensaje = cifrado del hash de un mensaje con mi clave privada
+- Valor de hash en un acta notarial
+- Valor de hash en un informe que se presenta en juzgado
+- Valor de hash en una tercera parte de confianza. Ejemplo: eGarante
 
-# Conclusiones
+Cuando llegue el jucio (o una investigación paralela) las evidencias digitales tienen que tener el mismo valor de hash que el inicial, lo que demuestra que la prueba no ha sido modificada
+
+![bg right w:90%](images/hashes/chainofcustody-form.png)
+
+## Cadena de custodia en blockchain
+
+![center w:20em](images/hashes/Blockchain-enabled-Digital-Chain-of-Custody.png)
+
+> https://www.researchgate.net/publication/338443914_A_Survey_on_the_Internet_of_Things_IoT_Forensics_Challenges_Approaches_and_Open_Issues
+
+
+## Preguntas...
+
+- ¿Es válida la cadena de custodia si no se publica el hash?
+- Si el valor de hash no es el mismo... ¿se ha invalidado la prueba?
+- MD5... ¿es válido como valor de hash para el inicio de una cadena de custodia?
+
+# Resumen y referencias
 <!-- _class: lead -->
 
 ## Resumen

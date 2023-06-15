@@ -40,7 +40,7 @@ Los hashes nos permiten calcular **una firma digital**
 
 1. [Firma digital: punto de vista técnico](#4)
 1. [Firma digital: punto de vista legal](#14)
-1. [Conclusiones](#23)
+1. [Conclusiones](#24)
 
 # Firma digital: punto de vista técnico
 <!-- _class: lead -->
@@ -62,14 +62,6 @@ Podemos proteger la **integridad, no-repudio y autenticidad de un mensaje** medi
 
 ---
 
-Cifrando **el hash de un mensaje** con nuestra clave privada, aseguramos que ese mensaje lo hemos enviado nosotros y cualquier puede verificarlo
-
-![center w:15em](https://upload.wikimedia.org/wikipedia/commons/7/78/Private_key_signing.svg)
-
-Firma digital de un mensaje = cifrado del hash de un mensaje con mi clave privada
-
----
-
 Problema: los documentos a firmar pueden ser muy grandes
 
 * Los algoritmos como RSA solo cifran **números enteros** de una longitud igual a la clave. Por ejemplo, 4096 bits.
@@ -81,6 +73,7 @@ Problema: los documentos a firmar pueden ser muy grandes
     - Si se encuentra un documento con un hash firmado por una clave pública, cualquier persona puede verificar que el autor del documento es el poseedor de la clave privada.
 
 > https://cryptobook.nakov.com/digital-signatures/rsa-signatures
+
 
 ## Firma digital
 
@@ -98,6 +91,14 @@ $$
 
 ---
 
+Cifrando **el hash de un mensaje** con nuestra clave privada, aseguramos que ese mensaje lo hemos enviado nosotros y cualquier puede verificarlo
+
+![center w:15em](https://upload.wikimedia.org/wikipedia/commons/7/78/Private_key_signing.svg)
+
+Firma digital de un mensaje = cifrado del hash de un mensaje con mi clave privada
+
+---
+
 ![](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/assets/signature-sign-verify.png)
 
 > https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/digital-signatures.html
@@ -109,7 +110,7 @@ $$
 
 ---
 
-![](images/hash-debian.png)
+![](images/hashes/hash-debian.png)
 
 ---
 
@@ -172,6 +173,15 @@ Caso DNI-e en España: mínima implantación por problemas de usabilidad
 Se exige personarse presencialmente en una agencia de certificación
 
 ![bg left:40% w:80%](https://cambiarpin.es/wp-content/uploads/2021/04/DNI-3.jpg)
+
+## Fecha de firma
+
+Además del contenido del documento, es necesario asegurar cuándo se ha realizado la firma digital, y las condiciones en las que se ha hecho:
+
+- La fecha y hora actual, que estará firmada digitalmente por alguien confiable
+- Que la firma era válida en el momento del firmado
+
+Veremos más detalles técnicos en el tema de certificados
 
 ## Usos
 
