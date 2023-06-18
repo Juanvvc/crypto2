@@ -1,9 +1,9 @@
 # Compiles the marp deck into pdf and html
 
-# This command only works if you have marp-cli: npm install -g @marp-team/marp-cli
-# Optional: chrome/chromium in your system for the PDF
+# This command only works if you have marp-cli: npm install @marp-team/marp-cli
+# Optional: to convert the HTMLs to PDFs using the command line, you will need chrome/chromium
 MARP=marp
-# Alternatively, this command needs marp-cli from docker: docker pull marpteam/marp-cli
+# Alternatively, you can use marp-cli from docker: run "docker pull marpteam/marp-cli" and use:
 #MARP=docker run --rm --init -v "$(PWD)":/home/marp/app/ marpteam/marp-cli
 
 IN_DIR=slides
