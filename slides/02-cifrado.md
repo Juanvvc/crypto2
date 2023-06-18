@@ -412,7 +412,7 @@ ChaCha es el algoritmo de cifrado simétrico de flujo más usado
 
 Alternativa al cifrado de flujo: cortar el texto en claro en bloques de la misma longitud de la clave y cifrar cada uno de los bloques
 
-![center w:30em](https://upload.wikimedia.org/wikipedia/commons/d/d6/ECB_encryption.svg)
+![center w:30em](images/simetrica/ECB_encryption.svg)
 
 El cifrado de bloque es el muy utilizado: es rápido, no necesita exigentes o lentos algoritmos PRNG y ya tenemos hardware especializado en su cifrado/descifrado
 
