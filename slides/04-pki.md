@@ -123,7 +123,7 @@ Dos usuarios $Alice$ y $Bob$, cada uno tiene las claves públicas del otro
 Es decir: Alice y Bob firma los parámtros A y B y, si la firma verifica, Bob sabe que está hablando con Alice y al revés.
 -->
 
-## Cifrado híbrido: proceso
+## Cifrado híbrido: HTTPS
 
 1. Alice y Bob negocian los parámetros de seguridad
 1. Alice y Bob acuerdan una clave (**clave de sesión**) utilizando D-H autenticado con sus claves públicas
@@ -134,32 +134,24 @@ Esto es el protocolo TLS (https)
 
 ![bg right:50%](https://theniceweb.com/wp-content/uploads/2017/02/fig2SSL.gif)
 
----
-<!-- _class: center -->
+## Ejemplo configuración TLS (1)
+<!-- _class: center two-columns -->
 
 ![](images/tls-example1.png)
 
-Protocolo negociado: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-<!--
 - ECDEHE: Elliptic Curve Diffie-Hellman, ephimeral
-- RSA: authentication
+- RSA: authentication de servidor
 - AES_128_GCM: AES con claves de 128 bits en modo GCM. Este no lo hemos visto, añade un hash al cifrado.
 - SHA256: algoritmo de hash usado por el modo GCM
--->
 
----
-<!-- _class: center -->
+## Ejemplo configuración TLS (2)
+<!-- _class: two-columns -->
 
 ![](images/tls-example2.png)
 
-Protocolo negociado: TLS_AES_128_GCM_SHA256
-
-<!--
-- TLS: la clave la decide el cliente, no hay D-H
-- AES_128_GCM: AES con claves de 128 bits en modo GCM. Este no lo hemos visto, añade un hash al cifrado.
+- TLS: la clave la decide el servidor y la envía cifrada con RSA, no hay D-H
+- AES_128_GCM: AES con claves de 128 bits en modo GCM. Aunque este modo no lo hemos visto, añade un hash al cifrado para ofrecer también integridad
 - SHA256: algoritmo de hash usado por el modo GCM
--->
 
 ## Qué sabemos hacer
 
