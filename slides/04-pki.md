@@ -130,7 +130,7 @@ Es decir: Alice y Bob firma los parámtros A y B y, si la firma verifica, Bob sa
 1. Luego usan esa clave para cifrar las comunicaciones AES
 1. Periódicamente, renuevan la clave de sesión ejecutando de nuevo un D-H (**modo D-H efímero**)
 
-Esto es el protocolo TLS (https)
+Esto es el [protocolo TLS](A2-protocolos.html)
 
 ![bg right:50%](https://theniceweb.com/wp-content/uploads/2017/02/fig2SSL.gif)
 
