@@ -48,11 +48,11 @@ Es decir, no repudio = autenticidad + integridad
 <!-- _class: cool-list toc -->
 
 1. [Autenticación](#4)
-1. [Desafío - Respuesta](#20)
-1. [Autenticación por contraseña](#28)
-1. [Sesiones por tokens](#39)
-1. [Security Assertion Markup Language](#54)
-1. [Resumen y referencias](#58)
+1. [Desafío - Respuesta](#23)
+1. [Autenticación por contraseña](#31)
+1. [Sesiones por tokens](#40)
+1. [Security Assertion Markup Language](#58)
+1. [Resumen y referencias](#62)
 
 # Autenticación
 <!-- _class: lead -->
@@ -105,7 +105,7 @@ Para poder tener autenticación es necesaria la existencia de identidades
 - Personas: su identidad física
 - Webs: que el servidor de una URL sea el que tiene que ser
 
-![bg left:60%](https://technofaq.org/wp-content/uploads/2015/06/idtheft830-1024x659.jpg.webp)
+![bg left:60%](images/auth/identities.webp)
 
 <!--
 Hay muchas formas de guardar nuestra identidad en internet:
@@ -114,6 +114,8 @@ Hay muchas formas de guardar nuestra identidad en internet:
 - Más formal: certificados, DNI electrónico...
 
 En el caso de webs o empresas, la identidad puede ser simplemente que cuando el usuario se conecta a bancosantander.com, que el servidor que le responda es propiedad del Banco Santander
+
+Image ![label](https://technofaq.org/wp-content/uploads/2015/06/idtheft830-1024x659.jpg.webp)
 -->
 
 ## Certificados
@@ -141,10 +143,12 @@ Necesitamos otras soluciones para usuarios
 
 > https://searchsecurity.techtarget.com/feature/5-common-authentication-factors-to-know
 
-![bg right:50% w:100%](https://cdn.ttgtmedia.com/rms/onlineimages/security-multifactor_authentication.png)
+![bg right:50% w:100%](images/auth/multifactor.png)
 
 <!--
 Estos son los factores clásico de la autenticación
+
+![bg right:50% w:100%](https://cdn.ttgtmedia.com/rms/onlineimages/security-multifactor_authentication.png)
 -->
 
 ## Autenticación tradicional: algo que sabemos
@@ -621,6 +625,18 @@ En el ejemplo un sismtema de pagos por tokens: queremos poder comprar desde una 
 
 Podemos usar tokens, que se validan y caducan en cada paso, y así no hace falta decirle nuestra tarjeta de crédito a nadie
 -->
+
+## JSON Web Token (JWT)
+
+![center w:35em](images/auth/jwt.png.webp)
+
+> [Title](https://www.cronj.com/blog/what-is-json-web-token-jwt)
+
+---
+
+![center](images/auth/jwt_ng1_en.png)
+
+> https://research.securitum.com/jwt-json-web-token-security/
 
 ## OAuth
 <!-- _class: smaller-font -->
