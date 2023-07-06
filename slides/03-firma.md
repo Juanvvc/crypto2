@@ -172,7 +172,7 @@ Caso DNI-e en España: mínima implantación por problemas de usabilidad
 
 Se exige personarse presencialmente en una agencia de certificación
 
-![bg left:40% w:80%](https://cambiarpin.es/wp-content/uploads/2021/04/DNI-3.jpg)
+![bg left:40% w:80%](images/firma/DNI-3.jpg)
 
 ## Fecha de firma
 

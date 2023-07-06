@@ -90,7 +90,7 @@ Un atacante **no puede conocer la clave secreta**
 
 Pero un atacante **puede convencer a cada parte que es otra persona**: así se pone en medio (*man in the middle*): D-H es vulnerable a ataques MitM.
 
-![bg right w:100%](https://i.imgur.com/Cq78TET.png)
+![bg right w:100%](images/asimetrica/dh-maninthemiddle.png)
 
 > https://www.trendmicro.com/en_us/research/15/i/how-exploit-kit-operators-are-misusing-diffie-hellman-key-exchange.html
 
@@ -116,6 +116,19 @@ Hay muchas formas de guardar nuestra identidad en internet:
 En el caso de webs o empresas, la identidad puede ser simplemente que cuando el usuario se conecta a bancosantander.com, que el servidor que le responda es propiedad del Banco Santander
 -->
 
+## Certificados
+<!-- _class: with-info -->
+
+Certificado = (1) Identidad, (2) Clave pública de la indentidad, (3) firmado por una autoridad de certificación
+
+Esto funciona bien en servidores: HTTPS siempre autentica servidores con certificados y, **opcionalmente**, usuarios
+
+El uso de certificados no se ha extendido a usuarios físicos: son demasiados complejos de gestionar
+
+![bg left:40% w:80%](images/firma/DNI-3.jpg)
+
+Necesitamos otras soluciones para usuarios
+
 ## Factores de la autenticación
 
 **Algo que sabemos** (*knowledge*): contraseña, PIN...
@@ -124,7 +137,7 @@ En el caso de webs o empresas, la identidad puede ser simplemente que cuando el 
 
 **Algo que somos** (*inference*): huellas digitales, voz, cara...
 
-El servidor podría también comprobar que nos estamos conectando desde el lugar y a las horas habituales
+**Dónde estamos** (*location*): el servidor podría también comprobar que nos estamos conectando desde el lugar y a las horas habituales
 
 > https://searchsecurity.techtarget.com/feature/5-common-authentication-factors-to-know
 
@@ -158,17 +171,31 @@ Vulnerabilidades de *algo que sabemos*:
 ![ w:15em](https://cdn.mos.cms.futurecdn.net/gQod8s5hcRCyuY4XnXWXuf-970-80.jpg) ![ w:15em](https://www.androidguys.com/wp-content/uploads/2016/05/google-authenticator-696x522.jpg)
 
 - USB Keys
-- Google Authenticator
-- SMS de validación...
+- Google Authenticator instalado en un teléfono
+- SMS de validación
 
 ---
 
 Vulnerabilidades de *algo que tenemos*:
 
-- Que nos roben el móvil
+- Que nos roben el dispositivo
 - Que esté intervenido por un atacante
     - Troyanos bancarios
     - Malware en Android
+    - Click hijacking
+    - Social engineering
+
+![right bg w:90%](images/auth/activision-hacked.png)
+
+> https://www.bleepingcomputer.com/news/security/activision-confirms-data-breach-exposing-employee-and-game-info/
+
+<!--
+
+El hackeo reciente a Activision se produjo así: estaba activado un sistema 2FA que enviaba número de confirmación por SMS
+
+Los atacantes inundaron a whatsapp a los trabajadores "somos el servicio téncicos, necesitamos su número de confirmación para atender una incidencia", hasta que un trabajador envió su número de confirmación
+
+-->
 
 ## Algo que *somos*
 
@@ -185,6 +212,24 @@ Vulnerabilidades de *algo que somos*:
 - Si algo va mal... **no podemos cambiar nuestros datos biométricos**
 
 > https://www.idrnd.ai/can-biometric-data-be-stolen/
+
+## Localización y otras anomalías
+
+- Detectar y registrar los patrones de los usuarios: localización, navegadores comunes, horarios...
+- Alarmas cuando haya actividad que se salga del patrón
+
+![w:15em center](images/auth/Impossible-Travel-Featured-Image.webp)
+
+> https://sra.io/blog/impossible-travel/
+
+---
+
+Vulnerabilidades:
+
+- los atacantes pueden usar *proxies* para similar que se están conectando desde el país de la víctima
+- no válido para nuevos usuarios aún sin perfilar
+
+
 
 ## 2FA: Doble Factor de Autenticación
 
@@ -318,8 +363,23 @@ En firma electrónica normalmente no hará falta que Alice haga un dasafío, **B
 Documento: cualquier mensaje que Bob quiera intercambiar. No es solo un .docx, es cualquier mensaje, cadena de texto, parámetro de seguridad...
 
 ## Authenticated Diffie-Hellman
+<!-- _class: smaller-font -->
 
-![center](https://present5.com/presentation/4dade2d669283ba231391cd696e9e4f2/image-37.jpg)
+
+Dos usuarios $Alice$ y $Bob$, cada uno tiene las claves públicas del otro
+
+1. Acuerdan $g$ y $p$ primos entre sí
+1. Escogen números en secreto $a$ y $b$
+1. Se envían entre ellos:
+    - $Alice \rightarrow Bob: A=g^{a} \mod p, sign(A, SK_A)$
+    - $Bob \rightarrow Alice: B=g^{b} \mod p, sign(A, SK_B)$
+1. Verifican la firma de cada lado
+1. Calculan en secreto:
+    - $Alice$: $s = B^{a} \mod p = g^{ab} \mod p$
+    - $Bob$: $s = A^{b} \mod p = g^{ab} \mod p$
+1. Y usan $s$ como clave de cifrado un algoritmo simétrico
+
+![bg right:30% w:110%](https://www.pngall.com/wp-content/uploads/2016/05/Original-Stamp.png)
 
 > [Authentication and Authenticated Key Exchanges](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.59.6682), Whitfield Diffie and Paul C. Van Oorschot and Michael J. Wiener, 1992.
 > [Protocols PK Encr. /Auth. PK Key Establishment Secure Comm. in Open Networks SSL/TLS Nicolas Protocols PK Encr. /Auth. PK Key Establishment Secure Comm. in Open Networks SSL/TLS Nicolas T. Courtois - University College London](https://present5.com/protocols-pk-encr-auth-pk-key-establishment-secure/)
@@ -412,43 +472,22 @@ Esta es la solución usada en la actualidad
 - Es el mecanismo usado en Linux, Windows... y en la mayor parte de las webs
 - Guardar una contraseña en una BBDD es un error, hay que guardar solo $hash(SALT:PASSWORD)$
 
-A veces, como en *bcrypt*, no se hace un hash sino un cifrado simétrico irreversible
-
-## Protocolo Bcrypt
-
-[Bcrypt (1999)](https://www.usenix.org/legacy/events/usenix99/provos/provos_html/node1.html), de Niels Provos y David Mazieres, es un sistema para proteger contraseñas en bases de datos.
-
-- Basado en el cifrado por bloques de [Blowfish (1994)](https://www.schneier.com/academic/archives/1994/09/description_of_a_new.html) de Bruce Schneier (en la foto)
-- Se aprovecha de que Blowfish es muy lento durante la fase de expansión de claves
-
-![bg right:40%](https://upload.wikimedia.org/wikipedia/commons/f/fc/Bruce_Schneier_at_CoPS2013-IMG_9174.jpg)
-
-<!--
-En la fotografía no está el creador de bcrypt sino el creador de Blowfish: Bruce Schneier
-
-El blog y los libros de Bruce Schneier son un imprescidible para estar en el mundo de la criptografía y la seguridad operacional. Es un divulgador nada técnico y accesible a personas con cualquier conocimiento.
-
-https://www.schneier.com/
--->
-
-## Cifrado como "hash", nonce como "salt"
+## BCRYPT: Cifrado como "hash", nonce como "salt"
+<!-- _class: with-warning -->
 
 ![center w:35em](https://upload.wikimedia.org/wikipedia/commons/3/32/Bcrypt.png)
 
 Esto es lo que guarda la BBDD para cada usuario
 
-## Algoritmo
+Nota: scrypt es similar a bcrypt, igualmente válido y más actual
 
+<!--
 - Entrada:
 	- `password`
 	- `cost`, 10 ó 12 es usual son valores usuales
 	- `salt`, que se se escoge automáticamente. La *salt* es otro nombre para el *nonce*
 - Derivación de clave, que es el proceso lento de Blowfish, se hace $2^{cost}$ veces.
 - Cifra con la clave derivada la cadena estándar *OrpheanBeholderScryDoubt* 64 veces.
-
-<!--
-
-![center w:32em](https://i.stack.imgur.com/Z63W8.png)
 
 -->
 
@@ -626,7 +665,6 @@ CUIDADO: en los ciberataques actuales, los atacantes buscan por todos los medios
 -->
 
 ## Windows
-<!-- _class: two-columns smaller-font -->
 
 ![](https://ldapwiki.com/attach/Security%20Support%20Provider%20Interface/SSPI-Architecture.png)
 
@@ -637,6 +675,12 @@ CUIDADO: en los ciberataques actuales, los atacantes buscan por todos los medios
     - Tickets Kerberos
     - Hashes NT ó LN
     - En memoria RAM
+
+> https://www.elastic.co/blog/introduction-to-windows-tokens-for-security-practitioners
+
+---
+
+![](images/auth/1-windows-logon-session-access-blog-windows-tokens-for-defenders.png)
 
 ## Ataques
 
@@ -695,7 +739,7 @@ Security Assertion Markup Language (SAML) is an XML-based open-standard for tran
 - Si tenemos su clave pública, podemos desafiarle a que firme algo con su clave privada
 - Si usamos usuario y contraseña, la base de datos no puede guardar esa información en claro
     - hash + salt
-    - bcrypt
+    - bcrypt / scrypt
 - Lo ideal es que solo tengamos que "probar nuestra identidad" una vez, y el resto de peticiones funcionamos con tokens
 
 ## Recomendaciones generales
