@@ -168,12 +168,11 @@ Question: this only work in a very precise moment: near the end of the service, 
 
 - Infiltration
 - Luck
-- An insider
-- Patient
+- Assistance from an insider
+- Patience
 
-The three possibilities are real
+If the attacker infiltrates the infrastructure, most probably, all real emails between the two parties are going to "disappear". Check for automatic mail rules!. Beware: the compromised infrastructure maybe the victim's infrastructure or the other end of the communication!
 
-If the attacker infiltrates the infrastructure, ost probably, all real emails between the two parties are going to "disappear". Check for automatic mail rules!. Beware: the infiltrated infrastructure maybe the victim's infrastructure or the other end of the communication!
 -->
 
 ---

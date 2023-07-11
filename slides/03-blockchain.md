@@ -135,7 +135,7 @@ El primero que encuentre ese COUNTER se lleva un bitcoin
 
 ---
 
-https://btc.com/
+https://blockchair.com/bitcoin?from=bitcoin.com
 
 ![](images/blockchain/btccom.png)
 
@@ -207,9 +207,7 @@ En el registro de BlockChain / Ethereum y otros, a parte de transacciones econó
 
 ---
 
-Ejercicios: https://github.com/Juanvvc/crypto2/tree/master/ejercicios/03
-
-Sigue el tema en:
+Ejercicios: <https://colab.research.google.com/github/Juanvvc/crypto2/blob/main/ejercicios/03/Bitcoin.ipynb>
 
 - [Firma digital](03-firma.html)
 - [Blockchain](03-blockchain.html)

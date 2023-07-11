@@ -464,7 +464,8 @@ Cuando llegue el jucio (o una investigación paralela) las evidencias digitales 
 
 ---
 
-Ejercicios: https://github.com/Juanvvc/crypto2/tree/master/ejercicios/03
+Ejercicios: <https://colab.research.google.com/github/Juanvvc/crypto2/blob/main/ejercicios/03/Hashes.ipynb>
+
 
 Sigue el tema en:
 

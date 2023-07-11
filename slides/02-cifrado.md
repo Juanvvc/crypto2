@@ -948,6 +948,8 @@ Las curvas elípticas son un concepto complejo. Esto son algunas propuestas expl
 
 <!-- _class: center -->
 
+Ejercicios: <https://colab.research.google.com/github/Juanvvc/crypto2/blob/main/ejercicios/02/Sistemas%20de%20cifrado.ipynb>
+
 Continúa en: [Funciones de Hash y firma digital](03-hashes.html)
 
 # ¡Gracias!
