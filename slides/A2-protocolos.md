@@ -139,9 +139,10 @@ Los servidores pueden exigir a sus clientes utilizar solo versiones actualizadas
 
 ---
 
-![center w:25em](https://upload.wikimedia.org/wikipedia/commons/d/d3/Full_TLS_1.2_Handshake.svg)
+![center w:20em](https://upload.wikimedia.org/wikipedia/commons/d/d3/Full_TLS_1.2_Handshake.svg)
 
 > Fuente: wikipedia
+> Detalles de los datos intercambiados, byte a byte: https://tls12.xargs.org/
 
 ## Cipher Suites
 
@@ -327,6 +328,7 @@ Antes, los certificados se compraban
 - [SSL/TLS handshake Protocol](https://www.youtube.com/watch?v=sEkw8ZcxtFk)
 - [What is TLS (Transport Layer Security)?](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
 - [Seguridad en el protocolo SSL-TLS. Ataques criptoanaliticos modernos. Dr. Alfonso Muñoz](https://github.com/mindcrypt/libros/blob/master/Book.%20Seguridad%20en%20el%20protocolo%20SSL-TLS.%20Ataques%20criptoanaliticos%20modernos.%20Dr.%20Alfonso%20Mu%C3%B1oz%20-%2027092020.pdf)
+- [A modern overview of SSL/TLS - TLS 1.2](https://www.paolotagliaferri.com/an-overview-of-ssl-tls-secure-sockets-layer-transport-layer-security-tls-1-2/). Hay una segunda parte en la que se habla de TLS 1.3
 
 # ¡Gracias!
 <!-- _class: last-slide -->
