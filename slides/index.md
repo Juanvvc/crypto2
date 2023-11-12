@@ -28,13 +28,12 @@ Juan Vera del Campo - <juan.vera@campusviu.es>
     - Anexo: [Glosario](A1-glosario.html)
 1. [Sistemas de cifrado](02-cifrado.html)
 1. [Funciones de hash y Firma digital](03-hashes.html)
-1. *Intermedio*
-    - [Business Email Compromise](06-bec.html)
-    - [Anonimato](07-anonimato.html)
 1. [TLS y Public Key Infrastructure](04-pki.html)
     - Anexo: [TLS en detalle](A2-protocolos.html)
 1. [Sistemas de autenticación](05-autenticacion.html)
-
+1. *Temas extras*
+    - [Business Email Compromise](06-bec.html)
+    - [Anonimato](07-anonimato.html)
 
 # Presentación
 <!-- _class: lead -->
@@ -84,19 +83,23 @@ Los ejercicios son notebook de Jupyter / Google Colab:
 Presenta las actividades como PDF: si usas los notebook, **imprime a PDF**
 
 ## Evaluación
-<!-- _class: with-warning -->
+<!-- _class: smaller-font -->
 
-- 50% examen
-- 50% ejercicios
-
-Son tres ejercicios en total, se recomienda realizarlos después del tema 3
+- Puntuación:
+    - 50% examen
+    - 50% ejercicios
+- Son tres ejercicios en total, se recomienda realizarlos después de los temas 2, 3 y 5
+    - No es  necesario superar los ejercicios individuales, solo que la media de todos los ejercicios sea superior a 5
+    - Los ejercicios no presentados se puntúan como 0
+    - Se pueden presentar los ejercicios hasta el día del examen correspondiente
+- Es necesario superar con nota media de 5 cada parte por separado
+- En segunda convocatoria, se mantiene la nota de aquella sección que fue superada en primera convocatoria
 
 ## Conocimientos recomendables
 
-- Álgebra básica, teoría de conjuntos, probabilidad
-- Conocimientos básicos de programación: ejemplos en Python
-- Conocimientos básicos de Linux: comandos en consola
-- Conocimientos básicos de redes: cómo funciona la WWW.
+- Álgebra básica, probabilidad
+- Conocimientos básicos de programación. Los ejemplos se presentarán en Python, pero no se pedirá programar nada. Será suficiente con poder entenderlos.
+- Conocimientos básicos de redes: cómo funciona Internet.
 
 ## Bibliografía
 <!-- _class: smaller-font -->
