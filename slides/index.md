@@ -85,7 +85,7 @@ Presenta las actividades como PDF: si usas los notebook, **imprime a PDF**
 ## Evaluación
 <!-- _class: smaller-font -->
 
-- Puntuación:
+- Puntuación. Dos partes:
     - 50% examen
     - 50% ejercicios
 - Son tres ejercicios en total, se recomienda realizarlos después de los temas 2, 3 y 5
@@ -93,7 +93,7 @@ Presenta las actividades como PDF: si usas los notebook, **imprime a PDF**
     - Los ejercicios no presentados se puntúan como 0
     - Se pueden presentar los ejercicios hasta el día del examen correspondiente
 - Es necesario superar con nota media de 5 cada parte por separado
-- En segunda convocatoria, se mantiene la nota de aquella sección que fue superada en primera convocatoria
+- En segunda convocatoria, se mantiene la nota de aquella parte que fue superada en primera convocatoria
 
 ## Conocimientos recomendables
 
