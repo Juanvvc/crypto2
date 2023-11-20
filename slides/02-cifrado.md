@@ -218,18 +218,20 @@ La próxima sesión estudiaremos los algoritmos de hash
 
 ![](images/simetrica/simetrica.svg)
 
-- La misma clave para cifrar que para descifrar
-- Problema: ¿Cómo acuerdan las dos partes la clave?
+- Se usa la misma clave para cifrar que para descifrar
+- Problema: ¿Cómo dos personas que no se conocen de nada acaban teniendo la misma clave?
+- Usos: confidencialidad
 
 ## Criptografía asimétrica / clave pública
 <!-- _class: two-columns -->
 
 ![](images/asimetrica/asimetrica.svg)
 
-- Una clave para cifrar, una clave diferente para descifrar
+- Existe una clave para cifrar, y una clave diferente para descifrar
 - Problema:
     - No supimos cómo hacerla hasta los años 70
     - Es lenta y compleja
+- Usos: autenticación, firma digital, intercambio de claves simétricas
 
 
 # Criptografía simétrica o de clave secreta
@@ -257,6 +259,7 @@ Ejemplos rotos y obsoletos: RC4, DES, TDES
 
 Flujo|Bloque
 --|--
+Cifra un stream continúo de datos|Divide los datos en bloques, que se cifran separadamente
 Más rápido|Más lento (a menos que exista ayuda del hardware)
 Fácil de programar: pequeños dispositivos|Más complejo
 Implementado en software|Implementado en hardware
