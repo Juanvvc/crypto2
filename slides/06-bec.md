@@ -23,7 +23,7 @@ section.a-story blockquote {
 # Business Email Compromise
 <!-- _class: first-slide -->
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 <!--
 Las transparencias de hoy están en inglés

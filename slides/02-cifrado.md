@@ -26,7 +26,7 @@ transition: fade
 
 **Seguridad computacional, cifrado asimétrico y cifrado asimétrico**
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 ## Recordatorio: servicios de seguridad
 

@@ -21,7 +21,7 @@ transition: fade
 # Firma digital
 <!-- _class: first-slide -->
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 
 # Como decíamos ayer...

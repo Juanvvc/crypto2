@@ -18,7 +18,7 @@ theme: marp-viu
 
 **Presentación**
 
-Juan Vera del Campo - <juan.vera@campusviu.es>
+Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 
 ## Temario
