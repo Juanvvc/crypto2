@@ -70,29 +70,29 @@ Durante el estudio personal es muy recomendable seguir los enlaces que aparecen 
 ## Instrucciones de uso de las actividades
 <!-- _class: with-warning smaller-font -->
 
-Los ejercicios son notebook de Jupyter / Google Colab:
+Los ejercicios son notebook de Google Colab:
 
-1. En el directorio de ejercicios, ejecuta `jupyter notebook`
+1. Después de los temas 2, 3 y 5 se incluirá el enlace a Google Colab en la zona de Actividades de la asignatura
 1. Comandos básicos:
     - INTRO: edita línea actual
     - SHIFT+INTRO: ejecuta línea actual
-1. Tutoriales de Jupyter:
-    - https://www.youtube.com/watch?v=jZ952vChhuI
-    - https://www.dataquest.io/blog/jupyter-notebook-tutorial/
+1. Las actividades deben resolverse individualmente
+1. Aunque haya código, no es necesario saber programar: son preguntas de texto libre
+1. **Presenta las actividades como PDF: imprimir a PDF**
 
-Presenta las actividades como PDF: si usas los notebook, **imprime a PDF**
+<!-- Las actividades refuerzan el contenido de las clases e incluyen información adicional -->
 
 ## Evaluación
 <!-- _class: smaller-font -->
 
 - Puntuación. Dos partes:
     - 50% examen
-    - 50% ejercicios
-- Son tres ejercicios en total, se recomienda realizarlos después de los temas 2, 3 y 5
-    - No es  necesario superar los ejercicios individuales, solo que la media de todos los ejercicios sea superior a 5
-    - Los ejercicios no presentados se puntúan como 0
-    - Se pueden presentar los ejercicios hasta el día del examen correspondiente
-- Es necesario superar con nota media de 5 cada parte por separado
+    - 50% actividades
+- Son tres actividades en total, se recomienda realizarlas después de los temas 2, 3 y 5
+    - No es  necesario superar las actividades individuales, solo que **la media de todos las actividades sea superior a 5**
+    - Las actividades no presentados se puntúan como 0
+    - Se pueden presentar las actividades hasta el día del examen correspondiente
+- Es necesario superar con nota media de 5 **cada parte por separado**
 - En segunda convocatoria, se mantiene la nota de aquella parte que fue superada en primera convocatoria
 
 ## Conocimientos recomendables
