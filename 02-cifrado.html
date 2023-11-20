@@ -376,8 +376,9 @@ tenga que hacer <span class="katex"><span class="katex-mathml"><math xmlns="http
 
 <p><img src="images/simetrica/simetrica.svg" alt="" /></p>
 <ul>
-<li>La misma clave para cifrar que para descifrar</li>
-<li>Problema: ¿Cómo acuerdan las dos partes la clave?</li>
+<li>Se usa la misma clave para cifrar que para descifrar</li>
+<li>Problema: ¿Cómo dos personas que no se conocen de nada acaban teniendo la misma clave?</li>
+<li>Usos: confidencialidad</li>
 </ul>
 <footer><a href="index.html">Inicio</a></footer>
 </section>
@@ -386,13 +387,14 @@ tenga que hacer <span class="katex"><span class="katex-mathml"><math xmlns="http
 
 <p><img src="images/asimetrica/asimetrica.svg" alt="" /></p>
 <ul>
-<li>Una clave para cifrar, una clave diferente para descifrar</li>
+<li>Existe una clave para cifrar, y una clave diferente para descifrar</li>
 <li>Problema:
 <ul>
 <li>No supimos cómo hacerla hasta los años 70</li>
 <li>Es lenta y compleja</li>
 </ul>
 </li>
+<li>Usos: autenticación, firma digital, intercambio de claves simétricas</li>
 </ul>
 <footer><a href="index.html">Inicio</a></footer>
 </section>
@@ -425,6 +427,10 @@ tenga que hacer <span class="katex"><span class="katex-mathml"><math xmlns="http
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Cifra un stream continúo de datos</td>
+<td>Divide los datos en bloques, que se cifran separadamente</td>
+</tr>
 <tr>
 <td>Más rápido</td>
 <td>Más lento (a menos que exista ayuda del hardware)</td>
