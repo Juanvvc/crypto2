@@ -78,7 +78,8 @@ Los ejercicios son notebook de Google Colab:
     - SHIFT+INTRO: ejecuta línea actual
 1. Las actividades deben resolverse individualmente
 1. Aunque haya código, no es necesario saber programar: son preguntas de texto libre
-1. **Presenta las actividades como PDF: imprimir a PDF**
+
+**Presenta las actividades como PDF: imprimir a PDF**
 
 <!-- Las actividades refuerzan el contenido de las clases e incluyen información adicional -->
 
