@@ -44,7 +44,7 @@ Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 Dr. Juan Vera (Juanvi)
 
-juan.vera@campusviu.es
+<juan.vera@professor.universidadviu.com>
 
 Intereses:
 
