@@ -45,6 +45,7 @@ Los hashes nos permiten calcular **una firma digital**
 <!-- _class: lead -->
 
 ## Función de hash, digest o resumen
+<!-- _class: with-success -->
 
 Resume un mensaje $m$ de longitud arbitraria en un valor $r$ **de tamaño fijo $l$**, sea cual sea la longitud del mensaje
 
@@ -56,9 +57,11 @@ $$
 
 Ejemplos:
 
-- "Resumir" un mensaje de 12 bytes en 32 bytes
-- Resumir una imagen de 532KB en 32 bytes
-- Resumir una película de 4GB en 32 bytes
+- "Resumir" un mensaje de 12 Bytes en 256 bits (32 Bytes)
+- Resumir una imagen de 532KB en 256 bits (32 Bytes)
+- Resumir una película de 4GB en 256 bits (32 Bytes)
+
+Da igual como sea la entrada, la salida siempre tiene el mismo número de bits
 
 ## Ejemplos no criptográficos
 
@@ -109,10 +112,10 @@ Ejemplos de valores de hash:
 
 ## Requisitos de una función de hash criptográfica
 
-- Que sea rápida de calcular
-- Resistencia a la preimagen: dado un hash, no se puede saber el mensaje exacto que tiene ese hash
-- Resistencia a la colisión: dificultad para encontrar dos mensajes diferentes con el mismo hash
-- Sensibilidad / efecto avalancha: un cambio mínimo en el mensaje produce un valor hash completamente diferente
+- Que sea **rápida** de calcular
+- **Resistencia a la preimagen**: dado un hash, no se puede saber el mensaje exacto que tiene ese hash
+- **Resistencia a la colisión**: dificultad para encontrar dos mensajes diferentes con el mismo hash
+- **Sensibilidad** / efecto avalancha: un cambio mínimo en el mensaje produce un valor hash completamente diferente
 
 > https://en.wikipedia.org/wiki/Cryptographic_hash_function#Properties
 
@@ -153,7 +156,7 @@ Si los mensajes de 1.000.000 de caracteres se resumen en 256 caracteres... ¡por
 
 Por ejemplo:
 
-Si queremos resumir fotografías de 1MB en resúmenes de 256 bits (tamaño típico)
+Si queremos resumir fotografías de 1MB en hashes de 256 bits (tamaño típico)
 
 $$
 \left.
@@ -164,7 +167,7 @@ $$
 \right\} \frac{|m|}{|r|} = \frac{2^{2^{23}}}{2^{256}} = 2^{2^{23}-256} \approx 2^{8·10^6} \approx 10^{26·10^6}
 $$
 
-Es decir, hay un número $10^{26·10^6}$, que en la práctica es "casi infinito", de fotografías de 1MB que se resumen en el mismo número de 256 bits
+Es decir, hay un número $10^{26·10^6}$, que en la práctica es "casi infinito", de fotografías de 1MB que se resumen en el mismo hash de 256 bits
 
 Queremos que no sea nada fácil (computacionalmente hablando) encontrar cualquiera de esas "casi infinitas" fotografías: la única forma debe de ser probar las fotografías una a una
 
@@ -189,7 +192,10 @@ Para $\|r\|=256$ bits esto son unas $\sqrt{2^{256}} = 2^\frac{256}{2} = 2^{128}$
 
 Esto implica que para un hash hacen falta resúmenes el doble de largos de lo que hacía falta para las claves simétricas para obtener el mismo nivel de seguridad
 
-La *security strength* de una función de hash de longitud $b$ bits es $b/2$
+- SHA-256 tiene una seguridad equivalente a AES-128, pero se usan para cosas diferentes, SHA para hashes y AES para cifrado.
+- SHA-512 tiene una seguridad equivalente a AES-256
+
+La *fortaleza* de una función de hash de longitud $b$ bits es $b/2$
 
 ## Ejemplos de funciones de hash
 
@@ -200,8 +206,6 @@ La *security strength* de una función de hash de longitud $b$ bits es $b/2$
 - SHA-3: longitudes entre 224 y 512 bits.
 
 Los hashes recomendados en la actualidad son el SHA-2 (cualquier de las dos variantes) y el SHA-3
-
-Fíjate: longitudes aproximadamente el doble que las longitudes de claves que las claves de AES (128, 192 y 256 bits) para una seguridad equivalente
 
 ---
 <!-- _class: with-warning -->
@@ -227,6 +231,8 @@ Si calculas los valores de hash del archivo, verás que no coinciden. Eso es por
 [![center w:30em](images/hashes/visual-sha256.png)](https://sha256algorithm.com/)
 
 > https://sha256algorithm.com/
+
+<!-- Visita la referencia para ver el funcionamiento de SHA256 en cada paso. Observa que aunque sean muchas operaciones, todas ellas son XOR y shifts que son muy rápidas -->
 
 ## ¿SHA-2 ó SHA-3?
 
@@ -313,6 +319,10 @@ Pero esto tiene un problema: muchos usuarios usan palabras, nombres, etc. limita
 
 Un atacante realizar un "diccionario" con el hash de todas las palabras, nombres, etc. (ataque de diccionario y rainbow table)
 
+> https://nordpass.com/es/most-common-passwords-list/
+
+<!-- Visita la referencia para tener un listado de las contraseñas más usadas y tiempo que se tarda en romperlas -->
+
 ## Almacenamiento de contraseñas: *salt* y bcrypt
 
 1. Añadir un valor aleatorio o $salt$ y tamibén lo guardamos: $hash(salt\|contraseña)$
@@ -337,6 +347,8 @@ La cadena es lo que guardará la base de datos. Incluye los campos, separados co
 -->
 
 ## Integridad de mensajes
+
+Se pueden usar hashes para detectar cuándo un atacante ha cambiado un mensaje: integridad
 
 Se puede usar un hash para asegurar la integridad de un mensaje: [HMAC](https://en.wikipedia.org/wiki/HMAC)
 
@@ -388,6 +400,12 @@ Hay modos de AES que utilizan estos esquemas: [AES-GCM](https://en.wikipedia.org
 
 - Usado en TLS
 - Vulnerable algún ataques de padding: [Padding Oracle, pentesterlab](https://book.hacktricks.xyz/crypto/padding-oracle-priv)
+
+## AES en modo GCM
+
+![center w:25em](https://upload.wikimedia.org/wikipedia/commons/2/25/GCM-Galois_Counter_Mode_with_IV.svg)
+
+> Fuente: wikipedia
 
 ## Merkle Hash tree
 <!-- _class: smaller-font -->
