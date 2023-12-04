@@ -21,7 +21,7 @@ transition: fade
 # Protocolo TLS
 <!-- _class: first-slide -->
 
-Juan Vera del Campo - <juan.vera@professor.universidadviu.com>  
+Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 
 # Transport Layer Security
 <!-- _class: lead -->
@@ -29,9 +29,9 @@ Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
 ## Transport Layer Security
 
 Seguridad de la capa de transporte (en inglés: *Transport Layer Security* o TLS) y su antecesor Secure Sockets Layer (*Secure Socket Layer*) son protocolos criptográficos que proporcionan:
-- Autenticación mediante certificados. Es decir: criptografía asimétrica.
+- **Autenticación** mediante certificados. Es decir: criptografía asimétrica.
 - Gestión de claves. Es decir: protocolo Diffie-Hellman
-- Confidencialidad de las comunicaciones. Es decir: criptografía simétrica
+- **Confidencialidad** de las comunicaciones. Es decir: criptografía simétrica
 
 ![bg right:30% w:80%](images/tls-versiones.png)
 
@@ -94,18 +94,16 @@ Utilizar TLS solo con autenticación de servidor es lo más habitual en Internet
 
 ---
 
-Una conexión HTTPS / TLS no quiere decir "confía en mí". Quiere decir "es privada". POdrías estar recibiendo la llamada de Cthulhu, y que fuese privada.
+Una conexión HTTPS / TLS no quiere decir "confía en mí". Quiere decir "nadie más puede acceder". Podrías estar recibiendo la llamada de un atacante, y que fuese privada.
 
 - Scott Hanselman
 
-![bg right:60%](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a3027904-ae41-45a8-b650-e764095bcb3e/d4rpcot-50371f8c-8c06-437a-8925-02b8543b9791.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EzMDI3OTA0LWFlNDEtNDVhOC1iNjUwLWU3NjQwOTViY2IzZVwvZDRycGNvdC01MDM3MWY4Yy04YzA2LTQzN2EtODkyNS0wMmI4NTQzYjk3OTEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ihGQMgyjQrzBSxldIEVPJv51GOA9RVSAYAxFvSNoqCQ)
-
-> https://www.deviantart.com/karosu-maker/art/The-Call-of-Cthulhu-288397181
+![bg right:60%](images/asimetrica/scream.jpg)
 
 ## Autenticación: gestión de la identidad
 
-- Servidor: clave privada habitualmente en fichero en claro protegido únicamente por el SO (ACL) o en HSM con activación automática
-- Cliente:
+- **Servidor**: clave privada habitualmente en fichero en claro protegido únicamente por el SO (ACL) o en HSM con activación automática
+- **Cliente**:
     - sin autenticación de cliente: anónimo, usuario y contraseña, etc.
     - con autenticación de cliente: fichero PKCS #12, o accediendo a un HSM en forma de SmartCard o de token USB vía librería PKCS #11
 
@@ -120,7 +118,7 @@ Lo más habitual en Internet es utilizar TLS con solo autenticación de servidor
 - Usuario y contraseñas
 - Sistemas Cl@ve, firma electrónica en momentos puntuales, 2FA...
 
-Más información en el [Tema 7](07-autenticacion.html)
+Más información en el [Tema 5](05-autenticacion.html)
 
 ## Acuerdos de los parámetros de la conexión
 
@@ -185,13 +183,16 @@ y se recomienda la implementación de estos (*SHOULD*):
 
 ## Inicialización (caso general, PFS)
 
-A partir de los dos *InputSecret* se genera el *MasterSecret*, del que se derivan 4 claves y 2 vectores de inicialización (IV, recuerda Tema 3):
+Usando Diffie-Hellman sobre Curvas Elípticas (ECDH) genera el *MasterSecret*, del que se derivan 4 claves y 2 vectores de inicialización (IV, recuerda [Tema 2](02-cifrado.md)):
 
 - clave de cifrado de cliente a servidor (y viceversa)
 - IV, para el cifrado de cliente a servidor (y viceversa)
 - clave HMAC de cliente a servidor (y viceversa)
 
-PFS: Perfect Forward Secrecy
+Notas:
+
+- PFS: Perfect Forward Secrecy
+- Ephemeral ECDH: se ejecuta ECDH cada pocos minutos para cambiar la clave periódicamente
 
 <!--
 
@@ -206,11 +207,11 @@ pero si no se usa _DHE_ ó _ECDHE_ el revelado de la clave privada permite el de
 
 ## Inicialización (caso sin PFS)
 
-En el caso de no usar DHE (ni ECDHE) el cliente debe enviar el MasterSecret al servidor cifrándolo con la clave del servidor:
+Si no se usa ECDH, el cliente debe enviar el MasterSecret al servidor cifrándolo con la clave del servidor:
 
 MasterSecret: PBKservidor(MasterSecretcliente)
 
-En este caso (no-PFS) una revelación de la clave privada del servidor en cualquier momento, permite descifrar el tráfico futuro y también el tráfico pasado. Con PFS esto no sucede ya que las claves de efímeras (EDH ó ECDHE) cambian en cada acuerdo y no se almacenan nunca
+En este caso (no-PFS) una revelación de la clave privada del servidor en cualquier momento, permite descifrar el tráfico futuro y también el tráfico pasado
 
 ## Transporte
 
