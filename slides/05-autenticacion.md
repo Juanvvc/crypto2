@@ -21,7 +21,9 @@ transition: fade
 # Autenticación de usuarios
 <!-- _class: first-slide -->
 
-Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
+Juan Vera del Campo
+
+<juan.vera@professor.universidadviu.com>
 
 # Como decíamos ayer...
 
@@ -64,11 +66,7 @@ Es decir, no repudio = autenticidad + integridad
 
 Autenticación: proceso de confirmar que alguien es quien dice ser
 
-![bg right:40%](https://www.totalentertainment.biz/wp-content/gallery/impersonators/elvis.jpg)
-
-
-> https://es.wikipedia.org/wiki/Autenticaci%C3%B3n
-> Foto: https://www.totalentertainment.biz/rentals/entertainment/impersonators.html
+![bg left:60%](images/auth/monster.png)
 
 <!--
 
@@ -79,6 +77,17 @@ Man in the middle y impersonation son muy similares, y la defensa contra ambos e
 
 La diferencia es que en el caso de man in the middle malloy tiene algo más de ventaja: si Alice pregunta algo que solo puede responder Bob, Malloy podría preguntárselo a Bob y entonces le responde a Alice.
 -->
+
+## Escenarios
+
+- Personas autenticando a personas
+- Personas autenticando a sistemas
+- Sistemas autenticando a personas
+- Sistemas autenticando a sistemas
+
+Cada uno de estos tipos requiere soluciones diferentes. En criptografía nos centramos en los dos últimos escenarios
+
+![bg right:40%](images/auth/doorman.png)
 
 ## Diffie-Hellman y el ataque Man in the Middle
 
@@ -98,12 +107,12 @@ Diffie Hellman no ofrece autenticación: vamos a acabar hablando de forma segura
 
 ## Identidades
 
-Para poder tener autenticación es necesaria la existencia de identidades
+Para poder tener autenticación es necesaria la existencia de **identidades**
 
-- Personas: su identidad física
+- Personas: su identidad física, o su rol demtro de una organización
 - Webs: que el servidor de una URL sea el que tiene que ser
 
-![bg left:60%](images/auth/identities.webp)
+![bg left:50%](images/auth/identities.png)
 
 <!--
 Hay muchas formas de guardar nuestra identidad en internet:
@@ -111,7 +120,7 @@ Hay muchas formas de guardar nuestra identidad en internet:
 - Más informal: mi nombre de usuario, mi dirección de correo electrónico...
 - Más formal: certificados, DNI electrónico...
 
-En el caso de webs o empresas, la identidad puede ser simplemente que cuando el usuario se conecta a bancosantander.com, que el servidor que le responda es propiedad del Banco Santander
+En el caso de webs o empresas, la identidad puede ser simplemente que cuando el usuario se conecta a bancosantander.com, que el servidor que le responda sea propiedad del Banco Santander
 
 Image ![label](https://technofaq.org/wp-content/uploads/2015/06/idtheft830-1024x659.jpg.webp)
 -->
@@ -119,29 +128,28 @@ Image ![label](https://technofaq.org/wp-content/uploads/2015/06/idtheft830-1024x
 ## Certificados
 <!-- _class: with-info -->
 
-Certificado = (1) Identidad, (2) Clave pública de la indentidad, (3) firmado por una autoridad de certificación
+[Certificado](04-pki.md). Incluye: (1) Identidad, (2) Clave pública de la indentidad, (3) posibles roles, (4) firmado por una autoridad de certificación
 
-Esto funciona bien en servidores: HTTPS siempre autentica servidores con certificados y, **opcionalmente**, usuarios
+Esto funciona bien en servidores: [HTTPS](A2-protocolos.html) siempre autentica servidores con certificados
 
 El uso de certificados no se ha extendido a usuarios físicos: son demasiados complejos de gestionar
 
-![bg left:40% w:80%](images/firma/DNI-3.jpg)
+![bg left:40% w:100%](images/firma/DNI-3.jpg)
 
 Necesitamos otras soluciones para usuarios
 
 ## Factores de la autenticación
 
-**Algo que sabemos** (*knowledge*): contraseña, PIN...
-
-**Algo que tenemos** (*ownership*): clave privada, smartcards, Google Authentication...
-
-**Algo que somos** (*inference*): huellas digitales, voz, cara...
-
-**Dónde estamos** (*location*): el servidor podría también comprobar que nos estamos conectando desde el lugar y a las horas habituales
+- **Algo que sabemos** (*knowledge*): contraseña, PIN...
+- **Algo que tenemos** (*ownership*): clave privada, smartcards, Google Authentication...
+- **Algo que somos** (*biometrics*): huellas digitales, voz, cara...
+- **Dónde estamos** (*location*): el servidor podría también comprobar que nos estamos conectando desde el lugar y a las horas habituales
+- **Cómo nos comunicamos** (*Channel*): comunicación solo por canales habituales y no WhatsApp / llamadas
+- **A quién conocemos** (*Refereers*): venir avalados por alguien conocido (PKI/PGP)
 
 > https://searchsecurity.techtarget.com/feature/5-common-authentication-factors-to-know
 
-![bg right:50% w:100%](images/auth/multifactor.png)
+![bg right:30% w:100%](images/auth/multifactor.png)
 
 <!--
 Estos son los factores clásico de la autenticación
@@ -166,6 +174,31 @@ Vulnerabilidades de *algo que sabemos*:
 - Muchos usuarios **reutilizan** contraseñas en varios lugares
 - A veces es posible "adivinar contraseñas", si tienen una estructura
 - A veces, el administrador de sistemas no cambia la contraseña por defecto
+- Los usuarios se confunden fácilmente: ataques de phishing
+
+> https://expertinsights.com/insights/50-identity-and-access-security-stats-you-should-know/
+
+## The password Game
+
+[The password game](https://neal.fun/password-game/)
+
+Imponer demasiadas reglas a las contraseñas puede ser perjudicial para la seguridad
+
+Usa siempre gestores de contraseñas: KeePass, 1Password, LogMeOnce, Bitwarden...
+
+![bg right](images/auth/password-game.png)
+
+## El juego de las preguntas
+<!-- _class: with-warning -->
+
+- ¿cuántos nombres de mascota son comunes?
+- "Ultimos movimientos en tu cuenta bancaria" los conoces tú, el operador de la tarjeta, el banco, las tiendas, los analistas de marketing...
+- "El nombre de tu escuela" lo conocen todos tus contactos de Facebook
+
+![bg left:40%](images/auth/quizshow.png)
+
+Las preguntas personales no son un buen mecanismo de autenticación: baja fortaleza
+
 
 ## Alto que *tenemos*
 <!-- _class: center -->
@@ -185,7 +218,8 @@ Vulnerabilidades de *algo que tenemos*:
     - Troyanos bancarios
     - Malware en Android
     - Click hijacking
-    - Social engineering
+    - [Social engineering](https://bandaancha.eu/articulos/asi-han-robando-cuentas-whatsapp-10754)
+    - Stealers: [Redline](https://www.genbeta.com/genbeta/redline-stealer-malware-que-te-dara-razon-para-dejar-utilizar-gestor-contrasenas-tu-navegador), [estadísticas](https://www.statista.com/statistics/1385123/info-stealers-used-for-credential-theft/)
 
 ![right bg w:90%](images/auth/activision-hacked.png)
 
@@ -193,9 +227,11 @@ Vulnerabilidades de *algo que tenemos*:
 
 <!--
 
-El hackeo reciente a Activision se produjo así: estaba activado un sistema 2FA que enviaba número de confirmación por SMS
+El hackeo de 2022 a Activision se produjo así:
 
-Los atacantes inundaron a whatsapp a los trabajadores "somos el servicio téncicos, necesitamos su número de confirmación para atender una incidencia", hasta que un trabajador envió su número de confirmación
+- Activision usaba un un sistema 2FA que enviaba número de confirmación por SMS
+- Los atacantes inundaron a whatsapp a los trabajadores "somos el servicio técnico, necesitamos su número de confirmación para atender una incidencia"
+- Un trabajador acabó harto de las inundaciones y envió su número de confirmación
 
 -->
 
@@ -207,11 +243,13 @@ Los atacantes inundaron a whatsapp a los trabajadores "somos el servicio téncic
 
 Vulnerabilidades de *algo que somos*:
 
+- Durante el proces de registro de datos biométricos, puede estar registrándose un atacante
 - [La biometría no sea una ciencia exacta](https://www.ncsc.gov.uk/collection/biometrics/how-biometrics-are-attacked)
 
 ![center](https://www.idrnd.ai/wp-content/uploads/2021/05/Liveness-Presentation-Attacks-e1619997533456.jpg.webp)
 
 - Si algo va mal... **no podemos cambiar nuestros datos biométricos**
+- Deepfakes y simulación de voces
 
 > https://www.idrnd.ai/can-biometric-data-be-stolen/
 
@@ -228,8 +266,9 @@ Vulnerabilidades de *algo que somos*:
 
 Vulnerabilidades:
 
-- los atacantes pueden usar *proxies* para similar que se están conectando desde el país de la víctima
-- no válido para nuevos usuarios aún sin perfilar
+- Los atacantes pueden usar *proxies* para simular que se están conectando desde el país de la víctima
+- No válido para nuevos usuarios aún sin perfilar
+- La tecnología para falsear localización es bien conocida: "caza de pokemons", "compra de juegos desde Argentina", "acceso a películas no autorizadas en mi país"
 
 
 
@@ -339,12 +378,18 @@ Fíjate:
 -->
 
 ## Proceso del desafío
-<!-- _class: two-columns smaller-font -->
+<!-- _class: two-columns -->
 
-[![w:20em](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBIRUxMT1xuICAgIEJvYi0-Pi1BbGljZTogQ2xhdmUgcMO6YmxpY2EgQm9iXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBsYSBjbGF2ZSBww7pibGljYSBlcyBPS1xuICAgIEFsaWNlLT4-K0JvYjogQ2hhbGxlbmdlPVwiODMyN2g0aDN5XCJcbiAgICBCb2ItPj4tQWxpY2U6IFJTQSg4MzI3aDRoM3kpXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBlbCBkZXNjaWZyYWRvIGVzIE9LXG4gICAgTm90ZSBvdmVyIEFsaWNlLEJvYjogRGlmZmllLUhlbGxtYW4gcGFyYSBhY29yZGFyIGNsYXZlIEFFU1xuICAgIE5vdGUgb3ZlciBBbGljZSxCb2I6IENvbXVuaWNhY2nDs24gY2lmcmFkYSBjb24gQUVTIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBIRUxMT1xuICAgIEJvYi0-Pi1BbGljZTogQ2xhdmUgcMO6YmxpY2EgQm9iXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBsYSBjbGF2ZSBww7pibGljYSBlcyBPS1xuICAgIEFsaWNlLT4-K0JvYjogQ2hhbGxlbmdlPVwiODMyN2g0aDN5XCJcbiAgICBCb2ItPj4tQWxpY2U6IFJTQSg4MzI3aDRoM3kpXG4gICAgQWxpY2UtPj5BbGljZTogQ29tcHJ1ZWJhIHF1ZSBlbCBkZWNpZnJhZG8gZXMgT0tcbiAgICBOb3RlIG92ZXIgQWxpY2UsQm9iOiBEaWZmaWUtSGVsbG1hbiBwYXJhIGFjb3JkYXIgY2xhdmUgQUVTXG4gICAgTm90ZSBvdmVyIEFsaWNlLEJvYjogQ29tdW5pY2FjacOzbiBjaWZyYWRhIGNvbiBBRVMiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
+![w:15em](images/auth/desafio-proceso.png)
 
 - Alice tiene que enviar una challenge diferente cada vez, que no sea predecible por un atacante
 - Alice necesita algún mecanismo adicional para comprobar que esa clave pública está asociada a Bob ([tema 4](04-pki.html))
+
+<!--
+
+Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNqNUctqwzAQ_JVFp5Y6l6bQYmjATQyBhgbqqy9raR0L9HBlKRBCvqq3XvNjlWOnNBBKddJqZ3ZmtHvGrSCWso4-AhlOC4kbh7o0EE-mJKfJbHb3YqsUlvlqtR4asY7Pk1M_hbnCLUF7_KpijX3zkn6GWd26QBVClAKFwC951MH69ZrwvEGlyGzouWRP0_vH5qGZ7kp2zcp7kd38QG7_YYMUCOq4rB0K-9vCm_UEdktu4CcnJwtZ15ImS1JKo4EWHQJy6wS6MU2WF3_wo3YwMSuXx08Dg2r8B2t6HkuYJqdRiriPfT-lZL4hTSVL41VQjUH5PvchQkMr0FMupLeOpTWqjhKGwdtiZzhLfYx4Bo07HVGHb7IApH4
+
+-->
 
 ## Firma digital como challenge-response
 <!-- _class: with-info -->
@@ -402,15 +447,20 @@ En esta sección: "contraseña" es algo guardado una BBDD: una clave, una huella
 ## Seguridad de las contraseñas de usuario
 
 1. No uses datos personales o reconocibles en tus contraseñas
-2. Usa contraseñas fuertes. Idealmente: totalmente alaatorias
-4. Acompañálas siempre de un doble factor de autenticación (2FA)
-5. No uses la misma contraseña en varios sitios
-6. Usa un gestor de contraseñas. Ejemplos: KeePass
+2. Usa contraseñas fuertes. Idealmente: totalmente aleatorias
+3. No uses la misma contraseña en varios sitios
+4. Implementa comprobación de constraseñas:
+    - Detección de contraseñas comunes o sencillas
+    - Detección de contraseñas que ya se han usado
+    - Detección de contraseñas que ya se han hecho públicas: https://haveibeenpwned.com/
+5. Acompañalas siempre de un doble factor de autenticación (2FA)
+6. Usa un gestor de contraseñas. Ejemplos: KeePass, 1Password, LogMeOnce, Bitwarden...
+7. Educa a tus usuarios contra ataques de phishing
 
 ## "Solución 1": contraseña en claro en la BBDD
 <!-- _class: two-columns with-warning -->
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPS1xuICAgICAgICAgICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLS0-Pi1BbGljZTogT0tcbiAgICAgICAgICAgICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)
+![](images/auth/proceso-contrasenyas1.png)
 
 - En la base de datos se guarda el usuario y contraseña
 - Si roban la base de datos... ¡roban las contraseñas!
@@ -425,13 +475,14 @@ La BBDD podría cifrar las contraseñas, pero eso es una solución parcial: si a
 Aún así, guardar las contraseñas cifradas es sin duda mejor que guardarla en claro. Simplemente, hay soluciones mejores que no requieren una contraseña de cifrado, como veremos a continuación
 
 Que el adminitrador de la BBDD conozca la contraseña es un problema: ¿realmente podemos confiar en él? No sería la primera vez que el ladrón está dentro de casa, y que sea el administrador de sistemas
+
+Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp9jzsLwjAUhf9KuKst7hkKljo5KIhblmtyq4EmqXkgUvrfTWtLN890Oee7rwGkUwQcAr0SWUmNxodHIyzLOnRaUllVu9rdObuFhF47tmcXDOHtvPpROZyZumn-QDnNVDlPOp-2zsmc92z2KijAkDeoVT5wmDIB8UmGBPBcKmoxdVGAsGNGU68w0lHp6DzwFrtABWCK7vqxEnj0iVZoeXKhxi_lzVGW
 -->
 
 ## Solución 2: hash de la contraseña
 <!-- _class: two-columns with-warning -->
 
-
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbywgaGFzaChQYXNzd29yZClcbiAgICBCQkRELT4-LUJvYjogT0tcbiAgICBCb2ItPj4tQWxpY2U6IE9LXG4gICAgICAgICAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbyBcbiAgICBCQkRELT4-LUJvYjogXCJTYWx0XCIgZGVsIHVzdWFyaW9cbiAgICBCb2ItPj4rQkJERDogVXN1YXJpbywgaGFzaChQYXNzd29yZClcbiAgICBCQkRELT4-LUJvYjogT0tcbiAgICBCb2ItPj4tQWxpY2U6IE9LXG4gICAgICAgICAgICAiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
+![](images/auth/proceso-contrasenyas2.png)
 
 - Ventaja: la BBDD no guarda las contraseñas sino sus hashes. Si alguien roba la BBDD, tiene que romper los hashes
 - Existen hashes especializados en huellas biométricas
@@ -440,6 +491,8 @@ Intenta evitar este método para almacenar contraseñas
 
 <!--
 Nota: Alice podría enviar o bien su contraseña, o bien su hash. Es normal que Alice envíe a Bob (una página web) la contraseña, pero Bob calcula inmediatamente el hash: Alice se fía de Bob, pero Bob no se fía de la base de datos
+
+Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp1kLsOwjAMRX8l8gSiFXuHSlRlYgCpYstiGpdGahPIQwhV_XfSl8oAHu89tq_dQakFQQKWnp5USbnEu8GWKxbq0MiS4jTdZfqWsKv1aKRme3ZBa1_aiIkK5shkeb5CsxW04MVjP4cCG8eBCWqYn7j_EyJWo603y6rtj4Hn03d7PKZd1aUggpZMi1KEM7vB4-BqaonDkElQhX6IxVUfUP8Q6OgopNMGkgobSxGgd7p4qxISZzwt0PyqSew_ELlmNQ
 -->
 
 ## Análisis de seguridad
@@ -455,7 +508,7 @@ Nota: Alice podría enviar o bien su contraseña, o bien su hash. Es normal que 
 ## Solución 3: hash de contraseña + salt
 <!-- _class: two-columns with-success -->
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiBPSyIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOnRydWUsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
+![](images/auth/proceso-contrasenya3.png)
 
 - El "*salt*" es algo parecido al "*nonce*" ([Tema 2](02-cifrado.html)): se puede guardar en claro en la BBDD
 - El *salt* tiene que ser un valor **totalmente aleatorio y diferente para cada usuario**
@@ -463,16 +516,21 @@ Nota: Alice podría enviar o bien su contraseña, o bien su hash. Es normal que 
 
 Esta es la solución usada en la actualidad
 
+<!--
+
+Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNptkE8LwjAMxb9KyUlxw3sPA8c8eVAY3nqJa-YK26r9g8jYd7edmyiYY94vLy8ZoNKSgIOlu6e-okLh1WAnehZq16qK0izb5PrC2dl6NEqzLTuhtQ9t5JsK4sTkRfGBZiW0gpRO4wJKbJ0AJqll_gf7Y5CwBm2ziiOcL_vWf2yPh2-TdIocu5BAR6ZDJcN1Q2QEuIY6EhCzSKrRxziiHwPqbxId7aVy2gCvsbWUAHqny2dfAXfG0wLNH5qp8QUjTmYe
+
+-->
+
 ## Análisis de seguridad
 <!-- _class: with-info -->
 
-- La BBDD guarda $hash(SALT:PASSWORD)$
+- La BBDD guarda `SALT:hash(SALT:PASSWORD)`
     - No es vulnerable a tablas precalculadas de contraseñas
     - Si dos usuarios tienen la misma contraseña, con gran probabilidad tendrán *salt* diferente así que la BBDD no sabe que las contraseñas son iguales
     - La BBDD no conoce la contraseña original, solo el hash
 - La salt tiene que ser aleatoria
 - Es el mecanismo usado en Linux, Windows... y en la mayor parte de las webs
-- Guardar una contraseña en una BBDD es un error, hay que guardar solo $hash(SALT:PASSWORD)$
 
 ## BCRYPT: Cifrado como "hash", nonce como "salt"
 <!-- _class: with-warning -->
@@ -544,10 +602,10 @@ alice:sesame%
 Para evitar enviar siempre la contraseña (o su hash): sesiones por tokens
 
 
-## Autenticación por token
+## Sesiones por token
 
 1. El usuario envía sus credenciales
-2. Si es correcto (ver sección anterior), el usuario recibe un token
+2. Si es correcto (ver sección anterior), el usuario recibe un token: **token de sesión**
 3. Para el resto de peticiones el usuario envía **solo** el token
 4. En cada petición, el servidor verifica que el token es correcto
     - el token **podría** está firmado digitalmente, o cifrado con una clave que solo conoce el servidor
@@ -557,23 +615,27 @@ Para evitar enviar siempre la contraseña (o su hash): sesiones por tokens
 > https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4
 
 ## Proceso
-<!-- _class: two-columns smaller-font -->
+<!-- _class: two-columns -->
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiB0b2tlbiA9IENpZnJhZG8odXN1YXJpbywxIGhvcmEpXG4gICAgQWxpY2UtPj4rQm9iOiBwZXRpY2nDs24sIHRva2VuXG4gICAgQm9iLT4-Qm9iOiB0b2tlbiBPSz9cbiAgICBCb2ItPj4tQWxpY2U6IHJlc3B1ZXN0YVxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQm9iOiBVc3VhcmlvIC8gUGFzc3dvcmRcbiAgICBCb2ItPj4rQkJERDogVXN1YXJpb1xuICAgIEJCREQtPj4tQm9iOiBcIlNhbHRcIiBkZWwgdXN1YXJpb1xuICAgIEJvYi0-PitCQkREOiBVc3VhcmlvLCBoYXNoKFNhbHQ6UGFzc3dvcmQpXG4gICAgQkJERC0-Pi1Cb2I6IE9LXG4gICAgQm9iLT4-LUFsaWNlOiB0b2tlbiA9IENpZnJhZG8odXN1YXJpbywxIGhvcmEpXG4gICAgQWxpY2UtPj4rQm9iOiBwZXRpY2nDs24sIHRva2VuXG4gICAgQm9iLT4-Qm9iOiB0b2tlbiBPSz9cbiAgICBCb2ItPj4tQWxpY2U6IHJlc3B1ZXN0YVxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ)
+![](images/auth/proceso-tokens.png)
 
 - Hay una verificación inicial de usuario
-- El token es $E_ {K_{Bob}}(Alice, caducidad)$. Es decir: cifrado con una clave que solo Bob conoce del nombre de Alice y una caducidad
+- El token es $E_ {K_{Bob}}(Alice, caducidad)$. 
 - Una vez obtenido el token, Alice lo incluye siempre en las siguientes peticiones: mientras no caduque el token, no tiene que volver a enviar credenciales
-- Cuando Bob recibe una nueva petición, comprueba el token:
-    - que puede descifrarlo
-    - que no ha caducado
+- Cuando Bob recibe una nueva petición, comprueba:
+    - que puede descifrar el token
+    - que el token no ha caducado
 
 <!--
+Observa: El token está cifrado con una clave **que solo conoce Bob**
+
 En esta transparencia se muestra el caso de que el usuario utilice nombre/contraseña para autenticarse, pero funciona exactamente igual si usa un servicio no-password como el de Google:
 
 1. El usuario entre en la web manolita.com, que utiliza Google como autenticación
 2. Google confirma la identifidad de usuario en el móvil y avisa a manolita.com
 3. manolita.com envía al usuario un token de autenticación
+
+Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNptkU1OwzAQha8ymlUrHCG2liiiDasuilSx82aIJ8QisYN_hFDVU3EELobzU1SkeDnzvffs5xNWTjNKDPyR2FZcGnrz1CkL-Ty2puJis7nZulcJLyGRNw5u4ZlC-HReT1Rejsy2LP-geZNHeVWMcoVHaqNC0NxC-octGAhoKDSrQSIvcesF18P-2qMYbywhune2cA87U3vSbjXHiTtonKf10ut6jqYyP99WTOpr2xGYPA_7h6VAz6FPHCIpiwI79h0ZnWs9DbDC2HDHCocSNNeUhh6UPWc09ZoiP2kTnUdZUxtYIKXojl-2Qhl94gs0f800PP8Cu0KNqw
 -->
 
 ## Tipos de token
@@ -595,6 +657,7 @@ Otra forma común es guardar tokens como un elemento oculto de un formulario POS
 
 ## Análisis de seguridad
 
+- Un atacante podría robar tokens: [Mimikatz](https://specterops.io/blog/2022/07/07/koh-the-token-stealer/), [RedLine](https://flare.io/learn/resources/blog/redline-stealer-malware/)...
 - Si un atacante consigue el token de seguridad, solo será válido hasta que caduque
 - Un atacante podría obligarnos a enviar un token válido a una página web:
     - [Cross site scripting](https://owasp.org/www-community/attacks/xss/)
@@ -605,12 +668,13 @@ Para solucionarlo: usa tokens con caducidad tan corta como sea posible. Idealmen
 ## Servidores de autenticación
 <!-- _class: two-columns -->
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQXV0aHNlcnZlcjogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQXV0aHNlcnZlci0-Pi1BbGljZTogdG9rZW4gPSBDaWZyYWRvKHVzdWFyaW8sMSBob3JhKVxuICAgIEFsaWNlLT4-K0JvYjogcGV0aWNpw7NuLCB0b2tlblxuICAgIEJvYi0-PkJvYjogdG9rZW4gT0s_XG4gICAgQm9iLT4-LUFsaWNlOiByZXNwdWVzdGFcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/edit/##eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgQWxpY2UtPj4rQXV0aHNlcnZlcjogVXN1YXJpbyAvIFBhc3N3b3JkXG4gICAgQXV0aHNlcnZlci0-Pi1BbGljZTogdG9rZW4gPSBDaWZyYWRvKHVzdWFyaW8sMSBob3JhKVxuICAgIEFsaWNlLT4-K0JvYjogcGV0aWNpw7NuLCB0b2tlblxuICAgIEJvYi0-PkJvYjogdG9rZW4gT0s_XG4gICAgQm9iLT4-LUFsaWNlOiByZXNwdWVzdGFcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0)
+![](images/auth/proceso-servidores.png)
 
 - El uso de tokens nos permite tener servidores especializados en la autenticación, que son independientes del servicio
 - El servicio final no necesita conocer usuario y contraseña, solo validar que el token viene desde el servidor de autenticación.
     - Verificación: el token está firmado con la clave privada del servidor de autenticación
-- Ejemplos: Directorio Activo de Windows, OAuth, Okta...
+
+<!-- Diagrama editable: https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNpdkEFOAzEMRa9ieQViKsQ2EkUFuuoCJMQuG5N4mIiZZHAcEKp6Ko7AxQhNixBeWf7v-8veokue0WDm18LR8W2gZ6HJRqi1GoPjxXJ5tio6ZJY3FgOPuZCEBOdwTzm_J_EH-JepjsXeakDTC0e4hJvQC_l0Upq5u4AhCZ3-i7lOTwZm1uDC12fsmrsxVarEHmg77zZXf5VjoHCeC2clG7HDiWWi4Ot92x_Yog48sUVTW889lVEt2riraJk9Ka990CRoehozd0hF08NHdGhUCh-hw4_acPcNO9hsng-->
 
 ---
 
@@ -619,30 +683,63 @@ Para solucionarlo: usa tokens con caducidad tan corta como sea posible. Idealmen
 > https://es.wikipedia.org/wiki/Token_(inform%C3%A1tica)
 
 <!--
-En el ejemplo un sismtema de pagos por tokens: queremos poder comprar desde una APP o una web, pero no nos interesa darle a la web nuestra tarjeta de crédito o nuestra contraseña de Paypal
+En el ejemplo un sistema de pagos por tokens: queremos poder comprar desde una APP o una web, pero no nos interesa darle a la web nuestra tarjeta de crédito o nuestra contraseña de Paypal
 
 Podemos usar tokens, que se validan y caducan en cada paso, y así no hace falta decirle nuestra tarjeta de crédito a nadie
 -->
+
+## Security Assertion Markup Language
+
+Security Assertion Markup Language (SAML) es un estándar abierto de **autenticación** basado en XML
+
+- **Proveedor de identidad**: realiza la autenticación del usuario y provee tokens al usuario
+- **Proveedor de servicio**: confía en el proveedor de identidad y da acceso al servicio
+
+> https://en.wikipedia.org/wiki/SAML-based_products_and_services
+> https://www.okta.com/identity-101/saml-vs-oauth/
+
+---
+
+![center w:40em](images/auth/SAML-flow-21.png)
+
+> https://bigdataanalyticsnews.com/how-does-saml-work/
+
+## Beneficios de SAML
+
+- Mejora en la experiencia de usuario: solo tienes que autenticarte en un sitio
+- Las credenciales solo se envían a un solo proveedor de identidad
+- Gestión centralizada de identidades, que es muy útil en empresas
+
+## Autenticación por tokens
+
+Una vez el usuario está autenticado por un proveedor de identidad, puede autenticarse en otros servicios usando tokens
+
+Ejemplos:
+
+- JSON Web Token
+- OAuth
+- Kerberos
 
 ## JSON Web Token (JWT)
 
 ![center w:35em](images/auth/jwt.png.webp)
 
-> [Title](https://www.cronj.com/blog/what-is-json-web-token-jwt)
+> <https://www.cronj.com/blog/what-is-json-web-token-jwt>
 
 ---
 
 ![center](images/auth/jwt_ng1_en.png)
 
-> https://research.securitum.com/jwt-json-web-token-security/
+> <https://research.securitum.com/jwt-json-web-token-security/>
 
 ## OAuth
 <!-- _class: smaller-font -->
 
-Gracias a OAuth, un usuario puede delegar el acceso a terceros a su cuenta de Google, Facebook, Twitter... sin necesidad de compartir contraseña
+OAuth es un gestor de **autorizaciones**. Un usuario puede delegar el acceso a terceros a su cuenta de Google, Facebook, Twitter... sin necesidad de compartir contraseña
 
 1. El usuario accede a un servicio de terceros (aplicación, página web...) que necesita acceder al Twitter, fotos de Google... del usuario
-2. Twitter, Google confirma con el usuario que garantiza el acceso
+2. Twitter, Google funcionan como un proveedor de identidad para autenticar al usuario
+2. Twitter, Google pregunta al usuario si realmente quiere delegar el acceso a un tercero
 3. Twitter, Google envían a la aplicación de terceros un **token** que la aplicación puede usar para acceder al contenido protegido
 
 ![bg right:40% w:100%](images/auth/oauth_overview.png)
@@ -717,33 +814,6 @@ Esto no es tan raro: es la etapa *lateral movement* en cualquier ataque ciberné
 
 ![bg right w:100%](images/auth/lateralmovement.jpg)
 
-# Security Assertion Markup Language
-<!-- _class: lead -->
-
-## Security Assertion Markup Language
-
-Security Assertion Markup Language (SAML) is an XML-based open-standard for transferring identity data between two parties: an identity provider (IdP) and a service provider (SP).
-
-- Identity Provider — Performs authentication and passes the user's identity and authorization level to the service provider.
-
-- Service Provider — Trusts the identity provider and authorizes the given user to access the requested resource.
-
----
-
-![center w:40em](images/auth/SAML-flow-21.png)
-
-> https://bigdataanalyticsnews.com/how-does-saml-work/
-
-## Benefits of SAML Authentication
-
-- Improved User Experience — Users only need to sign in one time to access multiple service providers. This allows for a faster authentication process and less expectation of the user to remember multiple login credentials for every application. In the example above, that user could have clicked on any of the other icons in their dashboard and been promptly logged in without ever having to enter more credentials!
-
-- Increased Security — SAML provides a single point of authentication, which happens at a secure identity provider. Then, SAML transfers the identity information to the service providers. This form of authentication ensures that credentials are only sent to the IdP directly.
-
-- Loose Coupling of Directories — SAML doesn't require user information to be maintained and synchronized between directories.
-
-- Reduced Costs for Service Providers — With SAML, you don't have to maintain account information across multiple services. The identity provider bears this burden.
-
 # Resumen y referencias
 <!-- _class: lead -->
 
@@ -758,11 +828,16 @@ Security Assertion Markup Language (SAML) is an XML-based open-standard for tran
 
 ## Recomendaciones generales
 
-- Usar contraseñas aleatorias
-- No reusar contraseñas
-- Utilizar gestores de contraseñas
-- Usar **siempre** doble factor de autenticación (2FA)
-- Si es posible, "passwordless": Okta, Smartcards...
+1. No uses datos personales o reconocibles en tus contraseñas
+2. Usa contraseñas fuertes. Idealmente: totalmente aleatorias
+3. No uses la misma contraseña en varios sitios
+4. Implementa comprobación de constraseñas:
+    - Detección de contraseñas comunes o sencillas
+    - Detección de contraseñas que ya se han usado
+    - Detección de contraseñas que ya se han hecho públicas: https://haveibeenpwned.com/
+5. Acompañalas siempre de un doble factor de autenticación (2FA)
+6. Usa un gestor de contraseñas. Ejemplos: KeePass, 1Password, LogMeOnce, Bitwarden...
+7. Educa a tus usuarios contra ataques de phishing
 
 ---
 
