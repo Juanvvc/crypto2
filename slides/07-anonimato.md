@@ -45,14 +45,15 @@ En este tema veremos cómo usar la criptografía para ofrecer el servicio de ano
 <!-- _class: lead -->
 
 ---
+<!-- _class: with-success -->
 
 ![center](https://www.htl.london/images/top-tips-to-combat-voip-eavesdropping.jpg)
 
-Los servicios clásicos de seguridad (*confidencialidad*) aseguran que nadie que escuche pasivamente una comunicación sabe qué estamos diciendo. También evitan ataques activos man-in-the-middle (*integridad*, *autenticación*). Todo esto lo ofrece TLS
+El protocolo [TLS](A2-protocolos.html) asegura que nadie que escuche pasivamente una comunicación (*confidencialidad*). También evita ataques activos man-in-the-middle (*integridad*, *autenticación*)
 
-**Pero no evitan que se sepa quién habla con quién**: el cifrado se aplica en la capa de aplicación, no estamos cifrando los paquetes de red que incluyen IP origen e IP destino
+**TLS no evita que se sepa quién habla con quién**: el cifrado se aplica en la capa de aplicación, no estamos cifrando los paquetes de red que incluyen IP origen e IP destino
 
-**Servicio de anonimato**: impide que un atacante sepa quién está hablando con quién
+**Anonimato**: impide que un tercero sepa quién está hablando con quién
 
 ## Recordatorio: un paquete IP
 <!-- _class: extra-slide -->
@@ -75,27 +76,28 @@ Los servidores normalmente están "en la nube"
 
 ![bg w:100% right:40%](https://upload.wikimedia.org/wikipedia/commons/3/36/Internet_Connectivity_Distribution_%26_Core.svg)
 
-> Puntos neutros: https://es.wikipedia.org/wiki/Punto_neutro
-> Ejemplo: Espanix http://www.espanix.net/es/traffic.html
+> Puntos neutros: <https://es.wikipedia.org/wiki/Punto_neutro>
+> Ejemplo: Espanix <https://www.espanix.net/es/trafico/>
 
 ---
 
 ![bg left h:100%](images/submarines-cables.png)
 
-Muchos de estos cables submarinos son propiedad de Google
+Los puntos neutros se conectan entre ellos a través de (entre otros) [cables submarinos](https://www.submarinecablemap.com/#/)
 
-> https://www.submarinecablemap.com/#/
+Muchos de estos cables submarinos [son propiedad de Google](https://cloud.google.com/blog/products/infrastructure/learn-about-googles-subsea-cables)
 
 ---
 
 ![bg right](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BalticServers_data_center.jpg/640px-BalticServers_data_center.jpg)
 
-Gran parte de la cloud pertenece a Amazon (AWS), o a Microsoft (Azure), o a Google (GCP), o Alibaba
+Gran parte de la *cloud* pertenece a Amazon (AWS), o a Microsoft (Azure), o a Google (GCP), o Alibaba
 
 ## ¿Quién sabe a dónde te conectas?
 <!-- _class: with-warning -->
 
 - Tu ISP lo sabe
+- Tu servidor de DNS lo sabe
 - Tu gobierno, en el punto neutro, sabe todo lo que tenga que salir de tu ISP
 - Google, en el cable submarino, sabe todo lo que salga del país
 - El gobierno de destino, en su puntro neutro, sabe quién se está conectando
@@ -159,24 +161,27 @@ Un investigador de ciberseguridad usará constantemente redes anónimas para que
 
 [ProtonMail](https://protonmail.com/) es un servicio de correo anónimo: nunca le dirá a las autoridades quién envió un correo. **PERO** alguien controlando las comunicaciones sabe quién estaba conectado a ProtonMail a la hora de envío de un correo.
 
-ProtonMail puede ser perfectamente válido para tus seguridad: es necesario "identificar a tú adversario" para decidir el mejor método de protección.
-
 - ¿El adversario es tu pareja? Es suficiente el modo seguro del navegador
 - ¿Es tu empresa? La empresa tendrá acceso al firewall y sabe que te has conectado a Protonmail
-- ¿Es el sistema judicial? ProtonMail no enviará registros a ningún juez
-- ¿Es un gobierno? Pueden controlar comunicaciones nacionales
+- ¿Es un gobierno? ProtonMail no enviará registros a ningún juez
+
+ProtonMail puede ser perfectamente válido para tus seguridad: es necesario "identificar a tú adversario" para decidir el mejor método de protección.
+
 
 <!--
 Ojo: decidir la potencia que tiene tu adversario sirve para todos los sistemas de seguridad que hemos visto.
 -->
 
 ## Solución 2: CROWDS y k-anonimato
+<!-- _class: with-success -->
+
 
 1. Organízate con amigos para crear una red de $k=6$ personas (tú y 5 más). $p=\frac{k-1}{k}=\frac{5}{6}$
 1. Si quieres descargar algo, con probabilidad $p$ le pides el favor a un amigo, y con probabilidad $1-p$ lo haces tú.
 1. El amigo hace lo mismo: con probabilidad $p$ le pasa el favor a otro (¡puedes ser tú!), y con probabilidad $1-p$ lo hace él.
 1. Así hasta que alguien hace la petición.
-1. El servidor no sabe quién de las $k$ personas ha hecho la petición: **k-anonimato**.
+
+El servidor no sabe quién de las $k$ personas ha hecho la petición: **k-anonimato**.
 
 ![bg w:100% right:35%](images/crowds.png)
 
@@ -196,7 +201,7 @@ Problema principal de CROWDS: no es posible predecir cuánto tiempo tardará un 
 ![center](https://upload.wikimedia.org/wikipedia/commons/a/aa/Chaum_Mix.svg)
 
 1. Contrata los servicios de alguien que hace las peticiones por ti: [Mix Network](https://en.wikipedia.org/wiki/Mix_network). Por ejemplo: una VPN
-1. La VPN hace las peticiones en nombre de sus $k$ clientes. Para evitar timing attacks, las mezcla entre ellas
+1. La VPN hace las peticiones en nombre de sus $k$ clientes: $k$-anonimato para un observador externo
 1. Ningún observador externo puede correlar peticiones que entran en el Mix y las que salen (¡siempre que haya suficientes entradas!)
 
 Problema: ¿seguro que la VPN no está logueando qué hacemos?
@@ -415,6 +420,21 @@ Las direcciones .onion tiene normalmente algunos caracteres al azar detrás de e
 
 > https://2019.www.torproject.org/docs/onion-services.html.en
 
+## DuckDuck Go
+
+![center w:30em](images/anom-duckduckgo.png)
+
+> https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/
+
+## ¿Dónde encuentro direcciones .onion?
+
+- Si eres víctima de un ataque Ransomware, tranquilo/a, te las dirán
+- Repositorios (cuidado: están en la web normal):
+    - https://github.com/alecmuffett/real-world-onion-sites
+    - https://dark.fail/
+    - https://ahmia.fi/
+    - Más ideas: https://www.makeuseof.com/tag/find-active-onion-sites/
+
 ## ¿Pero quién mantiene los nodos de Tor?
 
 Los nodos al final enrutaran mensajes que es muy posible que sean ilegales. ¿Quién querría hacer algo así?
@@ -436,7 +456,7 @@ Imagina un circuito con tres nodos Tor 1-2-3:
 - Si un adversario controla el 1 y 3 (nodos de entrada y salida), puede intentar correlar entradas y salidas: puede (probabilidad) que descubra identidades
 - Si un adversario controla un nodo, aprende datos estadísticos, pero es poco probable que aprenda identidades
 
-En realidad se usan circuitos de 4, 5 o más relays. ¡Cuantos más uses, menos probable es que un solo adversario los controle todos!
+¡Cuantos más uses, menos probable es que un solo adversario los controle todos!
 
 ---
 
@@ -446,7 +466,8 @@ La lista de nodos Tor es conocida aunque cambiante: es "fácil" para un servidor
 
 De hecho, si "un trabajador" intenta entrar en la VPN empresarial usando Tor... ¡muy probablemente es un atacante! Las VPN empresariales suelen detectar y bloquear las entradas desde Tor
 
-> Ejemplo de lista de notos Tor: https://tormap.void.gr/
+> https://www.dan.me.uk/tornodes
+> https://metrics.torproject.org/networksize.html
 
 <!--
 Ejemplos de relays Tor existentes cuando preparaba estas transparencias. La mayoría de relays Tor están en Europa, siempre ha sido así. Otros países tienen o bien poco interés de mantener nodos, o bien es peligroso hacerlo, o bien esos nodos pueden ser sospechosos de estar controlados por sus gobiernos.
@@ -496,6 +517,7 @@ El navegador Tor intenta no enviar nada de esto, y utiliza un User-Agent cambian
 - Tor y el Onion Routing, de tejedoresdelweb: http://tejedoresdelweb.com/w/TOR
 - How Tor works?, by Hussein Nasser: https://www.youtube.com/watch?v=gIkzx7-s2RU
 - Is Tor Trustworthy and Safe? https://restoreprivacy.com/tor/
+- How do onion addresses exactly work? https://tor.stackexchange.com/questions/672/how-do-onion-addresses-exactly-work/674#674
 
 # ¡Gracias!
 <!-- _class: last-slide -->
