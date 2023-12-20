@@ -18,7 +18,7 @@ transition: fade
 	/* section footer { display: none; } */
 </style>
 
-# Anonimato
+# Anonimato y DeepWeb
 <!-- _class: first-slide -->
 
 Juan Vera del Campo - <juan.vera@professor.universidadviu.com>
@@ -80,7 +80,7 @@ Los servidores normalmente están "en la nube"
 
 ---
 
-![w:30em center](images/submarines-cables.png)
+![bg left h:100%](images/submarines-cables.png)
 
 Muchos de estos cables submarinos son propiedad de Google
 
@@ -88,9 +88,9 @@ Muchos de estos cables submarinos son propiedad de Google
 
 ---
 
-![center](https://1.cms.s81c.com/sites/default/files/2019-12-30/LS003.jpg)
+![bg right](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/BalticServers_data_center.jpg/640px-BalticServers_data_center.jpg)
 
-Gran parte de la cloud pertenece a Amazon
+Gran parte de la cloud pertenece a Amazon (AWS), o a Microsoft (Azure), o a Google (GCP), o Alibaba
 
 ## ¿Quién sabe a dónde te conectas?
 <!-- _class: with-warning -->
@@ -145,7 +145,7 @@ Vamos de describir unas tecnologías que pueden usarse para objetivos terribleme
 - No quiero que el jefe sepa que estoy buscando trabajo
 - No quiero que mis clientes encuentren fotos de la fiesta de anoche
 - No quiero que el gobierno conozca mis ideas políticas
-- No legítimo: quiero que la policía sepa qué he hecho
+- No legítimo: no quiero que la policía sepa qué he hecho
 - No legítimo: no quiero que X sepa que soy yo quien le acosa
 
 <!--
@@ -203,6 +203,8 @@ Problema: ¿seguro que la VPN no está logueando qué hacemos?
 
 # Enrutamiento onion
 <!-- _class: lead -->
+
+Anonimato de cliente
 
 ## Solución completa: Tor
 
@@ -274,6 +276,7 @@ Como hemos estado viendo en todas estas sesiones, HTTPS ofrece confidecialidad, 
 - El servidor no sabe qué IP ha realizado la petición
 - Nuestro ISP sabe que estamos usando Tor
 - Los actores saben que alguien está usando Tor
+- Todos saben qué servidor está respondiendo
 
 ![right:60% bg w:100%](https://www.eff.org/files/tor-https-2.png)
 
@@ -282,10 +285,11 @@ Como hemos estado viendo en todas estas sesiones, HTTPS ofrece confidecialidad, 
 <!--
 - Si usamos comunicaciones anónimas como Tor, todo el mundo verás que hay alguien en Tor intentando conectarse a algún sitio. Pero ningún actor conoce todos los datos: la IP del cliente y la IP del servidor.
 - OJO: si utilizamos un usuario y contraseña... elpais.com sabe quiénes somos aunque no sepa en qué IP estamos, y se lo puede contar a cualquiera
+
+Fíjate que en este ejemplo el usuario es anónimo, pero el servidor no: veremos cómo anonimizar al servidor en el siguiente capítulo
 -->
 
 ## Navegación anónima: proceso
-
 <!-- _class: two-columns smaller-font -->
 
 1. Alice **conoce** una lista de enrutadores Tor
@@ -306,7 +310,7 @@ Alice debería buscar relays en países bien diferenciados, y quizá aquellos en
 -->
 
 ## Enrutamiento "cebolla", en detalle
-<!-- _class: smallest-font -->
+<!-- _class: smaller-font -->
 
 - Alice escoge un nodo $3$ para que reenvíe un mensaje a Bob, y lo cifra con la clave pública de $3$: $m_3=E_{pk3}(Bob|MSG)$
     - Solo $3$ puede descifrar $m_3$, ya que solo $3$ tiene su clave privada.
@@ -339,7 +343,7 @@ Esta es la transparencia anterior, pero con explicación gráfica del enrutamien
 
 ---
 
-![center w:28em](https://contribute.geeksforgeeks.org/wp-content/uploads/Onion-Routing-Page-1.png)
+![center w:35em](https://contribute.geeksforgeeks.org/wp-content/uploads/Onion-Routing-Page-1.png)
 
 <!--
 El sistema funciona también como una mix network: hay mucha gente usándolo a la vez, así que no es fácil correlar las entradas y las salidas de la red ni siquiera para un adversario muy poderoso que sea capaz de monitorizar varios nodos (gobiernos)
@@ -384,35 +388,36 @@ Piensa en la temporada 2 de Breaking Bad, cuanto Walter quiere hablar con un tra
 -->
 
 ---
-
 ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-1.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-2.png)
 
-Cuando un servidor quiere ofrecer un servicio, crea una dirección .onion (ejemplo: https://www.bbcnewsv2vjtpsuy.onion/) que se publica en un servicio de directorio y deja una lista de servidores que recibirán mensajes en su nombre
+- Cuando un servidor quiere ofrecer un servicio, crea una dirección .onion (ejemplo: https://www.bbcnewsv2vjtpsuy.onion/) y se escoge un nodo intermediario
+- La dirección .onion está relacionadac con el hash de una clave pública creada ad-hoc por el servidor, y podemos validar que el servidor que nos responde es el que buscamos
+- La dirección .onion y el nodo intermediario se publican en una [tabla de hash distribuida](https://es.wikipedia.org/wiki/Tabla_de_hash_distribuida)
 
 <!--
-Las direcciones .onion tiene normalmente algunos caracteres al azar detrás de ellas. Eso es porque los servicios de directorio en realidad están distribuidos (tablas de hash distribuidas) y las direcciones .onion se comportan como un hash. Normalmente, creas una dirección .onion que empiece con un nombre identificable, como bbcnewsXXXXXXX, pero no siempre es así
+Las direcciones .onion tiene normalmente algunos caracteres al azar detrás de ellas. Eso es porque los servicios de directorio en realidad están distribuidos (tablas de hash distribuidas) y las direcciones .onion se comportan como un hash. Normalmente, creas una dirección .onion que empiece con un nombre identificable, como bbcnewsXXXXXXX, mediante la tarea laboriosa de crear pares de claves publico/privada cuyo hash tengan la cadena que buscamos. No siempre tendremos tiempo ni recursos para esto.
 -->
 
 ---
 
 ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-3.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-4.png)
 
-Cuando alguien quiere usar el servicio, tiene que conocer **de antemano** la dirección .onion
-
-En el ejemplo, Alice escoge un lugar de encuentro (*rendezvous*) y envía un mensaje a Bob a través de alguno de los intermediarios
+- Cuando alguien quiere usar el servicio, tiene que conocer **de antemano** la dirección .onion
+- En el ejemplo, Alice escoge un lugar de encuentro (*rendezvous*) y envía un mensaje a Bob a través de alguno de los intermediarios
 
 ---
 
 ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-5.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-6.png)
 
-Bob y Alice se encuentran en el *rendezvous* y establecen una conexión Tor entre ellos
-
+- Bob establece una conexión Tor con el *rendezvous*
+- Alice también
+- El *rendezvous* conecta las dos conexiones Tor
 
 > https://2019.www.torproject.org/docs/onion-services.html.en
 
-## ¿Pero quién mantiene los relays de Tor?
+## ¿Pero quién mantiene los nodos de Tor?
 
-Los relays al final enrutaran mensajes que es muy posible que sean ilegales. ¿Quién querría hacer algo así?
+Los nodos al final enrutaran mensajes que es muy posible que sean ilegales. ¿Quién querría hacer algo así?
 
 - Gente que quiere apoyar el proyecto
 - Gente que piensa que quiere apoyar el proyecto, pero venderá tu información ante cualquier problema

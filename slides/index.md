@@ -48,7 +48,7 @@ Dr. Juan Vera (Juanvi)
 
 Intereses:
 
-- DFIR: Análisis forense e *Incident Response*
+- DFIR: [*Digital Forensics and Incident Response*](https://en.wikipedia.org/wiki/Computer_security_incident_management)
 - Miembro del Cyber Incident Response Team de [Valeo](https://es.wikipedia.org/wiki/Valeo)
 - Cualquier cosa que vuele
 
@@ -66,6 +66,10 @@ Versión más actualizada:
 Durante el estudio personal es muy recomendable seguir los enlaces que aparecen en las transparencias para completar el tema.
 
 [![Licencia de Creative Commons](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/) Esta obra esta sujeta a una licencia de [Atribución 4.0 Internacional de Creative Commons](http://creativecommons.org/licenses/by/4.0/)
+
+<!-- 
+Esto es un ejemplo de notas de profesor. Aquí habrá información adicional, aclaraciones, referencias o explicaciones más largas de los conceptos de la transparencia
+-->
 
 ## Instrucciones de uso de las actividades
 <!-- _class: with-warning smaller-font -->

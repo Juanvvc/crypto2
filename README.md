@@ -38,19 +38,19 @@ para cuando las necesites.
 O también, puedes clonar el proyecto en tu disco duro local (necesitas un
 cliente `git`):
 
-```
+```bash
 $ git clone git@github.com:juanvvc/crypto.git
 ```
 
 De esta manera tienes una copia local que siempre puedes mantener al día con:
 
-```
+```bash
 $ git pull
 ```            
 
 Puedes crear las transparencias con:
 
-```
+```bash
 # Si no tienes marp instalado, ejecuta esto solo una vez
 npm install @marp-team/marp-cli
 
