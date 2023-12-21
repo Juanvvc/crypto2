@@ -47,7 +47,7 @@ En este tema veremos cómo usar la criptografía para ofrecer el servicio de ano
 ---
 <!-- _class: with-success -->
 
-![center](https://www.htl.london/images/top-tips-to-combat-voip-eavesdropping.jpg)
+![center](images/anom/top-tips-to-combat-voip-eavesdropping.jpg)
 
 El protocolo [TLS](A2-protocolos.html) asegura que nadie que escuche pasivamente una comunicación (*confidencialidad*). También evita ataques activos man-in-the-middle (*integridad*, *autenticación*)
 
@@ -81,7 +81,7 @@ Los servidores normalmente están "en la nube"
 
 ---
 
-![bg left h:100%](images/submarines-cables.png)
+![bg left h:100%](images/anom/submarines-cables.png)
 
 Los puntos neutros se conectan entre ellos a través de (entre otros) [cables submarinos](https://www.submarinecablemap.com/#/)
 
@@ -183,7 +183,7 @@ Ojo: decidir la potencia que tiene tu adversario sirve para todos los sistemas d
 
 El servidor no sabe quién de las $k$ personas ha hecho la petición: **k-anonimato**.
 
-![bg w:100% right:35%](images/crowds.png)
+![bg w:100% right:35%](images/anom/crowds.png)
 
 > Michael Reiter and Aviel Rubin (June 1998). "[Crowds: Anonymity for Web Transactions](https://web.archive.org/web/20051212103028/http://avirubin.com/crowds.pdf)" (PDF). ACM Transactions on Information and System Security.
 
@@ -232,7 +232,7 @@ Tor (sigla de *The Onion Router* - El Enrutador Cebolla) es un proyecto con el o
     - Para el servidor: anónimo
 - Si eres un investigador analizando malware, no querrás que los malos te identifiquen: ¡utiliza navegación anónima!
 
-![bg right:30%](https://www.silicon.es/wp-content/uploads/2013/10/Fuente-Shutterstock_Autor-Tomas-Urbelionis_anonimato-anonimo.jpg)
+![bg right:30%](images/generic/anom-person.jpg)
 
 
 
@@ -242,6 +242,8 @@ Aparte de las razones que hemos visto para utilizar navegación anónima, hay un
 - Descarga del malware que están usando, sin avisarles de qué país vienes y por tanto sin avisarles de que los has descubierto: si un malo sabe que los has descubierto, puede explotar "la bomba" ransomware inmediatamente. Durante una investigación conviene que los malos no sepan quién eres.
 - Visita a sus páginas web, a ver si realmente tienen información de tus clientes
 - ...
+
+Image: https://www.silicon.es/wp-content/uploads/2013/10/Fuente-Shutterstock_Autor-Tomas-Urbelionis_anonimato-anonimo.jpg
 -->
 
 ## Surface, deep and dark web
@@ -264,7 +266,7 @@ Deep y dark web a veces se confunden. Esta es una propuesta de definiciones muy 
 - Pero hay muchos actores que saben que estoy hablando con un servidor
 - Y el servidor lo sabe todo
 
-![right:60% bg w:100%](https://www.eff.org/files/tor-https-1.png)
+![right:60% bg w:100%](images/anom/tor-https-1-png)
 
 > https://www.eff.org/pages/tor-and-https
 
@@ -283,7 +285,7 @@ Como hemos estado viendo en todas estas sesiones, HTTPS ofrece confidecialidad, 
 - Los actores saben que alguien está usando Tor
 - Todos saben qué servidor está respondiendo
 
-![right:60% bg w:100%](https://www.eff.org/files/tor-https-2.png)
+![right:60% bg w:100%](images/anom/tor-https-3-png)
 
 > https://www.eff.org/pages/tor-and-https
 
@@ -304,7 +306,7 @@ Fíjate que en este ejemplo el usuario es anónimo, pero el servidor no: veremos
 1. $2$ descifra el mensaje, y se encuentra que es un mensaje cifrado para $3$. Lo reenvía
 1. $3$ descifra el mensaje, y se encuentra que es un mensaje para $Bob$. Lo reenvía
 
-![center w:30em](https://www.wordfence.com/wp-content/uploads/2015/12/HowTorWorks_1340px.png)
+![center w:30em](images/anom/howtorworks.png)
 
 > https://www.wordfence.com/learn/the-tor-network-faq/
 
@@ -334,11 +336,9 @@ Alice debería buscar relays en países bien diferenciados, y quizá aquellos en
 Una explicación más detallada de la transparencia anterior: el enrutamiento onion es como un ogro, tiene capas. También es como las muñecas rusas, una dentro de otra.
 -->
 
-## Enrutamiento "cebolla", en dibujos
+---
 
-![center w:30em](https://geekytheory.com/wp-content/uploads/2013/10/onion-routingf-keys.png)
-
-![center w:20em](https://upload.wikimedia.org/wikipedia/commons/e/e1/Onion_diagram.svg)
+![center w:25em](https://upload.wikimedia.org/wikipedia/commons/e/e1/Onion_diagram.svg)
 
 > https://es.wikipedia.org/wiki/Encaminamiento_cebolla
 
@@ -348,12 +348,14 @@ Esta es la transparencia anterior, pero con explicación gráfica del enrutamien
 
 ---
 
-![center w:35em](https://contribute.geeksforgeeks.org/wp-content/uploads/Onion-Routing-Page-1.png)
+![center w:35em](images/anom/onion-routing.png)
 
 <!--
 El sistema funciona también como una mix network: hay mucha gente usándolo a la vez, así que no es fácil correlar las entradas y las salidas de la red ni siquiera para un adversario muy poderoso que sea capaz de monitorizar varios nodos (gobiernos)
 
 ¿Qué pasaría si el sistema solo tuviese un usuario? ¡Un adversario que vea un mensaje en Tor sabría de quién es!
+
+Image: https://contribute.geeksforgeeks.org/wp-content/uploads/Onion-Routing-Page-1.png
 -->
 
 ## Navegación anónima
@@ -367,7 +369,7 @@ Observa:
 - Google se piensa que estamos en Suiza porque el nodo de salida está en Suiza
 - Curiosidad: ¡el nodo de entrada (Guard) cambia solo cada 2 o 3 meses!
 
-![w:100% bg right](images/tor-google.png)
+![w:100% bg right](images/anom/tor-google.png)
 
 > [Tor Browser](https://www.torproject.org/)
 > [Why is the first IP address in my relay circuit always the same?](https://support.torproject.org/tbb/tbb-2/)
@@ -383,7 +385,7 @@ Observa:
 - En realidad el ejemplo de Breaking Bad ilustraría un mal uso de Tor: Gus controla el punto de encuentro, así que puede conocer a Walter sin que Walter lo reconozca (como pasó en la serie)
 - Walter debería haber escogido él mismo el punto de encuentro, como en Tor
 
-![center w:25em](images/onion-services.png)
+![center w:25em](images/anom/onion-services-bb.png)
 
 <!--
 Piensa en la temporada 2 de Breaking Bad, cuanto Walter quiere hablar con un traficante (que no sabe que es Gus):
@@ -392,8 +394,22 @@ Piensa en la temporada 2 de Breaking Bad, cuanto Walter quiere hablar con un tra
 - Cuando le vuelve el mensaje a Walter, Gus y Walter quedan en un sitio "neutral": Los Pollos Hermanos. Este es el rendezvous
 -->
 
+## Creación de un servicio oculto en Tor
+<!-- _class: two-columns -->
+
+![center](images/anom/hidden-services.png)
+
+1. Crea un par de claves público/privada
+1. Crea dirección .onion (hash de la clave pública)
+1. Escoge un intermediario
+1. Publica en base de datos distribuida dirección .onion e intermediario
+1. Pregunta periódicamente al intermediario si hay mensajes para ti
+1. Cuando llegue un mensaje (intento de conexión y punto de encuentro), crea un canal Tor hasta el punto de encuentro
+
+> https://medium.com/axon-technologies/hosting-anonymous-website-on-tor-network-3a82394d7a01
+
 ---
-![w:18em](https://2019.www.torproject.org/images/tor-onion-services-1.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-2.png)
+![w:18em](images/anom/tor-onion-services-1.png) ![w:18em](images/anom/tor-onion-services-2.png)
 
 - Cuando un servidor quiere ofrecer un servicio, crea una dirección .onion (ejemplo: https://www.bbcnewsv2vjtpsuy.onion/) y se escoge un nodo intermediario
 - La dirección .onion está relacionadac con el hash de una clave pública creada ad-hoc por el servidor, y podemos validar que el servidor que nos responde es el que buscamos
@@ -405,14 +421,14 @@ Las direcciones .onion tiene normalmente algunos caracteres al azar detrás de e
 
 ---
 
-![w:18em](https://2019.www.torproject.org/images/tor-onion-services-3.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-4.png)
+![w:18em](images/anom/tor-onion-services-3.png) ![w:18em](images/anom/tor-onion-services-4.png)
 
 - Cuando alguien quiere usar el servicio, tiene que conocer **de antemano** la dirección .onion
 - En el ejemplo, Alice escoge un lugar de encuentro (*rendezvous*) y envía un mensaje a Bob a través de alguno de los intermediarios
 
 ---
 
-![w:18em](https://2019.www.torproject.org/images/tor-onion-services-5.png) ![w:18em](https://2019.www.torproject.org/images/tor-onion-services-6.png)
+![w:18em](images/anom/tor-onion-services-5.png) ![w:18em](images/anom/tor-onion-services-6.png)
 
 - Bob establece una conexión Tor con el *rendezvous*
 - Alice también
@@ -422,7 +438,7 @@ Las direcciones .onion tiene normalmente algunos caracteres al azar detrás de e
 
 ## DuckDuck Go
 
-![center w:30em](images/anom-duckduckgo.png)
+![center w:30em](images/anom/anom-duckduckgo.png)
 
 > https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/
 
@@ -460,7 +476,7 @@ Imagina un circuito con tres nodos Tor 1-2-3:
 
 ---
 
-![center w:25em](images/relays-tor.png)
+![center w:25em](images/anom/relays-tor.png)
 
 La lista de nodos Tor es conocida aunque cambiante: es "fácil" para un servidor detectar si sus clientes están usando Tor
 
@@ -478,7 +494,7 @@ Ejemplos de relays Tor existentes cuando preparaba estas transparencias. La mayo
 
 ¡Tor no te protege de todo! El servidor destino aún sabe qué datos estás enviando... y eso puede ser suficiente para identificarte.
 
-![center w:22em](https://www.eff.org/files/tor-https-3.png)
+![center w:22em](images/anom/tor-https-3-png)
 
 > https://www.eff.org/pages/tor-and-https
 
