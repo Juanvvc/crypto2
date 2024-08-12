@@ -1,3 +1,8 @@
+
+> [!IMPORTANT]  
+> 2024: este curso está ya integrado en https://github.com/Juanvvc/crypto Este repositorio no seguirá actualizándose.
+
+
 # Criptografía y autenticación
 
 Este curso es una continuación del curso "Introducción a la criptografía", aunque no asume que los alumnos han realizado el otro curso primero. Puedes encontrar las transparencias del primer curso en 
